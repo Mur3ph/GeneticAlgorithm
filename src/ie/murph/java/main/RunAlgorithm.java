@@ -7,58 +7,67 @@ import ie.murph.java.interfaces.ConsoleTextVariables;
 
 public class RunAlgorithm 
 {
-	private static final Scanner m_SCANNER = new Scanner(System.in);
+	private static final Scanner READ_IN_USER_INPUT = new Scanner(System.in);
 	public static void main(String[] args)
 	{
-		run();
-	}// END OF..
+		runGeneticAlgorithm();
+	}
 	
-	// Method used to start the fitness generations flow...
-		public static void run()
+		// Method used to start the fitness generations flow...
+		private static void runGeneticAlgorithm()
 		{
-			GeneticAlgorithm algorithm = new GeneticAlgorithm();
-			algorithm.generateRandonNumbersAndPlcaeIntoArray();
+			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm();
+			geneticAlgorithm.generateRandonNumbersAndPlcaeIntoArray();
 			//Asking user to input the amount of generations of fitness offspring they want to view
-			System.out.println(ConsoleTextVariables.QUESTION);
-			int generation = m_SCANNER.nextInt();
+			System.out.println(ConsoleTextVariables.ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE);
+			int generation = READ_IN_USER_INPUT.nextInt();
 			
 			for(int generationX = 1; generationX < generation; generationX++)
 			{
-				algorithm.placeArrayIntoUnOrganizedTreeMap();
-				algorithm.placeUnOrganizedTreeMapIntoOrganizedTreeMap();
-				double totalOfAllTheFitness = algorithm.calculatingTheSumOfFitness();
-				algorithm.dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData(totalOfAllTheFitness);
-				algorithm.addingNormalizedDataToCalculateCumulaiveFreguency();
-				algorithm.generateTheTwoContinuesRandomNumbersBetween0and1();
-				algorithm.compareEachRandonDoubleAgainstCumulativeFrequency();
-				algorithm.choosePopulationMemberFromCumulativeFrequenceyChosenInPhase8();
-				algorithm.crossoverOfTwoBinaryStringAtRandomPositions();
-				algorithm.changeOneOfTheBitsInTheBinaryString();
-				algorithm.convertBinaryStringToInteger();
-				algorithm.createANewPopulationWithTheTwoFittestAndThreeMoreRandomFromThePopulation();
+				geneticAlgorithm.placeArrayIntoUnOrganizedTreeMap();
+				geneticAlgorithm.placeUnOrganizedTreeMapIntoOrganizedTreeMap();
+				double totalOfAllTheFitness = geneticAlgorithm.calculatingTheSumOfFitness();
+				geneticAlgorithm.dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData(totalOfAllTheFitness);
+				geneticAlgorithm.addingNormalizedDataToCalculateCumulaiveFreguency();
+				geneticAlgorithm.generateTheTwoContinuesRandomNumbersBetween0and1();
+				geneticAlgorithm.compareEachRandonDoubleAgainstCumulativeFrequency();
+				geneticAlgorithm.choosePopulationMemberFromCumulativeFrequenceyChosenInPhase8();
+				geneticAlgorithm.crossoverOfTwoBinaryStringAtRandomPositions();
+				geneticAlgorithm.changeOneOfTheBitsInTheBinaryString();
+				geneticAlgorithm.convertBinaryStringToInteger();
+				geneticAlgorithm.createANewPopulationWithTheTwoFittestAndThreeMoreRandomFromThePopulation();
 				
 			} // END OF FOR LOOP..
 			
-			askToContinue();
+			askUserToContinueWithGeneticAlgorithm();
 		}// END OF..
 			
-			// Method to ask the user if they want to try again.
-			public static void askToContinue()
+			private static void askUserToContinueWithGeneticAlgorithm()
 			{
 				System.out.println("Do you want to run it again: (y/n)");
 				
-				String s_continue = m_SCANNER.nextLine();
+				String s_continue = READ_IN_USER_INPUT.nextLine();
 				if(s_continue.equalsIgnoreCase("y") || s_continue.equalsIgnoreCase("yes"))
 				{
-					// Reseting and Starting again..
-					main(new String[0]);
+					resetThreadToRunGeneticAlgorithmAgain();
 				}
 				else if (s_continue.equalsIgnoreCase("n") || s_continue.equalsIgnoreCase("no"))
 				{
-					System.out.println("Good bye!");
-					System.exit(0);
+					exitGeneticAlgorithmApp();
 				}
 				else
-					askToContinue();
+					askUserToContinueWithGeneticAlgorithm();
 			}// END OF.
+			
+			private static void resetThreadToRunGeneticAlgorithmAgain()
+			{
+				main(new String[0]);
+			}
+			
+			private static void exitGeneticAlgorithmApp()
+			{
+				System.out.println("Good bye!");
+				System.exit(0);
+			}
+			
 }

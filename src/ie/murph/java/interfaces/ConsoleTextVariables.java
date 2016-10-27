@@ -17,5 +17,5 @@ public interface ConsoleTextVariables
 	public final static String PHASE_ELEVEN = "11). Convert the offspring back to an Integer: ";
 	public final static String PHASE_TWELVE = "12). Send the two new fitness to the random generator method and receive them back here for next generation: ";
 	public final static String BREAK_DIVIDER = "###################################################################";
-	public final static String QUESTION = "How many generations do you want to calculate.!";
+	public final static String ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE = "How many generations do you want to calculate.!";
 }
