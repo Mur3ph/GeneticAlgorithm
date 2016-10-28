@@ -3,7 +3,7 @@ package ie.murph.java.main;
 import java.util.Scanner;
 
 import ie.murph.java.algorithm.GeneticAlgorithm;
-import ie.murph.java.interfaces.ConsoleTextVariables;
+import ie.murph.java.interfaces.ConsoleMessage;
 
 public class RunAlgorithm 
 {
@@ -19,7 +19,7 @@ public class RunAlgorithm
 			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm();
 			geneticAlgorithm.generateRandonNumbersAndPlcaeIntoArray();
 			//Asking user to input the amount of generations of fitness offspring they want to view
-			System.out.println(ConsoleTextVariables.ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE);
+			System.out.println(ConsoleMessage.ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE);
 			int generation = READ_IN_USER_INPUT.nextInt();
 			
 			for(int generationX = 1; generationX < generation; generationX++)

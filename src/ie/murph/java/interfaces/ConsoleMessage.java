@@ -1,6 +1,6 @@
 package ie.murph.java.interfaces;
 
-public interface ConsoleTextVariables 
+public interface ConsoleMessage 
 {
 	//Constant variables used throughout the application
 	public final static String STARTING_GENETIC_ALGORITHM = "*** STARTING *** GENERATING THE RANDOM FITNESS VALUES INTO AN ARRAY.!";
