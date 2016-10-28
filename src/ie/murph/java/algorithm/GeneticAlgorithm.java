@@ -36,28 +36,28 @@ public class GeneticAlgorithm
 	//Generating the five random fitness to begin with..
 	public void generateRandonNumbersAndPlcaeIntoArray()
 	{
-		System.out.println(ConsoleTextVariables.STARTING);
+		System.out.println(ConsoleTextVariables.STARTING_GENETIC_ALGORITHM);
 		this.m_fitness = new Integer[5];
 		this.m_fitness = getRandomNumbers();
 		displayArray(this.m_fitness);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF.
 	
 	//Placing the random numbers generated from the array to a TreeMap - Unorganized fitness
 	public void placeArrayIntoUnOrganizedTreeMap()
 	{
-		System.out.println(ConsoleTextVariables.PHASE_ONE);
+		System.out.println(ConsoleTextVariables.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
 		this.m_treeMapToStoreFitnessAccessibleByKey = new TreeMap<String, Integer>();
 		this.m_treeMapToStoreFitnessAccessibleByKey = putArrayDataToMap(this.m_fitness);
 		displayGenericTypes(this.m_treeMapToStoreFitnessAccessibleByKey.values());
 		displayGenericTypes(this.m_treeMapToStoreFitnessAccessibleByKey.keySet());
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
 	
 	//Placing the random numbers from Unorganized TreeMap into an Organized TreeMap - Organized fitness through a Comparator interface
 	public void placeUnOrganizedTreeMapIntoOrganizedTreeMap()
 	{
-		System.out.println(ConsoleTextVariables.PHASE_TWO);
+		System.out.println(ConsoleTextVariables.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
 		//This is an interface  I created to order the Map according to my specification
 		MapValueComparator orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.m_treeMapToStoreFitnessAccessibleByKey);
 		// Constructs a new empty tree map, ordered according to the given comparator (orderedValuesAccordingToComparatorInterface)
@@ -66,13 +66,13 @@ public class GeneticAlgorithm
 		this.m_sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.m_treeMapToStoreFitnessAccessibleByKey);
 		displayGenericTypes(this.m_sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values());
 		displayGenericTypes(this.m_sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.keySet());
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
 	
 	//Calculating the total sum of all the fitness
 	public double calculatingTheSumOfFitness()
 	{
-		System.out.println(ConsoleTextVariables.PHASE_THREE);
+		System.out.println(ConsoleTextVariables.CALCULATING_TOTAL_FITNESS_VALUE_PHASE_THREE);
 		this.m_fitnessValuesFromOrderedTreemap = new ArrayList<Integer>(this.m_sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values());
 		double totalOfAllTheFitness = 0;
 		for(int nextFitness = 0; nextFitness < this.m_sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size(); nextFitness++)
@@ -80,14 +80,14 @@ public class GeneticAlgorithm
 			 totalOfAllTheFitness = totalOfAllTheFitness + this.m_fitnessValuesFromOrderedTreemap.get(nextFitness);
 		}
 		System.out.println("Total: " + totalOfAllTheFitness);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 		return totalOfAllTheFitness;
 	}// END OF.
 	
 	//Dividing each fitness value by the sum of all fitness
 	public void dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData(double totalOfAllTheFitness) 
 	{
-		System.out.println(ConsoleTextVariables.PHASE_FOUR);
+		System.out.println(ConsoleTextVariables.CALCULATING_NORMALIZED_FITNESS_VALUE_PHASE_FOUR);
 		// Normalized data for each fitness is calculated by finding the sum of all the fitness and then dividing the sum against each individual fitness
 		this.m_normalisedData = new Double[this.m_sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size()];
 		for(int nextFitness = 0; nextFitness < this.m_sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size(); nextFitness++)
@@ -95,13 +95,13 @@ public class GeneticAlgorithm
 			this.m_normalisedData[nextFitness] = (double) (this.m_fitnessValuesFromOrderedTreemap.get(nextFitness) / totalOfAllTheFitness);
 		}
 		displayArray(this.m_normalisedData);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 
 	//Cumulative frequency - The total of a frequency and all frequencies so far in a frequency distribution
 	public void addingNormalizedDataToCalculateCumulaiveFreguency() 
 	{
-		System.out.println(ConsoleTextVariables.PHASE_FIVE);
+		System.out.println(ConsoleTextVariables.CALCULATING_CUMULATIVE_FREQUENCY_VALUE_PHASE_FIVE);
 		double previousCumulativeNumber = 0;
 		//Cumulative frequency Data for each of the fitness is calculated by adding each of the normalized data types one after the other finally adding to one
 		// (e.g. Normalized data: 0.267, 0.267, 0.233, 0.233 --> Cumulative data: 0.267, 0.534, 0.767, 1)
@@ -118,13 +118,13 @@ public class GeneticAlgorithm
 			this.m_cumulativefrequencyData[4] = 1.0;
 		}
 		displayArray(this.m_cumulativefrequencyData);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
 	// Choose a random double between zero and one to compare against the cumulative frequency - Generating two random numbers between 1 and 0
 	public void generateTheTwoContinuesRandomNumbersBetween0and1()
 	{
-		System.out.println(ConsoleTextVariables.PHASE_SIX);
+		System.out.println(ConsoleTextVariables.CHOOSE_RANDOM_NUMBER_BETWEEN_ONE_AND_ZERO_PHASE_SIX);
 		//Using random doubles to make sure they are between zero and one
 		this.m_continuesRandonNumberBetweenZeroAndOne_1 = m_RANDOMNUMBERS.nextDouble();
 		this.m_continuesRandonNumberBetweenZeroAndOne_2 = m_RANDOMNUMBERS.nextDouble();
@@ -133,26 +133,26 @@ public class GeneticAlgorithm
 		double continuesRandomNumberToThreeDecimalPlaces_2 = (double) Math.round(this.m_continuesRandonNumberBetweenZeroAndOne_2 * 1000) / 1000;
 		System.out.println("Random Double 1: " + this.m_continuesRandonNumberBetweenZeroAndOne_1 + " and rounded: " + continuesRandomNumberToThreeDecimalPlaces_1);
 		System.out.println("Random Double 2: " + this.m_continuesRandonNumberBetweenZeroAndOne_2 + " and rounded: " + continuesRandomNumberToThreeDecimalPlaces_2);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
 	
 	//Comparing the two random numbers generated, against the Cumulative frequency
 	public void compareEachRandonDoubleAgainstCumulativeFrequency() 
 	{
-		System.out.println(ConsoleTextVariables.PHASE_SEVEN);
+		System.out.println(ConsoleTextVariables.COMPARE_RANDOM_NUMBERS_BETWEEN_ONE_AND_ZERO_PHASE_SIX_AGAINST_CUMULATIVE_FREQUENCY_PHASE_SEVEN);
 		//Two values to compare against the cumulative frequency. 
 		//When we come across a number larger than the random number, choose the corresponding number in [P] column (i.e. TreeMap Key)
 		//Gives back the position (i.e. location in the Map) of the values to choose
 		//TODO I should be using value [p] (i.e. The Tree Map Key, instead I am using fitness [P] Tree Map value )
 		this.m_thePositionOfTheTwoValuesChoosenUsingRandomValues = findThePositionOfTheTwoFitnessNumbersUsingTheTwoRandomNumbers(m_cumulativefrequencyData);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
 	//Here we are using the two random number positions to choose the new elite or best possible candidates of the population
 	//We then take those two new candidates and get the binary number equivalent of those number values chosen at random
 	public void choosePopulationMemberFromCumulativeFrequenceyChosenInPhase8() 
 	{
-		System.out.println(ConsoleTextVariables.PHASE_EIGHT);
+		System.out.println(ConsoleTextVariables.GET_INTERGER_VALUE_P_REPRESENTATION_PHASE_EIGHT);
 		int randomPositionValueX = this.m_thePositionOfTheTwoValuesChoosenUsingRandomValues[0];
 		int randomPositionValueY = this.m_thePositionOfTheTwoValuesChoosenUsingRandomValues[1];
 		
@@ -164,7 +164,7 @@ public class GeneticAlgorithm
 		this.m_binaryValue_1 = convertIntegerToBinaryString(eliteFitnessValueChosen_1, lengthOfBinaryString);
 		this.m_binaryValue_2 = convertIntegerToBinaryString(eliteFitnessValueChosen_2, lengthOfBinaryString);
 		System.out.println("The 2 binary values: BINARY of: " + eliteFitnessValueChosen_1 + " = " + this.m_binaryValue_1 + " BINARY of: " + eliteFitnessValueChosen_2 + " = " + this.m_binaryValue_2);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
 	//The crossover is a merging of both binary strings (i.e. genes in genetics) to create one better fitter child/offspring
@@ -172,7 +172,7 @@ public class GeneticAlgorithm
 	public void crossoverOfTwoBinaryStringAtRandomPositions() 
 	{
 		//TODO Can only chose one offspring per pair of elite candidates AND generate more random parents
-		System.out.println(ConsoleTextVariables.PHASE_NINE);
+		System.out.println(ConsoleTextVariables.CROSSOVER_OF_TWO_BINARY_STRINGS_PHASE_NINE);
 		String firstHalfOfBinaryGene_1 = this.m_binaryValue_1.substring(0, 3);
 		String secondHalfOfBinaryGene_1 = this.m_binaryValue_2.substring(3, 6);
 		
@@ -183,22 +183,22 @@ public class GeneticAlgorithm
 		this.m_offspring_Child_2 = firstHalfOfBinaryGene_2 + secondHalfOfBinaryGene_2;
 		System.out.println("Offspring1: " + firstHalfOfBinaryGene_1 + secondHalfOfBinaryGene_1);
 		System.out.println("Offspring2: " + firstHalfOfBinaryGene_2 + secondHalfOfBinaryGene_2);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
 	//Here I are changing bit(s) (e.g. If bit is 0, then change it to 1 and vice-versa)
 	public void changeOneOfTheBitsInTheBinaryString() 
 	{
-		System.out.println(ConsoleTextVariables.PHASE_TEN);
+		System.out.println(ConsoleTextVariables.MUTATION_OF_OFFSPRING_STRING_PHASE_TEN);
 		this.m_twoMutatedBinaryStringBuilderObj = new StringBuilder[2];
 		this.m_twoMutatedBinaryStringBuilderObj = mutateBinaryStrings(this.m_offspring_Child_1, this.m_offspring_Child_2);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
 	//Changing the binary string back to a real number or integer
 	public void convertBinaryStringToInteger() 
 	{
-		System.out.println(ConsoleTextVariables.PHASE_ELEVEN);
+		System.out.println(ConsoleTextVariables.CONVERT_OFFSPRING_BACK_TO_INTEGER_PHASE_ELEVEN);
 		StringBuilder mutatedOffspringBuilderObj_1;
 		StringBuilder mutatedOffspringBuilderObj_2;
 		mutatedOffspringBuilderObj_1 = this.m_twoMutatedBinaryStringBuilderObj[0];
@@ -209,14 +209,14 @@ public class GeneticAlgorithm
 		this.m_newFitnessInt_2 = convertBinaryToInteger(mutatedOffspringStr_2);
 		System.out.println("The new offspring 1 in integer fitness form: " + mutatedOffspringStr_1 + " = " + this.m_newFitnessInt_1);
 		System.out.println("The new offspring 2 in integer fitness form: " + mutatedOffspringStr_2 + " = " + this.m_newFitnessInt_2);
-		System.out.println(ConsoleTextVariables.BREAK_DIVIDER);
+		System.out.println(ConsoleTextVariables.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
 	//Choose the two best/fittest/highest numbers along with more random numbers to fill the group to five and begin the process again..
 	//..until only the fittest survive (i.e. All numbers are at there highest possible and with a 6 bit binary that is 64)
 	public void createANewPopulationWithTheTwoFittestAndThreeMoreRandomFromThePopulation() 
 	{
-		System.out.println(ConsoleTextVariables.PHASE_TWELVE);
+		System.out.println(ConsoleTextVariables.SEND_NEW_FITNESS_TO_RANDOM_GENERATOR_TO_CREATE_NEXT_GENERATION_PHASE_TWELVE);
 		Integer[] arrayOfFitterNextGenerationIntegers = new Integer[5];
 		arrayOfFitterNextGenerationIntegers = getNextGeneration(this.m_fitness, this.m_newFitnessInt_1, this.m_newFitnessInt_2);
 		displayArray(arrayOfFitterNextGenerationIntegers);
