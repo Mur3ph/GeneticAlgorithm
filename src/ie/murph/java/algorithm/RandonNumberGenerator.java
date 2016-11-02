@@ -6,25 +6,36 @@ import java.util.Random;
 public class RandonNumberGenerator 
 {
 	private static final Random RANDOM_NUMBER_GENERATOR = new SecureRandom();
+	private Integer randomNumber;
+	private Integer[] randomNumbers;
 	
-	public Integer getARandomNumber(int maxRangeOfRandomNumber) 
+	public RandonNumberGenerator()
+	{
+		
+	}
+	
+	public void generateARandomNumber(int maxRangeOfRandomNumber) 
     {
 		final int minRangeOfRandomNumber = 1;
 		final int one = 1;
-		return RANDOM_NUMBER_GENERATOR.nextInt(maxRangeOfRandomNumber - minRangeOfRandomNumber + one) + minRangeOfRandomNumber;
+		randomNumber = RANDOM_NUMBER_GENERATOR.nextInt(maxRangeOfRandomNumber - minRangeOfRandomNumber + one) + minRangeOfRandomNumber;
 	}
 	
-	// Method to get 5 random integers for the fitness
-	// I put it in a method to get consistent and the same random numbers for all each time the algorithm is run.
-	public Integer[] getFiveRandomNumbersBetweenOneAndTen()
+	public void populateWithRandomNumbers(int lenghtOfArray)
 	{
-		final int lenghtOfArray = 5;
-		Integer[] fiveRandomNumbers = new Integer[lenghtOfArray];
-		final int maxRangeOfRandomNumber = 10;
+		randomNumbers = new Integer[lenghtOfArray];
 		for(int atPositionX = 0; atPositionX < lenghtOfArray; atPositionX++)
 		{
-			fiveRandomNumbers[atPositionX] = getARandomNumber(maxRangeOfRandomNumber);
+			randomNumbers[atPositionX] = randomNumber;
 		}
-		return fiveRandomNumbers;
 	}
+		
+	// Method to get random integers for the fitness
+	public Integer[] getRandomNumers()
+	{
+		return randomNumbers;
+	}
+	
+	
+	
 }
