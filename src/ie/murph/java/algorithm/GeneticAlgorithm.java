@@ -41,7 +41,7 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.STARTING_GENETIC_ALGORITHM);
 		
-		randonNumberGenerator.randomNumberbetween(1, 10);
+		randonNumberGenerator.setRandomNumberbetween(1, 10);
 		randonNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(5);
 		
 		displayArray(randonNumberGenerator.getRandomWholeNumbers());
@@ -355,7 +355,7 @@ public class GeneticAlgorithm
 		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
 		//Choosing the bit in each binary string to be altered at random each time
-		randonNumberGenerator.randomNumberbetween(1, 5);
+		randonNumberGenerator.setRandomNumberbetween(1, 5);
 		int randomPositionOfBinaryBitToBeAltered_1 = randonNumberGenerator.getARandomWholeNumber();
 		int randomPositionOfBinaryBitToBeAltered_2 = randonNumberGenerator.getARandomWholeNumber();
 		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = new Integer[]{randomPositionOfBinaryBitToBeAltered_1, randomPositionOfBinaryBitToBeAltered_2};
