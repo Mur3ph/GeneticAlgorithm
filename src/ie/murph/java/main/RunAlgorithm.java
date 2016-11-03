@@ -3,6 +3,7 @@ package ie.murph.java.main;
 import java.util.Scanner;
 
 import ie.murph.java.algorithm.GeneticAlgorithm;
+import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 
 public class RunAlgorithm 
@@ -16,14 +17,16 @@ public class RunAlgorithm
 		// Method used to start the fitness generations flow...
 		private static void runGeneticAlgorithm()
 		{
-			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm();
-			geneticAlgorithm.generateRandonNumbersAndPlcaeIntoArray();
+			RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator);
+			geneticAlgorithm.generateRandonNumbersForFitness();
 			//Asking user to input the amount of generations of fitness offspring they want to view
 			System.out.println(ConsoleMessage.ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE);
-			int generation = READ_IN_USER_INPUT.nextInt();
+			int generation = READ_IN_USER_INPUT.nextInt()+1;
 			
 			for(int generationX = 1; generationX < generation; generationX++)
 			{
+				System.out.println("\nGENERATION: " + generationX + "\n");
 				geneticAlgorithm.placeArrayIntoUnOrganizedTreeMap();
 				geneticAlgorithm.placeUnOrganizedTreeMapIntoOrganizedTreeMap();
 				double totalOfAllTheFitness = geneticAlgorithm.calculatingTheSumOfFitness();

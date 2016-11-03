@@ -1,9 +1,8 @@
 package ie.murph.java.algorithm;
 
+import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 import ie.murph.java.interfaces.MapValueComparator;
-
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,8 +14,7 @@ import java.util.TreeMap;
 public class GeneticAlgorithm 
 {
 	//Constant variables and data interface structures used throughout the algorithm
-	private static final SecureRandom RANDOMNUMBERS = new SecureRandom();
-	private Integer[] fitness;
+	private static RandomNumberGenerator randonNumberGenerator;
 	private Map<String, Integer> treeMapToStoreFitnessAccessibleByKey;
 	private Map<String, Integer> sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface;
 	private List<Integer> fitnessValuesFromOrderedTreemap;
@@ -32,14 +30,21 @@ public class GeneticAlgorithm
 	private StringBuilder[] twoMutatedBinaryStringBuilderObj;
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
+	
+	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator)
+	{
+		randonNumberGenerator = new RandomNumberGenerator();
+	}
 		
 	//Generating the five random fitness to begin with..
-	public void generateRandonNumbersAndPlcaeIntoArray()
+	public void generateRandonNumbersForFitness()
 	{
 		System.out.println(ConsoleMessage.STARTING_GENETIC_ALGORITHM);
-		this.fitness = new Integer[5];
-		this.fitness = getRandomNumbers();
-		displayArray(this.fitness);
+		
+		randonNumberGenerator.randomNumberbetween(1, 10);
+		randonNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(5);
+		
+		displayArray(randonNumberGenerator.getRandomWholeNumbers());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF.
 	
@@ -48,7 +53,7 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
 		this.treeMapToStoreFitnessAccessibleByKey = new TreeMap<String, Integer>();
-		this.treeMapToStoreFitnessAccessibleByKey = putArrayDataToMap(this.fitness);
+		this.treeMapToStoreFitnessAccessibleByKey = putArrayDataToMap(randonNumberGenerator.getRandomWholeNumbers());
 		displayGenericTypes(this.treeMapToStoreFitnessAccessibleByKey.values());
 		displayGenericTypes(this.treeMapToStoreFitnessAccessibleByKey.keySet());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
@@ -126,8 +131,8 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.CHOOSE_RANDOM_NUMBER_BETWEEN_ONE_AND_ZERO_PHASE_SIX);
 		//Using random doubles to make sure they are between zero and one
-		this.continuesRandonNumberBetweenZeroAndOne_1 = RANDOMNUMBERS.nextDouble();
-		this.continuesRandonNumberBetweenZeroAndOne_2 = RANDOMNUMBERS.nextDouble();
+		this.continuesRandonNumberBetweenZeroAndOne_1 = randonNumberGenerator.getARandomDecimalNumberBetweenZeroAndOne();
+		this.continuesRandonNumberBetweenZeroAndOne_2 = randonNumberGenerator.getARandomDecimalNumberBetweenZeroAndOne();
 		//Rounding them numbers to 3 decimal places
 		double continuesRandomNumberToThreeDecimalPlaces_1 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_1 * 1000) / 1000;
 		double continuesRandomNumberToThreeDecimalPlaces_2 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_2 * 1000) / 1000;
@@ -218,9 +223,9 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.SEND_NEW_FITNESS_TO_RANDOM_GENERATOR_TO_CREATE_NEXT_GENERATION_PHASE_TWELVE);
 		Integer[] arrayOfFitterNextGenerationIntegers = new Integer[5];
-		arrayOfFitterNextGenerationIntegers = getNextGeneration(this.fitness, this.newFitnessInt_1, this.newFitnessInt_2);
+		arrayOfFitterNextGenerationIntegers = getNextGeneration(randonNumberGenerator.getRandomWholeNumbers(), this.newFitnessInt_1, this.newFitnessInt_2);
 		displayArray(arrayOfFitterNextGenerationIntegers);
-		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, this.fitness, 0, 5);
+		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, randonNumberGenerator.getRandomWholeNumbers(), 0, 5);
 //		TODO Clearing the fitness to begin again with new better population, I think I am adding the previous total with the new total were I should be clearing the previous total and starting with fresh data
 //		m_fitnessValuesFromOrderedTreemap.clear();
 	}
@@ -288,18 +293,6 @@ public class GeneticAlgorithm
 		return result;
 	}// END OF..
 	
-	// Method to get 5 random integers for the fitness
-	// I put it in a method to get consistent and the same random numbers for all each time the algorithm is run.
-	public static Integer[] getRandomNumbers()
-	{
-		Integer[] fitness = new Integer[5];
-		for(int atPositionX = 0; atPositionX < fitness.length; atPositionX++)
-		{
-			fitness[atPositionX] = RANDOMNUMBERS.nextInt(10)+1;
-		}
-		return fitness;
-	}// END OF..
-	
 	// Method to get 3 random integers from the getRandomNumbers() and replace 2 with the new fitness
 		public static Integer[] getNextGeneration(Integer[] originalFitness, int firstNewFitness, int secondNewFitness)
 		{
@@ -362,8 +355,9 @@ public class GeneticAlgorithm
 		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
 		//Choosing the bit in each binary string to be altered at random each time
-		int randomPositionOfBinaryBitToBeAltered_1 = RANDOMNUMBERS.nextInt(6);
-		int randomPositionOfBinaryBitToBeAltered_2 = RANDOMNUMBERS.nextInt(6);
+		randonNumberGenerator.randomNumberbetween(1, 5);
+		int randomPositionOfBinaryBitToBeAltered_1 = randonNumberGenerator.getARandomWholeNumber();
+		int randomPositionOfBinaryBitToBeAltered_2 = randonNumberGenerator.getARandomWholeNumber();
 		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = new Integer[]{randomPositionOfBinaryBitToBeAltered_1, randomPositionOfBinaryBitToBeAltered_2};
 		
 		// Getting that bit in the random position
