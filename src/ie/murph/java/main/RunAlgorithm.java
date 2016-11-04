@@ -3,6 +3,7 @@ package ie.murph.java.main;
 import java.util.Scanner;
 
 import ie.murph.java.algorithm.GeneticAlgorithm;
+import ie.murph.java.algorithm.fitness.UnorganizedMapFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 
@@ -18,7 +19,9 @@ public class RunAlgorithm
 		private static void runGeneticAlgorithm()
 		{
 			RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator);
+			UnorganizedMapFitness unorganizedMapFitness = new UnorganizedMapFitness(randomNumberGenerator);
+			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness);
+			
 			geneticAlgorithm.generateRandonNumbersForFitness();
 			//Asking user to input the amount of generations of fitness offspring they want to view
 			System.out.println(ConsoleMessage.ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE);

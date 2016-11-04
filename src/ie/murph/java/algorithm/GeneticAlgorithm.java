@@ -1,5 +1,6 @@
 package ie.murph.java.algorithm;
 
+import ie.murph.java.algorithm.fitness.UnorganizedMapFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 import ie.murph.java.interfaces.MapValueComparator;
@@ -14,8 +15,9 @@ import java.util.TreeMap;
 public class GeneticAlgorithm 
 {
 	//Constant variables and data interface structures used throughout the algorithm
-	private static RandomNumberGenerator randonNumberGenerator;
-	private Map<String, Integer> treeMapToStoreFitnessAccessibleByKey;
+	private RandomNumberGenerator randonNumberGenerator;
+	private UnorganizedMapFitness unorganizedMapFitness;
+	
 	private Map<String, Integer> sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface;
 	private List<Integer> fitnessValuesFromOrderedTreemap;
 	private Double[] normalisedData;
@@ -31,9 +33,10 @@ public class GeneticAlgorithm
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
-	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator)
+	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedMapFitness unorganizedMapFitness)
 	{
-		randonNumberGenerator = new RandomNumberGenerator();
+		this.randonNumberGenerator = randomNumberGenerator;
+		this.unorganizedMapFitness = unorganizedMapFitness;;
 	}
 		
 	//Generating the five random fitness to begin with..
@@ -52,10 +55,9 @@ public class GeneticAlgorithm
 	public void placeArrayIntoUnOrganizedTreeMap()
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
-		this.treeMapToStoreFitnessAccessibleByKey = new TreeMap<String, Integer>();
-		this.treeMapToStoreFitnessAccessibleByKey = putArrayDataToMap(randonNumberGenerator.getRandomWholeNumbers());
-		displayGenericTypes(this.treeMapToStoreFitnessAccessibleByKey.values());
-		displayGenericTypes(this.treeMapToStoreFitnessAccessibleByKey.keySet());
+		this.unorganizedMapFitness.placeRandomNumbersIntoUnOrganizedTreeMap();
+		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedTreeMapFitnessValues());
+		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedTreeMapFitnessKeySet());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
 	
@@ -64,11 +66,11 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
 		//This is an interface  I created to order the Map according to my specification
-		MapValueComparator orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.treeMapToStoreFitnessAccessibleByKey);
+		MapValueComparator orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.unorganizedMapFitness.getTreeMapToStoreFitnessAccessibleByKey());
 		// Constructs a new empty tree map, ordered according to the given comparator (orderedValuesAccordingToComparatorInterface)
 		// Maps always order according to the key, so I had to use a comparator to order the values the was I wanted instead (Best/Highest fitness first in list)
 		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface = new TreeMap<String, Integer>(orderedValuesAccordingToComparatorInterface);
-		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.treeMapToStoreFitnessAccessibleByKey);
+		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.unorganizedMapFitness.getTreeMapToStoreFitnessAccessibleByKey());
 		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values());
 		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.keySet());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
@@ -346,7 +348,7 @@ public class GeneticAlgorithm
 	}// END OF..
 	
 	// Altering one of the bits in the binary string using the StringBuilder Object
-	public static StringBuilder[] mutateBinaryStrings(String offspringBinaryStr_1, String offspringBinaryStr_2)
+	public StringBuilder[] mutateBinaryStrings(String offspringBinaryStr_1, String offspringBinaryStr_2)
 	{
 		//Converting the string to string builder object because easy to alter or manipulate binary bits
 		StringBuilder offspringBinaryBuilder_1 = new StringBuilder(offspringBinaryStr_1);
