@@ -3,7 +3,7 @@ package ie.murph.java.algorithm.randomnumber;
 import java.security.SecureRandom;
 import java.util.Random;
 
-public class RandomNumberGenerator<T> 
+public class RandomNumberGenerator
 {
 //	Look into breaking up Integer, Double into different classes: https://www.tutorialspoint.com/design_pattern/observer_pattern.htm
 	private static final Random RANDOM_NUMBER_GENERATOR = new SecureRandom();
@@ -11,7 +11,6 @@ public class RandomNumberGenerator<T>
 	private Integer[] randomNumbers;
 	
 	public RandomNumberGenerator(){}
-	public RandomNumberGenerator(T[] type, int size){}
 	
 	public void setRandomNumberbetween(int minRangeOfRandomNumber, int maxRangeOfRandomNumber)
 	{
