@@ -43,4 +43,9 @@ public class RandomNumberGenerator
 		return RANDOM_NUMBER_GENERATOR.nextDouble();
 	}
 	
+	public void clearArray()
+	{
+		randomNumbers = null;
+	}
+	
 }
