@@ -9,6 +9,7 @@ import java.util.Set;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class RandomNumberGeneratorTest {
@@ -60,9 +61,10 @@ public class RandomNumberGeneratorTest {
 		return Arrays.asList(listOfNumbersToCheckRandomNumbersAgainst).containsAll(Arrays.asList(randomNumbers));
 	}
 	
-	public static boolean useSetCheckForDuplicates(Integer[] arr, String targetValue) {
+	@Ignore
+	public static boolean useSetCheckForDuplicates(Integer[] arr) {
 		Set<Integer> set = new HashSet<Integer>(Arrays.asList(arr));
-		return set.contains(targetValue);
+		return set.contains(arr);
 	}
 	
 	@Test
