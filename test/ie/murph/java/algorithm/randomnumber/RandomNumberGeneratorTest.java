@@ -14,17 +14,19 @@ import org.junit.Test;
 
 public class RandomNumberGeneratorTest {
 
-	RandomNumberGenerator resultRrandomNumberGenerator;
+	private RandomNumberGenerator resultRrandomNumberGenerator;
 	
 	@Before
-    public void setUp() {
+    public void setUp() 
+	{
 		resultRrandomNumberGenerator = new RandomNumberGenerator();
 		resultRrandomNumberGenerator.setRandomNumberbetween(1, 10);
 		resultRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
     }
 	
     @After
-    public void tearDown() {
+    public void tearDown() 
+    {
     	resultRrandomNumberGenerator.clearArray();
     }
     
@@ -57,12 +59,12 @@ public class RandomNumberGeneratorTest {
 		assertFalse(isContains);
 	}
 	
-	public static boolean useArraysBinarySearch(Integer[] listOfNumbersToCheckRandomNumbersAgainst, Integer[] randomNumbers) {	
+	private static boolean useArraysBinarySearch(Integer[] listOfNumbersToCheckRandomNumbersAgainst, Integer[] randomNumbers) {	
 		return Arrays.asList(listOfNumbersToCheckRandomNumbersAgainst).containsAll(Arrays.asList(randomNumbers));
 	}
 	
 	@Ignore
-	public static boolean useSetCheckForDuplicates(Integer[] arr) {
+	private static boolean useSetCheckForDuplicates(Integer[] arr) {
 		Set<Integer> set = new HashSet<Integer>(Arrays.asList(arr));
 		return set.contains(arr);
 	}
