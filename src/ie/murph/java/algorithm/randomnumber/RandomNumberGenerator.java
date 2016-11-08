@@ -1,12 +1,9 @@
 package ie.murph.java.algorithm.randomnumber;
 
-import java.security.SecureRandom;
-import java.util.Random;
-
 public class RandomNumberGenerator
 {
 //	Look into breaking up Integer, Double into different classes: https://www.tutorialspoint.com/design_pattern/observer_pattern.htm
-	private static final Random RANDOM_NUMBER_GENERATOR = new SecureRandom();
+	private final RandomNumber randomNumber = new RandomNumber();
 	private int minRangeOfRandomNumber, maxRangeOfRandomNumber;
 	private Integer[] randomNumbers;
 	
@@ -29,7 +26,7 @@ public class RandomNumberGenerator
 	
 	public int getARandomWholeNumber() 
     {
-		return RANDOM_NUMBER_GENERATOR.nextInt(maxRangeOfRandomNumber - minRangeOfRandomNumber + 1) + minRangeOfRandomNumber;
+		return randomNumber.getInt(maxRangeOfRandomNumber - minRangeOfRandomNumber + 1) + minRangeOfRandomNumber;
 	}
 		
 	// Method to get random integers for the fitness
@@ -40,7 +37,7 @@ public class RandomNumberGenerator
 	
 	public double getARandomDecimalNumberBetweenZeroAndOne() 
     {
-		return RANDOM_NUMBER_GENERATOR.nextDouble();
+		return randomNumber.getDouble();
 	}
 	
 	public void clearArray()
