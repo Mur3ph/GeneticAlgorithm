@@ -1,5 +1,11 @@
 package ie.murph.java.algorithm.randomnumber;
 
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,27 +13,97 @@ import org.junit.Test;
 
 public class RandomNumberGeneratorTest {
 
-	RandomNumberGenerator randomNumberGenerator;
+	RandomNumberGenerator resultRrandomNumberGenerator;
 	
 	@Before
     public void setUp() {
-		randomNumberGenerator = new RandomNumberGenerator();
-		randomNumberGenerator.setRandomNumberbetween(1, 10);
-		randomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
+		resultRrandomNumberGenerator = new RandomNumberGenerator();
+		resultRrandomNumberGenerator.setRandomNumberbetween(1, 10);
+		resultRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
     }
 	
     @After
     public void tearDown() {
-    	randomNumberGenerator.clearArray();
+    	resultRrandomNumberGenerator.clearArray();
     }
+    
+    @Test
+	public void checkRandomNumberGeneratorObjectForNull()
+	{
+		assertNotNull(resultRrandomNumberGenerator);
+	}
 	
 	@Test
-	public void test() {
-		RandomNumberGenerator expected = new RandomNumberGenerator();
-		expected.setRandomNumberbetween(1, 10);
-		expected.populateArrayWithRandomWholeNumbersOfLength(10);
+	public void checkRandomNumberGeneratorObjectIsNull()
+	{
+		RandomNumberGenerator nullRrandomNumberGenerator = null;
+		assertNull(nullRrandomNumberGenerator);
+	}
+	
+	@Test
+	public void checkBoundariesOfEachOfTheRandomWholeNumbersGeneratedIsInBoundsTest()
+	{
+		Integer[] onlyNumbersArrayShouldContain = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+		boolean isContains = useArraysBinarySearch(onlyNumbersArrayShouldContain, resultRrandomNumberGenerator.getRandomWholeNumbers());
+		assertTrue(isContains);
+	}
+	
+	@Test
+	public void checkBoundariesOfEachOfTheRandomWholeNumbersGeneratedIsNotInBoundsTest()
+	{
+		Integer[] someNumbersArrayShouldNotContain = {11, 12, 31, 41, 51, 116, 1117, 1800, -1, 0};
+		boolean isContains = useArraysBinarySearch(someNumbersArrayShouldNotContain, resultRrandomNumberGenerator.getRandomWholeNumbers());
+		assertFalse(isContains);
+	}
+	
+	public static boolean useArraysBinarySearch(Integer[] listOfNumbersToCheckRandomNumbersAgainst, Integer[] randomNumbers) {	
+		return Arrays.asList(listOfNumbersToCheckRandomNumbersAgainst).containsAll(Arrays.asList(randomNumbers));
+	}
+	
+	public static boolean useSetCheckForDuplicates(Integer[] arr, String targetValue) {
+		Set<Integer> set = new HashSet<Integer>(Arrays.asList(arr));
+		return set.contains(targetValue);
+	}
+	
+	@Test
+	public void checkLengthOfArrayIsExactlyTest()
+	{
+		boolean isExactly = resultRrandomNumberGenerator.getRandomWholeNumbers().length == 10;
+		assertTrue(isExactly);
+	}
+	
+	@Test
+	public void checkLengthOfArrayIsInBoundsTest()
+	{
+		int index = 10;
+		boolean isInBounds = (index >= 1) && (index <= resultRrandomNumberGenerator.getRandomWholeNumbers().length);
+		assertTrue(isInBounds);
+	}
+	
+	@Test
+	public void checkLengthOfArrayIsNotBoundsTest()
+	{
+		int index = 10;
+		boolean isInBounds = (index <= 1) && (index > resultRrandomNumberGenerator.getRandomWholeNumbers().length);
+		assertFalse(isInBounds);
+	}
+	
+	@Test
+	public void checkDifferentRandomWholeNumberAreGeneratedEachTimeTest() {
+		RandomNumberGenerator expectedRrandomNumberGenerator = new RandomNumberGenerator();
+		expectedRrandomNumberGenerator.setRandomNumberbetween(1, 10);
+		expectedRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
 		
-		Assert.assertNotEquals( expected, randomNumberGenerator );
+		Assert.assertNotEquals( expectedRrandomNumberGenerator.getRandomWholeNumbers(), resultRrandomNumberGenerator.getRandomWholeNumbers() );
+	}
+	
+	@Test
+	public void checkDifferentRandomWholeNumberAreGeneratedEachTimePartDeuxTest() {
+		RandomNumberGenerator expectedRrandomNumberGenerator = new RandomNumberGenerator();
+		expectedRrandomNumberGenerator.setRandomNumberbetween(1, 10);
+		expectedRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
+		
+		assertTrue(!Arrays.equals(expectedRrandomNumberGenerator.getRandomWholeNumbers(), resultRrandomNumberGenerator.getRandomWholeNumbers()));
 	}
 
 }
