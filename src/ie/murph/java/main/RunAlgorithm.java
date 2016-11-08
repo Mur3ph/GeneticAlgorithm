@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import ie.murph.java.algorithm.GeneticAlgorithm;
 import ie.murph.java.algorithm.fitness.UnorganizedMapFitness;
+import ie.murph.java.algorithm.randomnumber.RandomNumber;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 
@@ -18,7 +19,8 @@ public class RunAlgorithm
 		// Method used to start the fitness generations flow...
 		private static void runGeneticAlgorithm()
 		{
-			RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+			RandomNumber randomNumber = new RandomNumber();
+			RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(randomNumber);
 			UnorganizedMapFitness unorganizedMapFitness = new UnorganizedMapFitness(randomNumberGenerator);
 			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness);
 			

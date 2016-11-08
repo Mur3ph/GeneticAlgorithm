@@ -14,12 +14,14 @@ import org.junit.Test;
 
 public class RandomNumberGeneratorTest {
 
+	private RandomNumber randomNumber;
 	private RandomNumberGenerator resultRrandomNumberGenerator;
 	
 	@Before
     public void setUp() 
 	{
-		resultRrandomNumberGenerator = new RandomNumberGenerator();
+		randomNumber = new RandomNumber();
+		resultRrandomNumberGenerator = new RandomNumberGenerator(randomNumber);
 		resultRrandomNumberGenerator.setRandomNumberbetween(1, 10);
 		resultRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
     }
@@ -94,16 +96,16 @@ public class RandomNumberGeneratorTest {
 	
 	@Test
 	public void checkDifferentRandomWholeNumberAreGeneratedEachTimeTest() {
-		RandomNumberGenerator expectedRrandomNumberGenerator = new RandomNumberGenerator();
+		RandomNumberGenerator expectedRrandomNumberGenerator = new RandomNumberGenerator(randomNumber);
 		expectedRrandomNumberGenerator.setRandomNumberbetween(1, 10);
 		expectedRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
 		
-		Assert.assertNotEquals( expectedRrandomNumberGenerator.getRandomWholeNumbers(), resultRrandomNumberGenerator.getRandomWholeNumbers() );
+		Assert.assertNotEquals(expectedRrandomNumberGenerator.getRandomWholeNumbers(), resultRrandomNumberGenerator.getRandomWholeNumbers() );
 	}
 	
 	@Test
 	public void checkDifferentRandomWholeNumberAreGeneratedEachTimePartDeuxTest() {
-		RandomNumberGenerator expectedRrandomNumberGenerator = new RandomNumberGenerator();
+		RandomNumberGenerator expectedRrandomNumberGenerator = new RandomNumberGenerator(randomNumber);
 		expectedRrandomNumberGenerator.setRandomNumberbetween(1, 10);
 		expectedRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
 		

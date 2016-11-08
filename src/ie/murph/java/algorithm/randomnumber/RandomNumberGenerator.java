@@ -3,11 +3,16 @@ package ie.murph.java.algorithm.randomnumber;
 public class RandomNumberGenerator
 {
 //	Look into breaking up Integer, Double into different classes: https://www.tutorialspoint.com/design_pattern/observer_pattern.htm
-	private final RandomNumber randomNumber = new RandomNumber();
+	private RandomNumber randomNumber;
 	private int minRangeOfRandomNumber, maxRangeOfRandomNumber;
 	private Integer[] randomNumbers;
 	
 	public RandomNumberGenerator(){}
+	
+	public RandomNumberGenerator(RandomNumber randomNumber)
+	{
+		this.randomNumber = randomNumber;
+	}
 	
 	public void setRandomNumberbetween(int minRangeOfRandomNumber, int maxRangeOfRandomNumber)
 	{
