@@ -9,13 +9,13 @@ import java.util.Set;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class RandomNumberGeneratorTest {
 
 	private RandomNumber randomNumber;
 	private RandomNumberGenerator resultRrandomNumberGenerator;
+	private int lengthOfArray = 11;
 	
 	@Before
     public void setUp() 
@@ -23,7 +23,7 @@ public class RandomNumberGeneratorTest {
 		randomNumber = new RandomNumber();
 		resultRrandomNumberGenerator = new RandomNumberGenerator(randomNumber);
 		resultRrandomNumberGenerator.setRandomNumberbetween(1, 10);
-		resultRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
+		resultRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(lengthOfArray);
     }
 	
     @After
@@ -61,20 +61,29 @@ public class RandomNumberGeneratorTest {
 		assertFalse(isContains);
 	}
 	
-	private static boolean useArraysBinarySearch(Integer[] listOfNumbersToCheckRandomNumbersAgainst, Integer[] randomNumbers) {	
+	private boolean useArraysBinarySearch(Integer[] listOfNumbersToCheckRandomNumbersAgainst, Integer[] randomNumbers) {	
 		return Arrays.asList(listOfNumbersToCheckRandomNumbersAgainst).containsAll(Arrays.asList(randomNumbers));
 	}
 	
-	@Ignore
-	private static boolean useSetCheckForDuplicates(Integer[] arr) {
+	@Test
+	public void checkArrayHasDuplicates()
+	{
+		assertFalse(useSetCheckForDuplicates(resultRrandomNumberGenerator.getRandomWholeNumbers()));
+	}
+	
+	private boolean useSetCheckForDuplicates(final Integer[] arr) {
 		Set<Integer> set = new HashSet<Integer>(Arrays.asList(arr));
-		return set.contains(arr);
+		System.out.println("ARRAY: " + arr.length + " SET: " + set.size());
+		if(arr.length == set.size()){
+			return true;
+		}
+		return false;
 	}
 	
 	@Test
 	public void checkLengthOfArrayIsExactlyTest()
 	{
-		boolean isExactly = resultRrandomNumberGenerator.getRandomWholeNumbers().length == 10;
+		boolean isExactly = resultRrandomNumberGenerator.getRandomWholeNumbers().length == lengthOfArray;
 		assertTrue(isExactly);
 	}
 	
