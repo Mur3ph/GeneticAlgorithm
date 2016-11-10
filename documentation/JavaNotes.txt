@@ -3,5 +3,6 @@ Java Notes
 Design Pattern resources:
 	dofactory site: 	http://www.dofactory.com/net/design-patterns
 	Tutorial point:		https://www.tutorialspoint.com/design_pattern/index.htm
+	SOLID:				https://www.novoda.com/blog/designing-something-solid/
 	Clean code:			Kindle book
 
