@@ -1,0 +1,7 @@
+Java Notes
+
+Design Pattern resources:
+	dofactory site: 	http://www.dofactory.com/net/design-patterns
+	Tutorial point:		https://www.tutorialspoint.com/design_pattern/index.htm
+	Clean code:			Kindle book
+
