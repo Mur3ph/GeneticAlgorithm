@@ -66,7 +66,7 @@ public class RandomNumberGeneratorTest {
 	}
 	
 	@Test
-	public void checkArrayHasDuplicates()
+	public void checkArrayShouldHaveDuplicates()
 	{
 		assertFalse(useSetCheckForDuplicates(resultRrandomNumberGenerator.getRandomWholeNumbers()));
 	}
