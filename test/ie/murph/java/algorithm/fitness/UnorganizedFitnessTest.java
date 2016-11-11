@@ -9,7 +9,7 @@ import org.junit.Test;
 import ie.murph.java.algorithm.randomnumber.RandomNumber;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 
-public class UnorganizedMapFitnessTest {
+public class UnorganizedFitnessTest {
 
 	private RandomNumber randomNumber;
 	private RandomNumberGenerator resultRrandomNumberGenerator;
@@ -30,8 +30,8 @@ public class UnorganizedMapFitnessTest {
     }
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void placeRandomNumbersIntoUnOrganizedTreeMapTest() {
+		assertTrue(false);
 	}
 
 }

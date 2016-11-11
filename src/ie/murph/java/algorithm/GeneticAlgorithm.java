@@ -56,8 +56,8 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
 		this.unorganizedMapFitness.placeRandomNumbersIntoUnOrganizedTreeMap();
-		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedTreeMapFitnessValues());
-		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedTreeMapFitnessKeySet());
+		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedFitnessTreeMapValues());
+		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedFitnessTreeMapKey());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
 	
@@ -66,11 +66,11 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
 		//This is an interface  I created to order the Map according to my specification
-		MapValueComparator orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.unorganizedMapFitness.getUnorganizedIntFitnessMap());
+		MapValueComparator orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.unorganizedMapFitness.getUnorganizedFitnessTreeMap());
 		// Constructs a new empty tree map, ordered according to the given comparator (orderedValuesAccordingToComparatorInterface)
 		// Maps always order according to the key, so I had to use a comparator to order the values the was I wanted instead (Best/Highest fitness first in list)
 		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface = new TreeMap<String, Integer>(orderedValuesAccordingToComparatorInterface);
-		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.unorganizedMapFitness.getUnorganizedIntFitnessMap());
+		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.unorganizedMapFitness.getUnorganizedFitnessTreeMap());
 		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values());
 		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.keySet());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
