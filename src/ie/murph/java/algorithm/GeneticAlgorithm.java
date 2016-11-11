@@ -55,7 +55,7 @@ public class GeneticAlgorithm
 	public void placeArrayIntoUnOrganizedTreeMap()
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
-		this.unorganizedMapFitness.placeRandomNumbersIntoUnOrganizedTreeMap();
+		this.unorganizedMapFitness.putRandomNumbersIntoUnOrganizedTreeMap();
 		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedFitnessTreeMapValues());
 		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedFitnessTreeMapKey());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);

@@ -11,11 +11,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RandomNumberGeneratorTest {
-
+public class RandomNumberGeneratorTest 
+{
 	private RandomNumber randomNumber;
 	private RandomNumberGenerator resultRrandomNumberGenerator;
-	private int lengthOfArray = 11;
+	private final int lengthOfArray = 11;
 	
 	@Before
     public void setUp() 
@@ -49,19 +49,17 @@ public class RandomNumberGeneratorTest {
 	public void checkBoundariesOfEachOfTheRandomWholeNumbersGeneratedIsInBoundsTest()
 	{
 		Integer[] onlyNumbersArrayShouldContain = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-		boolean isContains = useArraysBinarySearch(onlyNumbersArrayShouldContain, resultRrandomNumberGenerator.getRandomWholeNumbers());
-		assertTrue(isContains);
+		assertTrue(isBothArraySame(onlyNumbersArrayShouldContain, resultRrandomNumberGenerator.getRandomWholeNumbers()));
 	}
 	
 	@Test
 	public void checkBoundariesOfEachOfTheRandomWholeNumbersGeneratedIsNotInBoundsTest()
 	{
 		Integer[] someNumbersArrayShouldNotContain = {11, 12, 31, 41, 51, 116, 1117, 1800, -1, 0};
-		boolean isContains = useArraysBinarySearch(someNumbersArrayShouldNotContain, resultRrandomNumberGenerator.getRandomWholeNumbers());
-		assertFalse(isContains);
+		assertFalse(isBothArraySame(someNumbersArrayShouldNotContain, resultRrandomNumberGenerator.getRandomWholeNumbers()));
 	}
 	
-	private boolean useArraysBinarySearch(Integer[] listOfNumbersToCheckRandomNumbersAgainst, Integer[] randomNumbers) {	
+	private boolean isBothArraySame(Integer[] listOfNumbersToCheckRandomNumbersAgainst, Integer[] randomNumbers) {	
 		return Arrays.asList(listOfNumbersToCheckRandomNumbersAgainst).containsAll(Arrays.asList(randomNumbers));
 	}
 	
@@ -104,7 +102,8 @@ public class RandomNumberGeneratorTest {
 	}
 	
 	@Test
-	public void checkDifferentRandomWholeNumberAreGeneratedEachTimeTest() {
+	public void checkDifferentRandomWholeNumberAreGeneratedEachTimeTest() 
+	{
 		RandomNumberGenerator expectedRrandomNumberGenerator = new RandomNumberGenerator(randomNumber);
 		expectedRrandomNumberGenerator.setRandomNumberbetween(1, 10);
 		expectedRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
@@ -113,7 +112,8 @@ public class RandomNumberGeneratorTest {
 	}
 	
 	@Test
-	public void checkDifferentRandomWholeNumberAreGeneratedEachTimePartDeuxTest() {
+	public void checkDifferentRandomWholeNumberAreGeneratedEachTimePartDeuxTest() 
+	{
 		RandomNumberGenerator expectedRrandomNumberGenerator = new RandomNumberGenerator(randomNumber);
 		expectedRrandomNumberGenerator.setRandomNumberbetween(1, 10);
 		expectedRrandomNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(10);
