@@ -3,7 +3,7 @@ package ie.murph.java.main;
 import java.util.Scanner;
 
 import ie.murph.java.algorithm.GeneticAlgorithm;
-import ie.murph.java.algorithm.fitness.UnorganizedMapFitness;
+import ie.murph.java.algorithm.fitness.UnorganizedFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumber;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
@@ -21,7 +21,7 @@ public class RunAlgorithm
 		{
 			RandomNumber randomNumber = new RandomNumber();
 			RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(randomNumber);
-			UnorganizedMapFitness unorganizedMapFitness = new UnorganizedMapFitness(randomNumberGenerator);
+			UnorganizedFitness unorganizedMapFitness = new UnorganizedFitness(randomNumberGenerator);
 			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness);
 			
 			geneticAlgorithm.generateRandonNumbersForFitness();

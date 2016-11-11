@@ -1,6 +1,6 @@
 package ie.murph.java.algorithm;
 
-import ie.murph.java.algorithm.fitness.UnorganizedMapFitness;
+import ie.murph.java.algorithm.fitness.UnorganizedFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 import ie.murph.java.interfaces.MapValueComparator;
@@ -16,7 +16,7 @@ public class GeneticAlgorithm
 {
 	//Constant variables and data interface structures used throughout the algorithm
 	private RandomNumberGenerator randonNumberGenerator;
-	private UnorganizedMapFitness unorganizedMapFitness;
+	private UnorganizedFitness unorganizedMapFitness;
 	
 	private Map<String, Integer> sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface;
 	private List<Integer> fitnessValuesFromOrderedTreemap;
@@ -33,7 +33,7 @@ public class GeneticAlgorithm
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
-	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedMapFitness unorganizedMapFitness)
+	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness)
 	{
 		this.randonNumberGenerator = randomNumberGenerator;
 		this.unorganizedMapFitness = unorganizedMapFitness;;
@@ -66,11 +66,11 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
 		//This is an interface  I created to order the Map according to my specification
-		MapValueComparator orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.unorganizedMapFitness.getTreeMapToStoreFitnessAccessibleByKey());
+		MapValueComparator orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.unorganizedMapFitness.getUnorganizedIntFitnessMap());
 		// Constructs a new empty tree map, ordered according to the given comparator (orderedValuesAccordingToComparatorInterface)
 		// Maps always order according to the key, so I had to use a comparator to order the values the was I wanted instead (Best/Highest fitness first in list)
 		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface = new TreeMap<String, Integer>(orderedValuesAccordingToComparatorInterface);
-		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.unorganizedMapFitness.getTreeMapToStoreFitnessAccessibleByKey());
+		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.unorganizedMapFitness.getUnorganizedIntFitnessMap());
 		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values());
 		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.keySet());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);

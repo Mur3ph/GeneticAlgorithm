@@ -9,12 +9,12 @@ import java.util.TreeMap;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 
-public class UnorganizedMapFitness 
+public class UnorganizedFitness 
 {
-	private Map<String, Integer> treeMapToStoreFitnessAccessibleByKey;
+	private Map<String, Integer> unorganizedIntFitnessMap;
 	private RandomNumberGenerator randonNumberGenerator;
 	
-	public UnorganizedMapFitness(RandomNumberGenerator randonNumberGenerator)
+	public UnorganizedFitness(RandomNumberGenerator randonNumberGenerator)
 	{
 		this.randonNumberGenerator = randonNumberGenerator;
 	}
@@ -23,8 +23,8 @@ public class UnorganizedMapFitness
 	public void placeRandomNumbersIntoUnOrganizedTreeMap()
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
-		this.treeMapToStoreFitnessAccessibleByKey = new TreeMap<String, Integer>();
-		this.treeMapToStoreFitnessAccessibleByKey = putArrayDataToMap(this.randonNumberGenerator.getRandomWholeNumbers());
+		this.unorganizedIntFitnessMap = new TreeMap<String, Integer>();
+		this.unorganizedIntFitnessMap = putArrayDataToMap(this.randonNumberGenerator.getRandomWholeNumbers());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
@@ -41,19 +41,19 @@ public class UnorganizedMapFitness
 		return Tmap2;
 	}
 	
-	public Map<String, Integer> getTreeMapToStoreFitnessAccessibleByKey()
+	public Map<String, Integer> getUnorganizedIntFitnessMap()
 	{
-		return this.treeMapToStoreFitnessAccessibleByKey;
+		return this.unorganizedIntFitnessMap;
 	}
 	
 	public Collection<Integer> getUnorganizedTreeMapFitnessValues()
 	{
-		return this.treeMapToStoreFitnessAccessibleByKey.values();
+		return this.unorganizedIntFitnessMap.values();
 	}
 	
 	public Set<String> getUnorganizedTreeMapFitnessKeySet()
 	{
-		return this.treeMapToStoreFitnessAccessibleByKey.keySet();
+		return this.unorganizedIntFitnessMap.keySet();
 	}
 
 	// Method just for printing out the elements of the generic collections.
