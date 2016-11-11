@@ -19,7 +19,7 @@ public class UnorganizedFitness
 		this.randonNumberGenerator = randonNumberGenerator;
 	}
 	
-	//Placing the random numbers generated from the array to a TreeMap - Unorganized fitness
+	// Creating unorganized fitness
 	public void placeRandomNumbersIntoUnOrganizedTreeMap()
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
@@ -31,14 +31,14 @@ public class UnorganizedFitness
 	// Put the random numbers in the array into a map tree
 	public static Map<String, Integer> putArrayDataToMap(Integer[] allFitnessFromArray)
 	{
-		Map<String, Integer> Tmap2 = new TreeMap<String, Integer>();
-		int individualPopulation = 1;
+		Map<String, Integer> treemapFitness = new TreeMap<String, Integer>();
+		int populationCount = 1;
 		for(int fitnessX : allFitnessFromArray)
 		{
-			Tmap2.put("Tree Key"+individualPopulation, fitnessX);
-			individualPopulation++;
+			treemapFitness.put("Tree Key: " + populationCount, fitnessX);
+			populationCount++;
 		}
-		return Tmap2;
+		return treemapFitness;
 	}
 	
 	public Map<String, Integer> getUnorganizedFitnessTreeMap()
@@ -59,11 +59,11 @@ public class UnorganizedFitness
 	// Method just for printing out the elements of the generic collections.
 	public static void displayGenericTypes(Collection<?> data)
 	{
-		Iterator<?> itr = data.iterator();
-		while(itr.hasNext())
+		Iterator<?> iterator = data.iterator();
+		while(iterator.hasNext())
 		{
-			Object str = itr.next();
- 			System.out.println(str + " ");
+			Object object = iterator.next();
+ 			System.out.println(object + " ");
 		}
 	}
 }
