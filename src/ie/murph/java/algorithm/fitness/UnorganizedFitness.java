@@ -7,7 +7,6 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
-import ie.murph.java.interfaces.ConsoleMessage;
 
 public class UnorganizedFitness 
 {
@@ -22,10 +21,8 @@ public class UnorganizedFitness
 	// Creating unorganized fitness
 	public void putRandomNumbersIntoUnOrganizedTreeMap()
 	{
-		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
 		this.unorganizedFitnessTreeMap = new TreeMap<String, Integer>();
 		this.unorganizedFitnessTreeMap = putArrayDataToMap(this.randonNumberGenerator.getRandomWholeNumbers());
-		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
 	// Put the random numbers in the array into a map tree
@@ -54,6 +51,11 @@ public class UnorganizedFitness
 	public Set<String> getUnorganizedFitnessTreeMapKey()
 	{
 		return this.unorganizedFitnessTreeMap.keySet();
+	}
+	
+	public void emptyFitnessTreeMap()
+	{
+		this.unorganizedFitnessTreeMap.clear();
 	}
 
 	// Method just for printing out the elements of the generic collections.

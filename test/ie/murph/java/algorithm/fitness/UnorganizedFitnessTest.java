@@ -2,7 +2,9 @@ package ie.murph.java.algorithm.fitness;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import ie.murph.java.algorithm.randomnumber.RandomNumber;
@@ -25,11 +27,16 @@ public class UnorganizedFitnessTest
 		unorganizedFitness = new UnorganizedFitness(resultRrandomNumberGenerator);
     }
 	
+	@After
+    public void tearDown() 
+    {
+		unorganizedFitness.emptyFitnessTreeMap();
+    }
+	
 	@Test
-	public void placeRandomNumbersIntoUnOrganizedTreeMapTest() 
+	public void sizeOfUnOrganizedTreeMapTest() 
 	{
 		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
-		unorganizedFitness.displayGenericTypes(unorganizedFitness.getUnorganizedFitnessTreeMapValues());
 		assertTrue(isLengthSame(unorganizedFitness.getUnorganizedFitnessTreeMapValues().size()));
 	}
 	
@@ -40,6 +47,34 @@ public class UnorganizedFitnessTest
 			return true;
 		}
 		return false;
+	}
+	
+	@Test
+	public void isNotEmptyUnOrganizedTreeMapTest() 
+	{
+		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
+		assertFalse(unorganizedFitness.getUnorganizedFitnessTreeMap().isEmpty());
+	}
+	
+	@Test
+	public void isEmptyUnOrganizedTreeMapTest() 
+	{
+		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
+		unorganizedFitness.emptyFitnessTreeMap();
+		assertTrue(unorganizedFitness.getUnorganizedFitnessTreeMap().isEmpty());
+	}
+	
+	@Ignore
+	public void isNullUnOrganizedTreeMapTest() 
+	{
+		assertNull(unorganizedFitness.getUnorganizedFitnessTreeMap());
+	}
+	
+	@Ignore
+	public void isNotNullUnOrganizedTreeMapTest() 
+	{
+		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
+		assertNull(unorganizedFitness.getUnorganizedFitnessTreeMapValues().isEmpty());
 	}
 
 }
