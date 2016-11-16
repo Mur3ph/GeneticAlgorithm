@@ -3,7 +3,7 @@
 Genetic algorithms are a part of evolutionary computing, written in Java, area of Artificial Intelligence
 
 
-## TODO: Tasks in refactoring and clean code
+## Currently under construction :) - TODO: Tasks in refactoring and clean code
 
 - [x] Tests
 - [ ] Single responsibility principle (SRP)
@@ -23,6 +23,24 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
   * **Interface segregation principle** - A client should never be forced to implement an interface that it doesn’t use or clients shouldn’t be forced to depend on methods they do not use.
   * **Dependency Inversion Principle** - Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.
 
+  
+## TODO: Artificial Algorithms
+
+
+1. Neural Networks
+2. Swarm Intelligence
+3. Fuzzy Logic
+4. Ant Colony Optimization
+5. Expert Systems
+6. Robotics
+7. Search algorithms
+  * A * Search
+  * Breadth-First Search
+  * Depth-First Search
+  * Hill-Climbing Search
+  * Travling Salesman
+  * etc.
+
 
 ## Links and resources
 
@@ -31,7 +49,9 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 2. [Genetic Algorithm in Plain English] (http://www.ai-junkie.com/ga/intro/gat1.html)
 3. [Genetic Algorithm] (https://www.doc.ic.ac.uk/~nd/surprise_96/journal/vol1/hmw/article1.html)
 4. [Genetic Algorithms Warehouse] (http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html)
-5. [The Project Spot: Code] (http://www.theprojectspot.com/tutorial-post/creating-a-genetic-algorithm-for-beginners/3)
+5. Java applications algorithms
+  * [Genetic Algorithm] (http://www.theprojectspot.com/tutorial-post/creating-a-genetic-algorithm-for-beginners/3)
+  * [The Traveling Salesman using Genetic Algorithm] (http://www.theprojectspot.com/tutorial-post/applying-a-genetic-algorithm-to-the-travelling-salesman-problem/5)
 6. Design Pattern resources:
   * [dofactory site] (http://www.dofactory.com/net/design-patterns)
   * [Tutorial point] (https://www.tutorialspoint.com/design_pattern/index.htm)
