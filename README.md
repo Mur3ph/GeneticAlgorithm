@@ -16,12 +16,12 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 ## Design Patterns
 
 
-1. S.O.L.I.D [LINK TO SOLID] (https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
-  * Single-responsiblity principle - A class should have one and only one reason to change, meaning that a class should have only one job.
-  * Open-closed principle - Objects or entities should be open for extension, but closed for modification.
-  * Liskov substitution principle - Let q(x) be a property provable about objects of x of type T. Then q(y) should be provable for objects y of type S where S is a subtype of T.
-  * Interface segregation principle - A client should never be forced to implement an interface that it doesn’t use or clients shouldn’t be forced to depend on methods they do not use.
-  * Dependency Inversion Principle - Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.
+1. **S.O.L.I.D** [go-to] (https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
+  * **Single-responsiblity principle** - A class should have one and only one reason to change, meaning that a class should have only one job.
+  * **Open-closed principle** - Objects or entities should be open for extension, but closed for modification.
+  * **Liskov substitution principle** - Let q(x) be a property provable about objects of x of type T. Then q(y) should be provable for objects y of type S where S is a subtype of T.
+  * **Interface segregation principle** - A client should never be forced to implement an interface that it doesn’t use or clients shouldn’t be forced to depend on methods they do not use.
+  * **Dependency Inversion Principle** - Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.
 
 
 ## Links and resources
@@ -32,12 +32,11 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 3. [Genetic Algorithm] (https://www.doc.ic.ac.uk/~nd/surprise_96/journal/vol1/hmw/article1.html)
 4. [Genetic Algorithms Warehouse] (http://geneticalgorithms.ai-depot.com/Tutorial/Overview.html)
 5. [The Project Spot: Code] (http://www.theprojectspot.com/tutorial-post/creating-a-genetic-algorithm-for-beginners/3)
-6.Design Pattern resources:
+6. Design Pattern resources:
   * [dofactory site] (http://www.dofactory.com/net/design-patterns)
   * [Tutorial point] (https://www.tutorialspoint.com/design_pattern/index.htm)
   * [SOLID] (https://www.novoda.com/blog/designing-something-solid/)
   * [Clean code]	(Kindle book)
-	
 7. [Neural Networks and Deep Learning] (http://neuralnetworksanddeeplearning.com/)
 8. [Deep Learning] (http://deeplearning.net/)
 
