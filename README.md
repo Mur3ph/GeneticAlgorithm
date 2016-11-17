@@ -3,14 +3,14 @@
 Genetic algorithms are a part of evolutionary computing, written in Java, area of Artificial Intelligence
 
 
-## Currently under construction :) - TODO: Tasks in refactoring and clean code
+## Currently Refactoring algorithm - TODO: Tasks in refactoring and clean code
 
 - [x] Tests
 - [ ] Single responsibility principle (SRP)
 - [ ] Decoupling	
 - [x] Dependancy Injection
 - [x] Better naming convension
-- [ ] 
+- [ ] Seperation
 
 
 ## Design Patterns
