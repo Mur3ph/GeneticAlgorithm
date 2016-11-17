@@ -23,7 +23,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
   * **Dependency Inversion Principle** - Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.
 
   
-## TODO: Artificial Algorithms
+## TODO: Artificial Intelligence Algorithms
 
 1. Neural Networks
 2. Swarm Intelligence
@@ -62,3 +62,8 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 
 1. [Game: A genetic algorithm learns how to fight] (https://www.youtube.com/watch?v=u2t77mQmJiY)
 2. [Artificial Intelligence --- Genetic Algorithm Explanation ] (https://www.youtube.com/watch?v=uxS7tSTJx8s)
+3. [Deep Learning Summer School video lectures, Montreal 2016] (http://videolectures.net/deeplearning2016_montreal/)
+
+
+
+
