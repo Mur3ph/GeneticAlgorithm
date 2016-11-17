@@ -15,7 +15,6 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 
 ## Design Patterns
 
-
 1. **S.O.L.I.D** [go-to] (https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design)
   * **Single-responsiblity principle** - A class should have one and only one reason to change, meaning that a class should have only one job.
   * **Open-closed principle** - Objects or entities should be open for extension, but closed for modification.
@@ -25,7 +24,6 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 
   
 ## TODO: Artificial Algorithms
-
 
 1. Neural Networks
 2. Swarm Intelligence
@@ -44,7 +42,6 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 
 ## Links and resources
 
-
 1. [Wiki: Genetic Algorithm] (https://en.wikipedia.org/wiki/Genetic_algorithm)
 2. [Genetic Algorithm in Plain English] (http://www.ai-junkie.com/ga/intro/gat1.html)
 3. [Genetic Algorithm] (https://www.doc.ic.ac.uk/~nd/surprise_96/journal/vol1/hmw/article1.html)
@@ -62,7 +59,6 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 
 
 ## Video
-
 
 1. [Game: A genetic algorithm learns how to fight] (https://www.youtube.com/watch?v=u2t77mQmJiY)
 2. [Artificial Intelligence --- Genetic Algorithm Explanation ] (https://www.youtube.com/watch?v=uxS7tSTJx8s)

@@ -58,6 +58,12 @@ public class UnorganizedFitness
 		this.unorganizedFitnessTreeMap.clear();
 	}
 
+	public void printUnorganizedTreeMap()
+	{
+		displayGenericTypes(this.unorganizedFitnessTreeMap.values());
+		displayGenericTypes(this.unorganizedFitnessTreeMap.keySet());
+	}
+	
 	// Method just for printing out the elements of the generic collections.
 	public void displayGenericTypes(Collection<?> data)
 	{

@@ -74,7 +74,7 @@ public class UnorganizedFitnessTest
 	public void isNotNullUnOrganizedTreeMapTest() 
 	{
 		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
-		assertNull(unorganizedFitness.getUnorganizedFitnessTreeMapValues().isEmpty());
+		assertNotNull(unorganizedFitness.getUnorganizedFitnessTreeMapValues().isEmpty());
 	}
 
 }

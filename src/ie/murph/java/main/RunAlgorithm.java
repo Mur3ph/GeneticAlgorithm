@@ -3,6 +3,7 @@ package ie.murph.java.main;
 import java.util.Scanner;
 
 import ie.murph.java.algorithm.GeneticAlgorithm;
+import ie.murph.java.algorithm.fitness.OrganizedFitness;
 import ie.murph.java.algorithm.fitness.UnorganizedFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumber;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
@@ -22,7 +23,8 @@ public class RunAlgorithm
 			RandomNumber randomNumber = new RandomNumber();
 			RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(randomNumber);
 			UnorganizedFitness unorganizedMapFitness = new UnorganizedFitness(randomNumberGenerator);
-			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness);
+			OrganizedFitness organizedFitness = new OrganizedFitness(unorganizedMapFitness);
+			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness, organizedFitness);
 			
 			geneticAlgorithm.generateRandonNumbersForFitness();
 			//Asking user to input the amount of generations of fitness offspring they want to view

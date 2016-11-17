@@ -1,9 +1,9 @@
 package ie.murph.java.algorithm;
 
+import ie.murph.java.algorithm.fitness.OrganizedFitness;
 import ie.murph.java.algorithm.fitness.UnorganizedFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
-import ie.murph.java.interfaces.MapValueComparator;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -17,8 +17,8 @@ public class GeneticAlgorithm
 	//Constant variables and data interface structures used throughout the algorithm
 	private RandomNumberGenerator randonNumberGenerator;
 	private UnorganizedFitness unorganizedMapFitness;
+	private OrganizedFitness organizedMapFitness;
 	
-	private Map<String, Integer> sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface;
 	private List<Integer> fitnessValuesFromOrderedTreemap;
 	private Double[] normalisedData;
 	private Double[] cumulativefrequencyData;
@@ -33,10 +33,11 @@ public class GeneticAlgorithm
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
-	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness)
+	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness, OrganizedFitness organizedMapFitness)
 	{
 		this.randonNumberGenerator = randomNumberGenerator;
-		this.unorganizedMapFitness = unorganizedMapFitness;;
+		this.unorganizedMapFitness = unorganizedMapFitness;
+		this.organizedMapFitness = organizedMapFitness;
 	}
 		
 	//Generating the five random fitness to begin with..
@@ -55,9 +56,10 @@ public class GeneticAlgorithm
 	public void placeArrayIntoUnOrganizedTreeMap()
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
+		
 		this.unorganizedMapFitness.putRandomNumbersIntoUnOrganizedTreeMap();
-		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedFitnessTreeMapValues());
-		displayGenericTypes(this.unorganizedMapFitness.getUnorganizedFitnessTreeMapKey());
+		this.unorganizedMapFitness.printUnorganizedTreeMap();
+		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
 	
@@ -65,14 +67,12 @@ public class GeneticAlgorithm
 	public void placeUnOrganizedTreeMapIntoOrganizedTreeMap()
 	{
 		System.out.println(ConsoleMessage.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
-		//This is an interface  I created to order the Map according to my specification
-		MapValueComparator orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.unorganizedMapFitness.getUnorganizedFitnessTreeMap());
-		// Constructs a new empty tree map, ordered according to the given comparator (orderedValuesAccordingToComparatorInterface)
-		// Maps always order according to the key, so I had to use a comparator to order the values the was I wanted instead (Best/Highest fitness first in list)
-		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface = new TreeMap<String, Integer>(orderedValuesAccordingToComparatorInterface);
-		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.unorganizedMapFitness.getUnorganizedFitnessTreeMap());
-		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values());
-		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.keySet());
+		
+		this.organizedMapFitness.organiseUnorderedTreeMapFitnessUsingComparator();
+		this.organizedMapFitness.createOrganisedTreeMapWithFitness();
+		this.organizedMapFitness.putOrganizedFitnessIntoNewMap();
+		this.organizedMapFitness.printOrganizedTreeMap();
+		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
 	
@@ -80,9 +80,9 @@ public class GeneticAlgorithm
 	public double calculatingTheSumOfFitness()
 	{
 		System.out.println(ConsoleMessage.CALCULATING_TOTAL_FITNESS_VALUE_PHASE_THREE);
-		this.fitnessValuesFromOrderedTreemap = new ArrayList<Integer>(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values());
+		this.fitnessValuesFromOrderedTreemap = new ArrayList<Integer>(organizedMapFitness.getOrderedFitnessValues());
 		double totalOfAllTheFitness = 0;
-		for(int nextFitness = 0; nextFitness < this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size(); nextFitness++)
+		for(int nextFitness = 0; nextFitness < organizedMapFitness.getSizeOfMap(); nextFitness++)
 		{
 			 totalOfAllTheFitness = totalOfAllTheFitness + this.fitnessValuesFromOrderedTreemap.get(nextFitness);
 		}
@@ -96,8 +96,8 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.CALCULATING_NORMALIZED_FITNESS_VALUE_PHASE_FOUR);
 		// Normalized data for each fitness is calculated by finding the sum of all the fitness and then dividing the sum against each individual fitness
-		this.normalisedData = new Double[this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size()];
-		for(int nextFitness = 0; nextFitness < this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size(); nextFitness++)
+		this.normalisedData = new Double[organizedMapFitness.getSizeOfMap()];
+		for(int nextFitness = 0; nextFitness < organizedMapFitness.getSizeOfMap(); nextFitness++)
 		{
 			this.normalisedData[nextFitness] = (double) (this.fitnessValuesFromOrderedTreemap.get(nextFitness) / totalOfAllTheFitness);
 		}
@@ -112,8 +112,8 @@ public class GeneticAlgorithm
 		double previousCumulativeNumber = 0;
 		//Cumulative frequency Data for each of the fitness is calculated by adding each of the normalized data types one after the other finally adding to one
 		// (e.g. Normalized data: 0.267, 0.267, 0.233, 0.233 --> Cumulative data: 0.267, 0.534, 0.767, 1)
-		this.cumulativefrequencyData = new Double[this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size()];
-		for(int atPostionX = 0; atPostionX < this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size(); atPostionX++)
+		this.cumulativefrequencyData = new Double[organizedMapFitness.getSizeOfMap()];
+		for(int atPostionX = 0; atPostionX < organizedMapFitness.getSizeOfMap(); atPostionX++)
 		{
 			//Rounding the data to 3 decimal places.
 			this.cumulativefrequencyData[atPostionX] = (double) Math.round((previousCumulativeNumber + this.normalisedData[atPostionX]) * 1000) / 1000;
