@@ -3,7 +3,7 @@
 Genetic algorithms are a part of evolutionary computing, written in Java, area of Artificial Intelligence
 
 
-## Currently Refactoring algorithm - TODO: Tasks in refactoring and clean code
+## TODO: Currently Refactoring algorithm - Clean Code
 
 - [x] Tests
 - [ ] Single responsibility principle (SRP)
@@ -63,7 +63,9 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 1. [Game: A genetic algorithm learns how to fight] (https://www.youtube.com/watch?v=u2t77mQmJiY)
 2. [Artificial Intelligence --- Genetic Algorithm Explanation ] (https://www.youtube.com/watch?v=uxS7tSTJx8s)
 3. [Deep Learning Summer School video lectures, Montreal 2016] (http://videolectures.net/deeplearning2016_montreal/)
-
+4. [MIT: Artificial Intelligence Course] (https://www.youtube.com/watch?v=TjZBTDzGeGg&list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi) 
+5. [MIT: Design and Analysis of Algorithms] (https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)
+6. [MIT: Java Programming] (https://www.youtube.com/watch?v=HMUkS0sJr70&list=PLYA1tuGWMbyrW0oqGaJesnrlxQSAclHf3)
 
 
 
