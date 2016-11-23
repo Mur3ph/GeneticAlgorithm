@@ -1,6 +1,7 @@
 package ie.murph.java.algorithm;
 
 import ie.murph.java.algorithm.fitness.OrganizedFitness;
+import ie.murph.java.algorithm.fitness.SumFitness;
 import ie.murph.java.algorithm.fitness.UnorganizedFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
@@ -18,6 +19,7 @@ public class GeneticAlgorithm
 	private RandomNumberGenerator randonNumberGenerator;
 	private UnorganizedFitness unorganizedMapFitness;
 	private OrganizedFitness organizedMapFitness;
+	private SumFitness sumFitness;
 	
 	private List<Integer> fitnessValuesFromOrderedTreemap;
 	private Double[] normalisedData;
@@ -33,11 +35,12 @@ public class GeneticAlgorithm
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
-	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness, OrganizedFitness organizedMapFitness)
+	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness, OrganizedFitness organizedMapFitness, SumFitness sumFitness)
 	{
 		this.randonNumberGenerator = randomNumberGenerator;
 		this.unorganizedMapFitness = unorganizedMapFitness;
 		this.organizedMapFitness = organizedMapFitness;
+		this.sumFitness = sumFitness;
 	}
 		
 	//Generating the five random fitness to begin with..
