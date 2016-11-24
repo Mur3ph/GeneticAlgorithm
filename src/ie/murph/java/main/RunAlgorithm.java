@@ -38,8 +38,8 @@ public class RunAlgorithm
 				System.out.println("\nGENERATION: " + generationX + "\n");
 				geneticAlgorithm.placeArrayIntoUnOrganizedTreeMap();
 				geneticAlgorithm.placeUnOrganizedTreeMapIntoOrganizedTreeMap();
-				double totalOfAllTheFitness = geneticAlgorithm.calculatingTheSumOfFitness();
-				geneticAlgorithm.dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData(totalOfAllTheFitness);
+				geneticAlgorithm.calculatingTheSumOfFitness();
+				geneticAlgorithm.dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData();
 				geneticAlgorithm.addingNormalizedDataToCalculateCumulaiveFreguency();
 				geneticAlgorithm.generateTheTwoContinuesRandomNumbersBetween0and1();
 				geneticAlgorithm.compareEachRandonDoubleAgainstCumulativeFrequency();

@@ -5,11 +5,9 @@ import ie.murph.java.algorithm.fitness.SumFitness;
 import ie.murph.java.algorithm.fitness.UnorganizedFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -21,7 +19,6 @@ public class GeneticAlgorithm
 	private OrganizedFitness organizedMapFitness;
 	private SumFitness sumFitness;
 	
-	private List<Integer> fitnessValuesFromOrderedTreemap;
 	private Double[] normalisedData;
 	private Double[] cumulativefrequencyData;
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
@@ -80,29 +77,27 @@ public class GeneticAlgorithm
 	}// END OF..
 	
 	//Calculating the total sum of all the fitness
-	public double calculatingTheSumOfFitness()
+	public void calculatingTheSumOfFitness()
 	{
 		System.out.println(ConsoleMessage.CALCULATING_TOTAL_FITNESS_VALUE_PHASE_THREE);
-		this.fitnessValuesFromOrderedTreemap = new ArrayList<Integer>(organizedMapFitness.getOrderedFitnessValues());
-		double totalOfAllTheFitness = 0;
-		for(int nextFitness = 0; nextFitness < organizedMapFitness.getSizeOfMap(); nextFitness++)
-		{
-			 totalOfAllTheFitness = totalOfAllTheFitness + this.fitnessValuesFromOrderedTreemap.get(nextFitness);
-		}
-		System.out.println("Total: " + totalOfAllTheFitness);
+		this.sumFitness.populate();
+		
+		this.sumFitness.calculatingTotalSumOfFitness();
+		
+		System.out.println("Total: " + this.sumFitness.getTotalSumOfFitness());
+		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
-		return totalOfAllTheFitness;
 	}// END OF.
 	
 	//Dividing each fitness value by the sum of all fitness
-	public void dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData(double totalOfAllTheFitness) 
+	public void dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData() 
 	{
 		System.out.println(ConsoleMessage.CALCULATING_NORMALIZED_FITNESS_VALUE_PHASE_FOUR);
 		// Normalized data for each fitness is calculated by finding the sum of all the fitness and then dividing the sum against each individual fitness
 		this.normalisedData = new Double[organizedMapFitness.getSizeOfMap()];
 		for(int nextFitness = 0; nextFitness < organizedMapFitness.getSizeOfMap(); nextFitness++)
 		{
-			this.normalisedData[nextFitness] = (double) (this.fitnessValuesFromOrderedTreemap.get(nextFitness) / totalOfAllTheFitness);
+			this.normalisedData[nextFitness] = (double) (this.sumFitness.getFitnessValuesFromOrderedTreemap().get(nextFitness) / this.sumFitness.getTotalSumOfFitness());
 		}
 		displayArray(this.normalisedData);
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
@@ -166,8 +161,8 @@ public class GeneticAlgorithm
 		int randomPositionValueX = this.thePositionOfTheTwoValuesChoosenUsingRandomValues[0];
 		int randomPositionValueY = this.thePositionOfTheTwoValuesChoosenUsingRandomValues[1];
 		
-		int eliteFitnessValueChosen_1 = this.fitnessValuesFromOrderedTreemap.get(randomPositionValueX);
-		int eliteFitnessValueChosen_2 = this.fitnessValuesFromOrderedTreemap.get(randomPositionValueY);
+		int eliteFitnessValueChosen_1 = this.sumFitness.getFitnessValuesFromOrderedTreemap().get(randomPositionValueX);
+		int eliteFitnessValueChosen_2 = this.sumFitness.getFitnessValuesFromOrderedTreemap().get(randomPositionValueY);
 		
 //		find the (6 bit) binary equivalent of an integer
 		int lengthOfBinaryString = 6;

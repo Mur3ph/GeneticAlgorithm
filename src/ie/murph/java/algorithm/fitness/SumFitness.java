@@ -7,11 +7,16 @@ public class SumFitness
 {
 	private List<Integer> fitnessValuesFromOrderedTreemap;
 	private OrganizedFitness organizedFitness;
-	private double totalSumOfFitness;
+	private double totalSumOfFitness = 0;
 	
 	public SumFitness(OrganizedFitness organizedFitness)
 	{
 		this.organizedFitness = organizedFitness;
+		
+	}
+	
+	public void populate()
+	{
 		this.fitnessValuesFromOrderedTreemap = new ArrayList<Integer>(this.organizedFitness.getOrderedFitnessValues());
 	}
 	
@@ -22,11 +27,17 @@ public class SumFitness
 	
 	public void calculatingTotalSumOfFitness()
 	{
+		double totalOfAllTheFitness = 0;
 		for(int nextFitness = 0; nextFitness < this.organizedFitness.getSizeOfMap(); nextFitness++)
 		{
-			totalSumOfFitness += this.fitnessValuesFromOrderedTreemap.get(nextFitness);
+			totalOfAllTheFitness = totalOfAllTheFitness + this.fitnessValuesFromOrderedTreemap.get(nextFitness);
 		}
-		System.out.println("Total: " + totalSumOfFitness);
+		setTotalSumOfFitness(totalOfAllTheFitness);
+	}
+	
+	private void setTotalSumOfFitness(double totalSumOfFitness)
+	{
+		this.totalSumOfFitness = totalSumOfFitness;
 	}
 	
 	public double getTotalSumOfFitness()
