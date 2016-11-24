@@ -81,7 +81,7 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.CALCULATING_TOTAL_FITNESS_VALUE_PHASE_THREE);
 		
-		this.sumFitness.populate();
+		this.sumFitness.populateListWithFitnessValues();
 		this.sumFitness.calculatingTotalSumOfFitness();
 		
 		System.out.println("Total: " + this.sumFitness.getTotalSumOfFitness());
@@ -97,7 +97,7 @@ public class GeneticAlgorithm
 		this.normalisedData = new Double[organizedMapFitness.getSizeOfMap()];
 		for(int nextFitness = 0; nextFitness < organizedMapFitness.getSizeOfMap(); nextFitness++)
 		{
-			this.normalisedData[nextFitness] = (double) (this.sumFitness.getFitnessValuesFromOrderedTreemap().get(nextFitness) / this.sumFitness.getTotalSumOfFitness());
+			this.normalisedData[nextFitness] = (double) (this.sumFitness.getFitnessValuesList().get(nextFitness) / this.sumFitness.getTotalSumOfFitness());
 		}
 		displayArray(this.normalisedData);
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
@@ -161,8 +161,8 @@ public class GeneticAlgorithm
 		int randomPositionValueX = this.thePositionOfTheTwoValuesChoosenUsingRandomValues[0];
 		int randomPositionValueY = this.thePositionOfTheTwoValuesChoosenUsingRandomValues[1];
 		
-		int eliteFitnessValueChosen_1 = this.sumFitness.getFitnessValuesFromOrderedTreemap().get(randomPositionValueX);
-		int eliteFitnessValueChosen_2 = this.sumFitness.getFitnessValuesFromOrderedTreemap().get(randomPositionValueY);
+		int eliteFitnessValueChosen_1 = this.sumFitness.getFitnessValuesList().get(randomPositionValueX);
+		int eliteFitnessValueChosen_2 = this.sumFitness.getFitnessValuesList().get(randomPositionValueY);
 		
 //		find the (6 bit) binary equivalent of an integer
 		int lengthOfBinaryString = 6;

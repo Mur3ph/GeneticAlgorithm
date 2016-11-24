@@ -15,12 +15,12 @@ public class SumFitness
 		
 	}
 	
-	public void populate()
+	public void populateListWithFitnessValues()
 	{
 		this.fitnessValuesFromOrderedTreemap = new ArrayList<Integer>(this.organizedFitness.getOrderedFitnessValues());
 	}
 	
-	public List<Integer> getFitnessValuesFromOrderedTreemap()
+	public List<Integer> getFitnessValuesList()
 	{
 		return this.fitnessValuesFromOrderedTreemap;
 	}
