@@ -41,7 +41,7 @@ public class GeneticAlgorithm
 	}
 		
 	//Generating the five random fitness to begin with..
-	public void generateRandonNumbersForFitness()
+	public void generatePopulationFitness()
 	{
 		System.out.println(ConsoleMessage.STARTING_GENETIC_ALGORITHM);
 		
@@ -53,7 +53,7 @@ public class GeneticAlgorithm
 	}// END OF.
 	
 	//Placing the random numbers generated from the array to a TreeMap - Unorganized fitness
-	public void placeArrayIntoUnOrganizedTreeMap()
+	public void generateUnOrganizedFitnessValuesPhaseOne()
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
 		
@@ -64,7 +64,7 @@ public class GeneticAlgorithm
 	}// END OF..
 	
 	//Placing the random numbers from Unorganized TreeMap into an Organized TreeMap - Organized fitness through a Comparator interface
-	public void placeUnOrganizedTreeMapIntoOrganizedTreeMap()
+	public void generateOrganizedFitnessValuesPhaseTwo()
 	{
 		System.out.println(ConsoleMessage.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
 		
@@ -77,11 +77,11 @@ public class GeneticAlgorithm
 	}// END OF..
 	
 	//Calculating the total sum of all the fitness
-	public void calculatingTheSumOfFitness()
+	public void calculatingTotalSumOfFitnessValuePhaseThree()
 	{
 		System.out.println(ConsoleMessage.CALCULATING_TOTAL_FITNESS_VALUE_PHASE_THREE);
-		this.sumFitness.populate();
 		
+		this.sumFitness.populate();
 		this.sumFitness.calculatingTotalSumOfFitness();
 		
 		System.out.println("Total: " + this.sumFitness.getTotalSumOfFitness());

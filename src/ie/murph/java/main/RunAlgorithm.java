@@ -28,7 +28,7 @@ public class RunAlgorithm
 			SumFitness sumFitness = new SumFitness(organizedFitness);
 			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness, organizedFitness, sumFitness);
 			
-			geneticAlgorithm.generateRandonNumbersForFitness();
+			geneticAlgorithm.generatePopulationFitness();
 			//Asking user to input the amount of generations of fitness offspring they want to view
 			System.out.println(ConsoleMessage.ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE);
 			int generation = READ_IN_USER_INPUT.nextInt()+1;
@@ -36,9 +36,9 @@ public class RunAlgorithm
 			for(int generationX = 1; generationX < generation; generationX++)
 			{
 				System.out.println("\nGENERATION: " + generationX + "\n");
-				geneticAlgorithm.placeArrayIntoUnOrganizedTreeMap();
-				geneticAlgorithm.placeUnOrganizedTreeMapIntoOrganizedTreeMap();
-				geneticAlgorithm.calculatingTheSumOfFitness();
+				geneticAlgorithm.generateUnOrganizedFitnessValuesPhaseOne();
+				geneticAlgorithm.generateOrganizedFitnessValuesPhaseTwo();
+				geneticAlgorithm.calculatingTotalSumOfFitnessValuePhaseThree();
 				geneticAlgorithm.dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData();
 				geneticAlgorithm.addingNormalizedDataToCalculateCumulaiveFreguency();
 				geneticAlgorithm.generateTheTwoContinuesRandomNumbersBetween0and1();
