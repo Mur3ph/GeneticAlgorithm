@@ -30,13 +30,13 @@ public class UnorganizedFitnessTest
 	@After
     public void tearDown() 
     {
-		unorganizedFitness.emptyFitnessTreeMap();
+		unorganizedFitness.emptyFitnessMap();
     }
 	
 	@Test
 	public void sizeOfUnOrganizedTreeMapTest() 
 	{
-		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
+		unorganizedFitness.putRandomNumbersIntoUnOrganizedMap();
 		assertTrue(isLengthSame(unorganizedFitness.getUnorganizedFitnessTreeMapValues().size()));
 	}
 	
@@ -52,28 +52,28 @@ public class UnorganizedFitnessTest
 	@Test
 	public void isNotEmptyUnOrganizedTreeMapTest() 
 	{
-		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
-		assertFalse(unorganizedFitness.getUnorganizedFitnessTreeMap().isEmpty());
+		unorganizedFitness.putRandomNumbersIntoUnOrganizedMap();
+		assertFalse(unorganizedFitness.getUnorganizedFitnessMap().isEmpty());
 	}
 	
 	@Test
 	public void isEmptyUnOrganizedTreeMapTest() 
 	{
-		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
-		unorganizedFitness.emptyFitnessTreeMap();
-		assertTrue(unorganizedFitness.getUnorganizedFitnessTreeMap().isEmpty());
+		unorganizedFitness.putRandomNumbersIntoUnOrganizedMap();
+		unorganizedFitness.emptyFitnessMap();
+		assertTrue(unorganizedFitness.getUnorganizedFitnessMap().isEmpty());
 	}
 	
 	@Ignore
 	public void isNullUnOrganizedTreeMapTest() 
 	{
-		assertNull(unorganizedFitness.getUnorganizedFitnessTreeMap());
+		assertNull(unorganizedFitness.getUnorganizedFitnessMap());
 	}
 	
 	@Ignore
 	public void isNotNullUnOrganizedTreeMapTest() 
 	{
-		unorganizedFitness.putRandomNumbersIntoUnOrganizedTreeMap();
+		unorganizedFitness.putRandomNumbersIntoUnOrganizedMap();
 		assertNotNull(unorganizedFitness.getUnorganizedFitnessTreeMapValues().isEmpty());
 	}
 

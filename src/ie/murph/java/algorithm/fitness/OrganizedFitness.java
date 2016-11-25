@@ -9,8 +9,8 @@ import ie.murph.java.interfaces.MapValueComparator;
 
 public class OrganizedFitness 
 {
-	private Map<String, Integer> sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface;
-	private MapValueComparator orderedValuesAccordingToComparatorInterface;
+	private Map<String, Integer> organinizedMapValuesFitness;
+	private MapValueComparator orderedMapValueComparator;
 	private UnorganizedFitness unorganizedMapFitness;
 
 	public OrganizedFitness(UnorganizedFitness unorganizedMapFitness)
@@ -18,54 +18,53 @@ public class OrganizedFitness
 		this.unorganizedMapFitness = unorganizedMapFitness;
 	}
 	
-	public void organiseUnorderedTreeMapFitnessUsingComparator()
+	public void organiseUnorderedMapFitness()
 	{
-		//This is an interface  I created to order the Map according to my specification
-		orderedValuesAccordingToComparatorInterface = new MapValueComparator(this.unorganizedMapFitness.getUnorganizedFitnessTreeMap());
+		// Maps always order according to the key, so I had to use a comparator interface to order the values the way I wanted instead (Best/Highest fitness first in list)
+		orderedMapValueComparator = new MapValueComparator(this.unorganizedMapFitness.getUnorganizedFitnessMap());
 	}
 	
-	public void createOrganisedTreeMapWithFitness()
+	public void createOrganisedMapWithFitness()
 	{
-		// Constructs a new empty tree map, ordered according to the given comparator (orderedValuesAccordingToComparatorInterface)
-		// Maps always order according to the key, so I had to use a comparator to order the values the was I wanted instead (Best/Highest fitness first in list)
-		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface = new TreeMap<String, Integer>(orderedValuesAccordingToComparatorInterface);
+		// Maps always order according to the key, so I had to use a comparator to order the values the way I wanted instead (Best/Highest fitness first in list)
+		this.organinizedMapValuesFitness = new TreeMap<String, Integer>(orderedMapValueComparator);
 	}
 	
 	public void putOrganizedFitnessIntoNewMap()
 	{
-		this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.putAll(this.unorganizedMapFitness.getUnorganizedFitnessTreeMap());
+		this.organinizedMapValuesFitness.putAll(this.unorganizedMapFitness.getUnorganizedFitnessMap());
 	}
 	
-	public Map<String, Integer> getSortedTreeMapWithOrderedFitnessAccordingToComparatorInterface()
+	public Map<String, Integer> getOrganizedMapValuesFitness()
 	{
-		return sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface;
+		return organinizedMapValuesFitness;
 	}
 	
 	public Collection<Integer> getOrderedFitnessValues()
 	{
-		return sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values();
+		return organinizedMapValuesFitness.values();
 	}
 	
 	public int getSizeOfMap()
 	{
-		return sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.size();
+		return organinizedMapValuesFitness.size();
 	}
 	
-	public void printOrganizedTreeMap()
+	public void printOrganizedMap()
 	{
-		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.values());
-		displayGenericTypes(this.sortedTreeMapWithOrderedFitnessAccordingToComparatorInterface.keySet());
+		displayGenericTypes(this.organinizedMapValuesFitness.values());
+		displayGenericTypes(this.organinizedMapValuesFitness.keySet());
 	}
 	
 	// Method just for printing out the elements of the generic collections.
-		public void displayGenericTypes(Collection<?> data)
+	public void displayGenericTypes(Collection<?> data)
+	{
+		Iterator<?> iterator = data.iterator();
+		while(iterator.hasNext())
 		{
-			Iterator<?> iterator = data.iterator();
-			while(iterator.hasNext())
-			{
-				Object object = iterator.next();
-	 			System.out.println(object + " ");
-			}
+			Object object = iterator.next();
+ 			System.out.println(object + " ");
 		}
+	}
 	
 }

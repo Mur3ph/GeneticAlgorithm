@@ -10,7 +10,7 @@ import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 
 public class UnorganizedFitness 
 {
-	private Map<String, Integer> unorganizedFitnessTreeMap;
+	private Map<String, Integer> unorganizedFitnessMap;
 	private RandomNumberGenerator randonNumberGenerator;
 	
 	public UnorganizedFitness(RandomNumberGenerator randonNumberGenerator)
@@ -19,10 +19,10 @@ public class UnorganizedFitness
 	}
 	
 	// Creating unorganized fitness
-	public void putRandomNumbersIntoUnOrganizedTreeMap()
+	public void putRandomNumbersIntoUnOrganizedMap()
 	{
-		this.unorganizedFitnessTreeMap = new TreeMap<String, Integer>();
-		this.unorganizedFitnessTreeMap = putArrayDataToMap(this.randonNumberGenerator.getRandomWholeNumbers());
+		this.unorganizedFitnessMap = new TreeMap<String, Integer>();
+		this.unorganizedFitnessMap = putArrayDataToMap(this.randonNumberGenerator.getRandomWholeNumbers());
 	}
 	
 	// Put the random numbers in the array into a map tree
@@ -38,30 +38,30 @@ public class UnorganizedFitness
 		return treemapFitness;
 	}
 	
-	public Map<String, Integer> getUnorganizedFitnessTreeMap()
+	public Map<String, Integer> getUnorganizedFitnessMap()
 	{
-		return this.unorganizedFitnessTreeMap;
+		return this.unorganizedFitnessMap;
 	}
 	
 	public Collection<Integer> getUnorganizedFitnessTreeMapValues()
 	{
-		return this.unorganizedFitnessTreeMap.values();
+		return this.unorganizedFitnessMap.values();
 	}
 	
-	public Set<String> getUnorganizedFitnessTreeMapKey()
+	public Set<String> getUnorganizedFitnessMapKey()
 	{
-		return this.unorganizedFitnessTreeMap.keySet();
+		return this.unorganizedFitnessMap.keySet();
 	}
 	
-	public void emptyFitnessTreeMap()
+	public void emptyFitnessMap()
 	{
-		this.unorganizedFitnessTreeMap.clear();
+		this.unorganizedFitnessMap.clear();
 	}
 
-	public void printUnorganizedTreeMap()
+	public void printUnorganizedMap()
 	{
-		displayGenericTypes(this.unorganizedFitnessTreeMap.values());
-		displayGenericTypes(this.unorganizedFitnessTreeMap.keySet());
+		displayGenericTypes(this.unorganizedFitnessMap.values());
+		displayGenericTypes(this.unorganizedFitnessMap.keySet());
 	}
 	
 	// Method just for printing out the elements of the generic collections.

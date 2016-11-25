@@ -2,7 +2,7 @@ package ie.murph.java.interfaces;
 
 public interface ConsoleMessage 
 {
-	//Constant variables used throughout the application
+	// Interfaces have every field public, static and final: Constant variables used throughout the application. TODO: See could I remove public, static and final
 	public final static String STARTING_GENETIC_ALGORITHM = "*** STARTING *** GENERATING THE RANDOM FITNESS VALUES INTO AN ARRAY.!";
 	public final static String GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE = "1). My Map with the random fitness values 1 - Unorganised fitness: ";
 	public final static String GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO = "2). My Map with the random fitness values 2 - Organised fittest: ";

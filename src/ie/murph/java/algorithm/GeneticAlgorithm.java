@@ -57,8 +57,8 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
 		
-		this.unorganizedMapFitness.putRandomNumbersIntoUnOrganizedTreeMap();
-		this.unorganizedMapFitness.printUnorganizedTreeMap();
+		this.unorganizedMapFitness.putRandomNumbersIntoUnOrganizedMap();
+		this.unorganizedMapFitness.printUnorganizedMap();
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
@@ -68,10 +68,10 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
 		
-		this.organizedMapFitness.organiseUnorderedTreeMapFitnessUsingComparator();
-		this.organizedMapFitness.createOrganisedTreeMapWithFitness();
+		this.organizedMapFitness.organiseUnorderedMapFitness();
+		this.organizedMapFitness.createOrganisedMapWithFitness();
 		this.organizedMapFitness.putOrganizedFitnessIntoNewMap();
-		this.organizedMapFitness.printOrganizedTreeMap();
+		this.organizedMapFitness.printOrganizedMap();
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..

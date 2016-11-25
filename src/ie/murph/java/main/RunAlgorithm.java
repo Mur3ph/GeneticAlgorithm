@@ -31,9 +31,9 @@ public class RunAlgorithm
 			geneticAlgorithm.generatePopulationFitness();
 			//Asking user to input the amount of generations of fitness offspring they want to view
 			System.out.println(ConsoleMessage.ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE);
-			int generation = READ_IN_USER_INPUT.nextInt()+1;
+			int userInputChoosePopulationSize = READ_IN_USER_INPUT.nextInt()+1;
 			
-			for(int generationX = 1; generationX < generation; generationX++)
+			for(int generationX = 1; generationX < userInputChoosePopulationSize; generationX++)
 			{
 				System.out.println("\nGENERATION: " + generationX + "\n");
 				geneticAlgorithm.generateUnOrganizedFitnessValuesPhaseOne();
@@ -49,37 +49,37 @@ public class RunAlgorithm
 				geneticAlgorithm.convertBinaryStringToInteger();
 				geneticAlgorithm.createANewPopulationWithTheTwoFittestAndThreeMoreRandomFromThePopulation();
 				
-			} // END OF FOR LOOP..
+			}
 			
 			askUserToContinueWithGeneticAlgorithm();
-		}// END OF..
+		}
 			
-			private static void askUserToContinueWithGeneticAlgorithm()
-			{
-				System.out.println("Do you want to run it again: (y/n)");
-				
-				String s_continue = READ_IN_USER_INPUT.nextLine();
-				if(s_continue.equalsIgnoreCase("y") || s_continue.equalsIgnoreCase("yes"))
-				{
-					resetThreadToRunGeneticAlgorithmAgain();
-				}
-				else if (s_continue.equalsIgnoreCase("n") || s_continue.equalsIgnoreCase("no"))
-				{
-					exitGeneticAlgorithmApp();
-				}
-				else
-					askUserToContinueWithGeneticAlgorithm();
-			}// END OF.
+		private static void askUserToContinueWithGeneticAlgorithm()
+		{
+			System.out.println("Do you want to run it again: (y/n)");
 			
-			private static void resetThreadToRunGeneticAlgorithmAgain()
+			String s_continue = READ_IN_USER_INPUT.nextLine();
+			if(s_continue.equalsIgnoreCase("y") || s_continue.equalsIgnoreCase("yes"))
 			{
-				main(new String[0]);
+				resetThreadToRunGeneticAlgorithmAgain();
 			}
-			
-			private static void exitGeneticAlgorithmApp()
+			else if (s_continue.equalsIgnoreCase("n") || s_continue.equalsIgnoreCase("no"))
 			{
-				System.out.println("Good bye!");
-				System.exit(0);
+				exitGeneticAlgorithmApp();
 			}
-			
+			else
+				askUserToContinueWithGeneticAlgorithm();
+		}
+		
+		private static void resetThreadToRunGeneticAlgorithmAgain()
+		{
+			main(new String[0]);
+		}
+		
+		private static void exitGeneticAlgorithmApp()
+		{
+			System.out.println("Good bye!");
+			System.exit(0);
+		}
+		
 }
