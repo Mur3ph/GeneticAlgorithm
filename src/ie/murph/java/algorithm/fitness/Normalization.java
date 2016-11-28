@@ -45,4 +45,9 @@ public class Normalization
 	{
 		return this.organizedFitness;
 	}
+	
+	public SumFitness getSumFitness()
+	{
+		return this.sumFitness;
+	}
 }

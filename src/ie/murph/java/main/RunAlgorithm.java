@@ -28,7 +28,7 @@ public class RunAlgorithm
 			OrganizedFitness organizedFitness = new OrganizedFitness(unorganizedMapFitness);
 			SumFitness sumFitness = new SumFitness(organizedFitness);
 			Normalization normalization = new Normalization(organizedFitness, sumFitness);
-			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness, organizedFitness, sumFitness, normalization);
+			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness, normalization);
 			
 			geneticAlgorithm.generatePopulationFitness();
 			//Asking user to input the amount of generations of fitness offspring they want to view

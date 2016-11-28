@@ -1,8 +1,6 @@
 package ie.murph.java.algorithm;
 
 import ie.murph.java.algorithm.fitness.Normalization;
-import ie.murph.java.algorithm.fitness.OrganizedFitness;
-import ie.murph.java.algorithm.fitness.SumFitness;
 import ie.murph.java.algorithm.fitness.UnorganizedFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
@@ -17,8 +15,6 @@ public class GeneticAlgorithm
 	//Constant variables and data interface structures used throughout the algorithm
 	private RandomNumberGenerator randonNumberGenerator;
 	private UnorganizedFitness unorganizedMapFitness;
-	private OrganizedFitness organizedMapFitness;
-	private SumFitness sumFitness;
 	private Normalization normalization;
 	
 	private Double[] cumulativefrequencyData;
@@ -34,12 +30,10 @@ public class GeneticAlgorithm
 	private int newFitnessInt_2;
 	
 //	TODO: This is getting ridiculous. Should have no more than three parameters. One parameter, if possible
-	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness, OrganizedFitness organizedMapFitness, SumFitness sumFitness, Normalization normalization)
+	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness, Normalization normalization)
 	{
 		this.randonNumberGenerator = randomNumberGenerator;
 		this.unorganizedMapFitness = unorganizedMapFitness;
-		this.organizedMapFitness = organizedMapFitness;
-		this.sumFitness = sumFitness;
 		this.normalization = normalization;
 	}
 		
@@ -71,10 +65,10 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
 		
-		this.organizedMapFitness.organiseUnorderedMapFitness();
-		this.organizedMapFitness.createOrganisedMapWithFitness();
-		this.organizedMapFitness.putOrganizedFitnessIntoNewMap();
-		this.organizedMapFitness.printOrganizedMap();
+		this.normalization.getOrganizedFitness().organiseUnorderedMapFitness();
+		this.normalization.getOrganizedFitness().createOrganisedMapWithFitness();
+		this.normalization.getOrganizedFitness().putOrganizedFitnessIntoNewMap();
+		this.normalization.getOrganizedFitness().printOrganizedMap();
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
@@ -84,10 +78,9 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.CALCULATING_TOTAL_FITNESS_VALUE_PHASE_THREE);
 		
-		this.sumFitness.populateListWithFitnessValues();
-		this.sumFitness.calculatingTotalSumOfFitness();
-		
-		System.out.println("Total: " + this.sumFitness.getTotalSumOfFitness());
+		this.normalization.getSumFitness().populateListWithFitnessValues();
+		this.normalization.getSumFitness().calculatingTotalSumOfFitness();
+		System.out.println("Total: " + this.normalization.getSumFitness().getTotalSumOfFitness());
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF.
@@ -111,8 +104,8 @@ public class GeneticAlgorithm
 		double previousCumulativeNumber = 0;
 		//Cumulative frequency Data for each of the fitness is calculated by adding each of the normalized data types one after the other finally adding to one
 		// (e.g. Normalized data: 0.267, 0.267, 0.233, 0.233 --> Cumulative data: 0.267, 0.534, 0.767, 1)
-		this.cumulativefrequencyData = new Double[organizedMapFitness.getSizeOfMap()];
-		for(int atPostionX = 0; atPostionX < organizedMapFitness.getSizeOfMap(); atPostionX++)
+		this.cumulativefrequencyData = new Double[this.normalization.getOrganizedFitness().getSizeOfMap()];
+		for(int atPostionX = 0; atPostionX < this.normalization.getOrganizedFitness().getSizeOfMap(); atPostionX++)
 		{
 			//Rounding the data to 3 decimal places.
 			this.cumulativefrequencyData[atPostionX] = (double) Math.round((previousCumulativeNumber + this.normalization.getNormalizedFitness()[atPostionX]) * 1000) / 1000;
@@ -162,8 +155,8 @@ public class GeneticAlgorithm
 		int randomPositionValueX = this.thePositionOfTheTwoValuesChoosenUsingRandomValues[0];
 		int randomPositionValueY = this.thePositionOfTheTwoValuesChoosenUsingRandomValues[1];
 		
-		int eliteFitnessValueChosen_1 = this.sumFitness.getFitnessValuesList().get(randomPositionValueX);
-		int eliteFitnessValueChosen_2 = this.sumFitness.getFitnessValuesList().get(randomPositionValueY);
+		int eliteFitnessValueChosen_1 = this.normalization.getSumFitness().getFitnessValuesList().get(randomPositionValueX);
+		int eliteFitnessValueChosen_2 = this.normalization.getSumFitness().getFitnessValuesList().get(randomPositionValueY);
 		
 //		find the (6 bit) binary equivalent of an integer
 		int lengthOfBinaryString = 6;
