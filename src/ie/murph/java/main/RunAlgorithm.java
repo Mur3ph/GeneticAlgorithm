@@ -3,6 +3,7 @@ package ie.murph.java.main;
 import java.util.Scanner;
 
 import ie.murph.java.algorithm.GeneticAlgorithm;
+import ie.murph.java.algorithm.fitness.Normalization;
 import ie.murph.java.algorithm.fitness.OrganizedFitness;
 import ie.murph.java.algorithm.fitness.SumFitness;
 import ie.murph.java.algorithm.fitness.UnorganizedFitness;
@@ -26,7 +27,8 @@ public class RunAlgorithm
 			UnorganizedFitness unorganizedMapFitness = new UnorganizedFitness(randomNumberGenerator);
 			OrganizedFitness organizedFitness = new OrganizedFitness(unorganizedMapFitness);
 			SumFitness sumFitness = new SumFitness(organizedFitness);
-			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness, organizedFitness, sumFitness);
+			Normalization normalization = new Normalization(organizedFitness, sumFitness);
+			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(randomNumberGenerator, unorganizedMapFitness, organizedFitness, sumFitness, normalization);
 			
 			geneticAlgorithm.generatePopulationFitness();
 			//Asking user to input the amount of generations of fitness offspring they want to view

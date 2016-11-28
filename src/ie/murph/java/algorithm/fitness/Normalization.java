@@ -2,26 +2,25 @@ package ie.murph.java.algorithm.fitness;
 
 public class Normalization 
 {
-	private OrganizedFitness organizedMapData;
+	private OrganizedFitness organizedFitness;
 	private SumFitness sumFitness;
 	private Double[] normalisedFitness;
 	
-	public Normalization(OrganizedFitness organizedMapFitness, SumFitness sumFitness)
+	public Normalization(OrganizedFitness organizedFitness, SumFitness sumFitness)
 	{
-		this.organizedMapData = organizedMapFitness;
+		this.organizedFitness = organizedFitness;
 		this.sumFitness = sumFitness;
 	}
 	
 	public void createNormalizedStructure()
 	{
 		// Normalized data for each fitness is calculated by finding the sum of all the fitness and then dividing the sum against each individual fitness
-		this.normalisedFitness = new Double[organizedMapData.getSizeOfMap()];
+		this.normalisedFitness = new Double[organizedFitness.getSizeOfMap()];
 	}
 	
-	//Dividing each fitness value by the sum of all fitness
 	public void calculateNormalizedData() 
 	{
-		for(int nextFitness = 0; nextFitness < organizedMapData.getSizeOfMap(); nextFitness++)
+		for(int nextFitness = 0; nextFitness < organizedFitness.getSizeOfMap(); nextFitness++)
 		{
 			this.normalisedFitness[nextFitness] = (double) (this.sumFitness.getFitnessValuesList().get(nextFitness) / this.sumFitness.getTotalSumOfFitness());
 		}
@@ -40,5 +39,10 @@ public class Normalization
 	public Double[] getNormalizedFitness()
 	{
 		return this.normalisedFitness;
+	}
+	
+	public OrganizedFitness getOrganizedFitness()
+	{
+		return this.organizedFitness;
 	}
 }

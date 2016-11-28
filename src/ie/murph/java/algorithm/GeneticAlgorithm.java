@@ -1,5 +1,6 @@
 package ie.murph.java.algorithm;
 
+import ie.murph.java.algorithm.fitness.Normalization;
 import ie.murph.java.algorithm.fitness.OrganizedFitness;
 import ie.murph.java.algorithm.fitness.SumFitness;
 import ie.murph.java.algorithm.fitness.UnorganizedFitness;
@@ -18,8 +19,8 @@ public class GeneticAlgorithm
 	private UnorganizedFitness unorganizedMapFitness;
 	private OrganizedFitness organizedMapFitness;
 	private SumFitness sumFitness;
+	private Normalization normalization;
 	
-	private Double[] normalisedData;
 	private Double[] cumulativefrequencyData;
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
 	private double continuesRandonNumberBetweenZeroAndOne_1;
@@ -32,12 +33,14 @@ public class GeneticAlgorithm
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
-	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness, OrganizedFitness organizedMapFitness, SumFitness sumFitness)
+//	TODO: This is getting ridiculous. Should have no more than three parameters. One parameter, if possible
+	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness, OrganizedFitness organizedMapFitness, SumFitness sumFitness, Normalization normalization)
 	{
 		this.randonNumberGenerator = randomNumberGenerator;
 		this.unorganizedMapFitness = unorganizedMapFitness;
 		this.organizedMapFitness = organizedMapFitness;
 		this.sumFitness = sumFitness;
+		this.normalization = normalization;
 	}
 		
 	//Generating the five random fitness to begin with..
@@ -93,13 +96,11 @@ public class GeneticAlgorithm
 	public void dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData() 
 	{
 		System.out.println(ConsoleMessage.CALCULATING_NORMALIZED_FITNESS_VALUE_PHASE_FOUR);
+		
 		// Normalized data for each fitness is calculated by finding the sum of all the fitness and then dividing the sum against each individual fitness
-		this.normalisedData = new Double[organizedMapFitness.getSizeOfMap()];
-		for(int nextFitness = 0; nextFitness < organizedMapFitness.getSizeOfMap(); nextFitness++)
-		{
-			this.normalisedData[nextFitness] = (double) (this.sumFitness.getFitnessValuesList().get(nextFitness) / this.sumFitness.getTotalSumOfFitness());
-		}
-		displayArray(this.normalisedData);
+		this.normalization.createNormalizedStructure();
+		this.normalization.calculateNormalizedData();
+		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 
@@ -114,7 +115,7 @@ public class GeneticAlgorithm
 		for(int atPostionX = 0; atPostionX < organizedMapFitness.getSizeOfMap(); atPostionX++)
 		{
 			//Rounding the data to 3 decimal places.
-			this.cumulativefrequencyData[atPostionX] = (double) Math.round((previousCumulativeNumber + this.normalisedData[atPostionX]) * 1000) / 1000;
+			this.cumulativefrequencyData[atPostionX] = (double) Math.round((previousCumulativeNumber + this.normalization.getNormalizedFitness()[atPostionX]) * 1000) / 1000;
 			previousCumulativeNumber = this.cumulativefrequencyData[atPostionX];
 		}
 		//Checking or catching any potential errors in the data, as the last cumulative fitness should always be one
