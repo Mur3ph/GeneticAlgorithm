@@ -1,5 +1,6 @@
 package ie.murph.java.algorithm;
 
+import ie.murph.java.algorithm.math.CumulativeFrequency;
 import ie.murph.java.algorithm.math.Normalization;
 import ie.murph.java.interfaces.ConsoleMessage;
 import java.util.Arrays;
@@ -12,8 +13,8 @@ public class GeneticAlgorithm
 {
 	//Constant variables and data interface structures used throughout the algorithm
 	private Normalization normalization;
+	private CumulativeFrequency cumulativeFrequency;
 	
-	private Double[] cumulativefrequencyData;
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
 	private double continuesRandonNumberBetweenZeroAndOne_1;
 	private double continuesRandonNumberBetweenZeroAndOne_2;
@@ -25,19 +26,16 @@ public class GeneticAlgorithm
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
-//	TODO: This is getting ridiculous. Should have no more than three parameters. One parameter, if possible
-	public GeneticAlgorithm(Normalization normalization)
+	public GeneticAlgorithm(Normalization normalization, CumulativeFrequency cumulativeFrequency)
 	{
 		this.normalization = normalization;
+		this.cumulativeFrequency = cumulativeFrequency;
 	}
 		
 	//Generating the five random fitness to begin with..
 	public void generatePopulationFitness()
 	{
 		System.out.println(ConsoleMessage.STARTING_GENETIC_ALGORITHM);
-		
-//		randonNumberGenerator.setRandomNumberbetween(1, 10);
-//		randonNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(5);
 		
 		this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 10);
 		this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().populateArrayWithRandomWholeNumbersOfLength(5);
@@ -98,23 +96,10 @@ public class GeneticAlgorithm
 	public void addingNormalizedDataToCalculateCumulaiveFreguency() 
 	{
 		System.out.println(ConsoleMessage.CALCULATING_CUMULATIVE_FREQUENCY_VALUE_PHASE_FIVE);
-		double previousCumulativeNumber = 0;
-		//Cumulative frequency Data for each of the fitness is calculated by adding each of the normalized data types one after the other finally adding to one
-		// (e.g. Normalized data: 0.267, 0.267, 0.233, 0.233 --> Cumulative data: 0.267, 0.534, 0.767, 1)
-		this.cumulativefrequencyData = new Double[this.normalization.getOrganizedFitness().getSizeOfMap()];
-		for(int atPostionX = 0; atPostionX < this.normalization.getOrganizedFitness().getSizeOfMap(); atPostionX++)
-		{
-			//Rounding the data to 3 decimal places.
-			this.cumulativefrequencyData[atPostionX] = (double) Math.round((previousCumulativeNumber + this.normalization.getNormalizedFitness()[atPostionX]) * 1000) / 1000;
-			previousCumulativeNumber = this.cumulativefrequencyData[atPostionX];
-		}
-		//Checking or catching any potential errors in the data, as the last cumulative fitness should always be one
-//		if(this.cumulativefrequencyData[4] == 0.999 || this.cumulativefrequencyData[4] == 0.998)
-		if(this.cumulativefrequencyData[4] != 1.0)
-		{
-			this.cumulativefrequencyData[4] = 1.0;
-		}
-		displayArray(this.cumulativefrequencyData);
+		
+		this.cumulativeFrequency.createFrequencyStructure();
+		this.cumulativeFrequency.calculateFrequency();
+		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
@@ -141,7 +126,7 @@ public class GeneticAlgorithm
 		//When we come across a number larger than the random number, choose the corresponding number in [P] column (i.e. TreeMap Key)
 		//Gives back the position (i.e. location in the Map) of the values to choose
 		//TODO I should be using value [p] (i.e. The Tree Map Key, instead I am using fitness [P] Tree Map value )
-		this.thePositionOfTheTwoValuesChoosenUsingRandomValues = findThePositionOfTheTwoFitnessNumbersUsingTheTwoRandomNumbers(cumulativefrequencyData);
+		this.thePositionOfTheTwoValuesChoosenUsingRandomValues = findThePositionOfTheTwoFitnessNumbersUsingTheTwoRandomNumbers(this.cumulativeFrequency.getCumulativeFrequencyArray());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
