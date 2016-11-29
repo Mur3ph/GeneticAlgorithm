@@ -1,7 +1,6 @@
 package ie.murph.java.algorithm;
 
 import ie.murph.java.algorithm.fitness.Normalization;
-import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 import java.util.Arrays;
 import java.util.Collection;
@@ -12,7 +11,6 @@ import java.util.TreeMap;
 public class GeneticAlgorithm 
 {
 	//Constant variables and data interface structures used throughout the algorithm
-	private RandomNumberGenerator randonNumberGenerator;
 	private Normalization normalization;
 	
 	private Double[] cumulativefrequencyData;
@@ -28,9 +26,8 @@ public class GeneticAlgorithm
 	private int newFitnessInt_2;
 	
 //	TODO: This is getting ridiculous. Should have no more than three parameters. One parameter, if possible
-	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, Normalization normalization)
+	public GeneticAlgorithm(Normalization normalization)
 	{
-		this.randonNumberGenerator = randomNumberGenerator;
 		this.normalization = normalization;
 	}
 		
@@ -39,10 +36,13 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.STARTING_GENETIC_ALGORITHM);
 		
-		randonNumberGenerator.setRandomNumberbetween(1, 10);
-		randonNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(5);
+//		randonNumberGenerator.setRandomNumberbetween(1, 10);
+//		randonNumberGenerator.populateArrayWithRandomWholeNumbersOfLength(5);
 		
-		displayArray(randonNumberGenerator.getRandomWholeNumbers());
+		this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 10);
+		this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().populateArrayWithRandomWholeNumbersOfLength(5);
+		
+		displayArray(this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF.
 	
@@ -122,8 +122,8 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.CHOOSE_RANDOM_NUMBER_BETWEEN_ONE_AND_ZERO_PHASE_SIX);
 		//Using random doubles to make sure they are between zero and one
-		this.continuesRandonNumberBetweenZeroAndOne_1 = randonNumberGenerator.getARandomDecimalNumberBetweenZeroAndOne();
-		this.continuesRandonNumberBetweenZeroAndOne_2 = randonNumberGenerator.getARandomDecimalNumberBetweenZeroAndOne();
+		this.continuesRandonNumberBetweenZeroAndOne_1 = this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
+		this.continuesRandonNumberBetweenZeroAndOne_2 = this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
 		//Rounding them numbers to 3 decimal places
 		double continuesRandomNumberToThreeDecimalPlaces_1 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_1 * 1000) / 1000;
 		double continuesRandomNumberToThreeDecimalPlaces_2 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_2 * 1000) / 1000;
@@ -214,9 +214,9 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.SEND_NEW_FITNESS_TO_RANDOM_GENERATOR_TO_CREATE_NEXT_GENERATION_PHASE_TWELVE);
 		Integer[] arrayOfFitterNextGenerationIntegers = new Integer[5];
-		arrayOfFitterNextGenerationIntegers = getNextGeneration(randonNumberGenerator.getRandomWholeNumbers(), this.newFitnessInt_1, this.newFitnessInt_2);
+		arrayOfFitterNextGenerationIntegers = getNextGeneration(this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), this.newFitnessInt_1, this.newFitnessInt_2);
 		displayArray(arrayOfFitterNextGenerationIntegers);
-		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, randonNumberGenerator.getRandomWholeNumbers(), 0, 5);
+		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), 0, 5);
 //		TODO Clearing the fitness to begin again with new better population, I think I am adding the previous total with the new total were I should be clearing the previous total and starting with fresh data
 //		m_fitnessValuesFromOrderedTreemap.clear();
 	}
@@ -346,9 +346,9 @@ public class GeneticAlgorithm
 		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
 		//Choosing the bit in each binary string to be altered at random each time
-		randonNumberGenerator.setRandomNumberbetween(1, 5);
-		int randomPositionOfBinaryBitToBeAltered_1 = randonNumberGenerator.getARandomWholeNumber();
-		int randomPositionOfBinaryBitToBeAltered_2 = randonNumberGenerator.getARandomWholeNumber();
+		this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
+		int randomPositionOfBinaryBitToBeAltered_1 = this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
+		int randomPositionOfBinaryBitToBeAltered_2 = this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
 		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = new Integer[]{randomPositionOfBinaryBitToBeAltered_1, randomPositionOfBinaryBitToBeAltered_2};
 		
 		// Getting that bit in the random position

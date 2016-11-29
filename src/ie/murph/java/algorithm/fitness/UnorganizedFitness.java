@@ -11,18 +11,18 @@ import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 public class UnorganizedFitness 
 {
 	private Map<String, Integer> unorganizedFitnessMap;
-	private RandomNumberGenerator randonNumberGenerator;
+	private RandomNumberGenerator randomNumberGenerator;
 	
 	public UnorganizedFitness(RandomNumberGenerator randonNumberGenerator)
 	{
-		this.randonNumberGenerator = randonNumberGenerator;
+		this.randomNumberGenerator = randonNumberGenerator;
 	}
 	
 	// Creating unorganized fitness
 	public void putRandomNumbersIntoUnOrganizedMap()
 	{
 		this.unorganizedFitnessMap = new TreeMap<String, Integer>();
-		this.unorganizedFitnessMap = putArrayDataToMap(this.randonNumberGenerator.getRandomWholeNumbers());
+		this.unorganizedFitnessMap = putArrayDataToMap(this.randomNumberGenerator.getRandomWholeNumbers());
 	}
 	
 	// Put the random numbers in the array into a map tree
@@ -62,6 +62,11 @@ public class UnorganizedFitness
 	{
 		displayGenericTypes(this.unorganizedFitnessMap.values());
 		displayGenericTypes(this.unorganizedFitnessMap.keySet());
+	}
+	
+	public RandomNumberGenerator getRandomNumberGenerator()
+	{
+		return this.randomNumberGenerator;
 	}
 	
 	// Method just for printing out the elements of the generic collections.
