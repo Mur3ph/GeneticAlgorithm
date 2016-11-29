@@ -56,6 +56,11 @@ public class OrganizedFitness
 		displayGenericTypes(this.organinizedMapValuesFitness.keySet());
 	}
 	
+	public UnorganizedFitness getUnorganizedFitness()
+	{
+		return this.unorganizedMapFitness;
+	}
+	
 	// Method just for printing out the elements of the generic collections.
 	public void displayGenericTypes(Collection<?> data)
 	{

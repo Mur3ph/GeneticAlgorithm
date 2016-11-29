@@ -1,7 +1,6 @@
 package ie.murph.java.algorithm;
 
 import ie.murph.java.algorithm.fitness.Normalization;
-import ie.murph.java.algorithm.fitness.UnorganizedFitness;
 import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
 import ie.murph.java.interfaces.ConsoleMessage;
 import java.util.Arrays;
@@ -14,7 +13,6 @@ public class GeneticAlgorithm
 {
 	//Constant variables and data interface structures used throughout the algorithm
 	private RandomNumberGenerator randonNumberGenerator;
-	private UnorganizedFitness unorganizedMapFitness;
 	private Normalization normalization;
 	
 	private Double[] cumulativefrequencyData;
@@ -30,10 +28,9 @@ public class GeneticAlgorithm
 	private int newFitnessInt_2;
 	
 //	TODO: This is getting ridiculous. Should have no more than three parameters. One parameter, if possible
-	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, UnorganizedFitness unorganizedMapFitness, Normalization normalization)
+	public GeneticAlgorithm(RandomNumberGenerator randomNumberGenerator, Normalization normalization)
 	{
 		this.randonNumberGenerator = randomNumberGenerator;
-		this.unorganizedMapFitness = unorganizedMapFitness;
 		this.normalization = normalization;
 	}
 		
@@ -54,8 +51,8 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
 		
-		this.unorganizedMapFitness.putRandomNumbersIntoUnOrganizedMap();
-		this.unorganizedMapFitness.printUnorganizedMap();
+		this.normalization.getOrganizedFitness().getUnorganizedFitness().putRandomNumbersIntoUnOrganizedMap();
+		this.normalization.getOrganizedFitness().getUnorganizedFitness().printUnorganizedMap();
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
