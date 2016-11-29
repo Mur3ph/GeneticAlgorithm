@@ -1,6 +1,6 @@
 package ie.murph.java.algorithm;
 
-import ie.murph.java.algorithm.fitness.Normalization;
+import ie.murph.java.algorithm.math.Normalization;
 import ie.murph.java.interfaces.ConsoleMessage;
 import java.util.Arrays;
 import java.util.Collection;
@@ -109,7 +109,8 @@ public class GeneticAlgorithm
 			previousCumulativeNumber = this.cumulativefrequencyData[atPostionX];
 		}
 		//Checking or catching any potential errors in the data, as the last cumulative fitness should always be one
-		if(this.cumulativefrequencyData[4] == 0.999 || this.cumulativefrequencyData[4] == 0.998)
+//		if(this.cumulativefrequencyData[4] == 0.999 || this.cumulativefrequencyData[4] == 0.998)
+		if(this.cumulativefrequencyData[4] != 1.0)
 		{
 			this.cumulativefrequencyData[4] = 1.0;
 		}

@@ -1,4 +1,7 @@
-package ie.murph.java.algorithm.fitness;
+package ie.murph.java.algorithm.math;
+
+import ie.murph.java.algorithm.fitness.OrganizedFitness;
+import ie.murph.java.algorithm.fitness.SumFitness;
 
 public class Normalization 
 {
