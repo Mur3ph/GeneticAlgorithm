@@ -1,7 +1,6 @@
 package ie.murph.java.algorithm;
 
 import ie.murph.java.algorithm.math.CumulativeFrequency;
-import ie.murph.java.algorithm.math.Normalization;
 import ie.murph.java.interfaces.ConsoleMessage;
 import java.util.Arrays;
 import java.util.Collection;
@@ -12,7 +11,6 @@ import java.util.TreeMap;
 public class GeneticAlgorithm 
 {
 	//Constant variables and data interface structures used throughout the algorithm
-	private Normalization normalization;
 	private CumulativeFrequency cumulativeFrequency;
 	
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
@@ -26,9 +24,8 @@ public class GeneticAlgorithm
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
-	public GeneticAlgorithm(Normalization normalization, CumulativeFrequency cumulativeFrequency)
+	public GeneticAlgorithm(CumulativeFrequency cumulativeFrequency)
 	{
-		this.normalization = normalization;
 		this.cumulativeFrequency = cumulativeFrequency;
 	}
 		
@@ -37,10 +34,10 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.STARTING_GENETIC_ALGORITHM);
 		
-		this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 10);
-		this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().populateArrayWithRandomWholeNumbersOfLength(5);
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 10);
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().populateArrayWithRandomWholeNumbersOfLength(5);
 		
-		displayArray(this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers());
+		displayArray(this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF.
 	
@@ -49,8 +46,8 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_UNORGANISED_FITNESS_VALUES_PHASE_ONE);
 		
-		this.normalization.getOrganizedFitness().getUnorganizedFitness().putRandomNumbersIntoUnOrganizedMap();
-		this.normalization.getOrganizedFitness().getUnorganizedFitness().printUnorganizedMap();
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().putRandomNumbersIntoUnOrganizedMap();
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().printUnorganizedMap();
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
@@ -60,10 +57,10 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.GENERATE_ORGANISED_FITNESS_VALUES_PHASE_TWO);
 		
-		this.normalization.getOrganizedFitness().organiseUnorderedMapFitness();
-		this.normalization.getOrganizedFitness().createOrganisedMapWithFitness();
-		this.normalization.getOrganizedFitness().putOrganizedFitnessIntoNewMap();
-		this.normalization.getOrganizedFitness().printOrganizedMap();
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().organiseUnorderedMapFitness();
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().createOrganisedMapWithFitness();
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().putOrganizedFitnessIntoNewMap();
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().printOrganizedMap();
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
@@ -73,9 +70,9 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.CALCULATING_TOTAL_FITNESS_VALUE_PHASE_THREE);
 		
-		this.normalization.getSumFitness().populateListWithFitnessValues();
-		this.normalization.getSumFitness().calculatingTotalSumOfFitness();
-		System.out.println("Total: " + this.normalization.getSumFitness().getTotalSumOfFitness());
+		this.cumulativeFrequency.getNormalization().getSumFitness().populateListWithFitnessValues();
+		this.cumulativeFrequency.getNormalization().getSumFitness().calculatingTotalSumOfFitness();
+		System.out.println("Total: " + this.cumulativeFrequency.getNormalization().getSumFitness().getTotalSumOfFitness());
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF.
@@ -86,8 +83,8 @@ public class GeneticAlgorithm
 		System.out.println(ConsoleMessage.CALCULATING_NORMALIZED_FITNESS_VALUE_PHASE_FOUR);
 		
 		// Normalized data for each fitness is calculated by finding the sum of all the fitness and then dividing the sum against each individual fitness
-		this.normalization.createNormalizedStructure();
-		this.normalization.calculateNormalizedData();
+		this.cumulativeFrequency.getNormalization().createNormalizedStructure();
+		this.cumulativeFrequency.getNormalization().calculateNormalizedData();
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
@@ -108,8 +105,8 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.CHOOSE_RANDOM_NUMBER_BETWEEN_ONE_AND_ZERO_PHASE_SIX);
 		//Using random doubles to make sure they are between zero and one
-		this.continuesRandonNumberBetweenZeroAndOne_1 = this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
-		this.continuesRandonNumberBetweenZeroAndOne_2 = this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
+		this.continuesRandonNumberBetweenZeroAndOne_1 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
+		this.continuesRandonNumberBetweenZeroAndOne_2 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
 		//Rounding them numbers to 3 decimal places
 		double continuesRandomNumberToThreeDecimalPlaces_1 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_1 * 1000) / 1000;
 		double continuesRandomNumberToThreeDecimalPlaces_2 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_2 * 1000) / 1000;
@@ -138,8 +135,8 @@ public class GeneticAlgorithm
 		int randomPositionValueX = this.thePositionOfTheTwoValuesChoosenUsingRandomValues[0];
 		int randomPositionValueY = this.thePositionOfTheTwoValuesChoosenUsingRandomValues[1];
 		
-		int eliteFitnessValueChosen_1 = this.normalization.getSumFitness().getFitnessValuesList().get(randomPositionValueX);
-		int eliteFitnessValueChosen_2 = this.normalization.getSumFitness().getFitnessValuesList().get(randomPositionValueY);
+		int eliteFitnessValueChosen_1 = this.cumulativeFrequency.getNormalization().getSumFitness().getFitnessValuesList().get(randomPositionValueX);
+		int eliteFitnessValueChosen_2 = this.cumulativeFrequency.getNormalization().getSumFitness().getFitnessValuesList().get(randomPositionValueY);
 		
 //		find the (6 bit) binary equivalent of an integer
 		int lengthOfBinaryString = 6;
@@ -200,9 +197,9 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.SEND_NEW_FITNESS_TO_RANDOM_GENERATOR_TO_CREATE_NEXT_GENERATION_PHASE_TWELVE);
 		Integer[] arrayOfFitterNextGenerationIntegers = new Integer[5];
-		arrayOfFitterNextGenerationIntegers = getNextGeneration(this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), this.newFitnessInt_1, this.newFitnessInt_2);
+		arrayOfFitterNextGenerationIntegers = getNextGeneration(this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), this.newFitnessInt_1, this.newFitnessInt_2);
 		displayArray(arrayOfFitterNextGenerationIntegers);
-		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), 0, 5);
+		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), 0, 5);
 //		TODO Clearing the fitness to begin again with new better population, I think I am adding the previous total with the new total were I should be clearing the previous total and starting with fresh data
 //		m_fitnessValuesFromOrderedTreemap.clear();
 	}
@@ -332,9 +329,9 @@ public class GeneticAlgorithm
 		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
 		//Choosing the bit in each binary string to be altered at random each time
-		this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
-		int randomPositionOfBinaryBitToBeAltered_1 = this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
-		int randomPositionOfBinaryBitToBeAltered_2 = this.normalization.getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
+		this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
+		int randomPositionOfBinaryBitToBeAltered_1 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
+		int randomPositionOfBinaryBitToBeAltered_2 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
 		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = new Integer[]{randomPositionOfBinaryBitToBeAltered_1, randomPositionOfBinaryBitToBeAltered_2};
 		
 		// Getting that bit in the random position
