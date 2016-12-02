@@ -1,5 +1,6 @@
 package ie.murph.java.algorithm.math;
 
+
 public class CumulativeFrequency 
 {
 	private Normalization normalization;
@@ -64,6 +65,31 @@ public class CumulativeFrequency
 	public Normalization getNormalization()
 	{
 		return this.normalization;
+	}
+	
+	// Choose a random double between zero and one to compare against the cumulative frequency - Generating two random numbers between 1 and 0
+	public void generateContinuesRandomNumbersBetween0and1()
+	{
+		//Using random doubles to make sure they are between zero and one
+		double firstRandomDouble = getRandomDouble();
+		double secondRandomDouble = getRandomDouble();
+		
+		double firstRandomDoubleRounded = roundDouble(firstRandomDouble);
+		double secondRandomDoubleRounded = roundDouble(firstRandomDouble);
+		
+		System.out.println("Random Double 1: " + firstRandomDouble + " and rounded: " + firstRandomDoubleRounded);
+		System.out.println("Random Double 2: " + secondRandomDouble + " and rounded: " + secondRandomDoubleRounded);
+	}// END OF.
+	
+	//Rounding them numbers to 3 decimal places
+	public double roundDouble(double randomDouble) 
+	{
+		return (double) Math.round(randomDouble * 1000) / 1000;
+	}
+	
+	public double getRandomDouble()
+	{
+		return this.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
 	}
 	
 	// Method just for printing out the elements of the array.

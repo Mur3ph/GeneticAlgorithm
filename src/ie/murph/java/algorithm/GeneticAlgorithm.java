@@ -104,14 +104,22 @@ public class GeneticAlgorithm
 	public void generateTheTwoContinuesRandomNumbersBetween0and1()
 	{
 		System.out.println(ConsoleMessage.CHOOSE_RANDOM_NUMBER_BETWEEN_ONE_AND_ZERO_PHASE_SIX);
+		
 		//Using random doubles to make sure they are between zero and one
-		this.continuesRandonNumberBetweenZeroAndOne_1 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
-		this.continuesRandonNumberBetweenZeroAndOne_2 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
+//		this.continuesRandonNumberBetweenZeroAndOne_1 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
+//		this.continuesRandonNumberBetweenZeroAndOne_2 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
+		this.continuesRandonNumberBetweenZeroAndOne_1 = this.cumulativeFrequency.getRandomDouble();
+		this.continuesRandonNumberBetweenZeroAndOne_2 = this.cumulativeFrequency.getRandomDouble();
+		
 		//Rounding them numbers to 3 decimal places
-		double continuesRandomNumberToThreeDecimalPlaces_1 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_1 * 1000) / 1000;
-		double continuesRandomNumberToThreeDecimalPlaces_2 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_2 * 1000) / 1000;
+//		double continuesRandomNumberToThreeDecimalPlaces_1 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_1 * 1000) / 1000;
+//		double continuesRandomNumberToThreeDecimalPlaces_2 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_2 * 1000) / 1000;
+		double continuesRandomNumberToThreeDecimalPlaces_1 = this.cumulativeFrequency.roundDouble(continuesRandonNumberBetweenZeroAndOne_1);
+		double continuesRandomNumberToThreeDecimalPlaces_2 = this.cumulativeFrequency.roundDouble(continuesRandonNumberBetweenZeroAndOne_2);
+		
 		System.out.println("Random Double 1: " + this.continuesRandonNumberBetweenZeroAndOne_1 + " and rounded: " + continuesRandomNumberToThreeDecimalPlaces_1);
 		System.out.println("Random Double 2: " + this.continuesRandonNumberBetweenZeroAndOne_2 + " and rounded: " + continuesRandomNumberToThreeDecimalPlaces_2);
+		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF..
 	
