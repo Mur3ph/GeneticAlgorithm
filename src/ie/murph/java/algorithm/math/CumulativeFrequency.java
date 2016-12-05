@@ -67,20 +67,6 @@ public class CumulativeFrequency
 		return this.normalization;
 	}
 	
-	// Choose a random double between zero and one to compare against the cumulative frequency - Generating two random numbers between 1 and 0
-	public void generateContinuesRandomNumbersBetween0and1()
-	{
-		//Using random doubles to make sure they are between zero and one
-		double firstRandomDouble = getRandomDouble();
-		double secondRandomDouble = getRandomDouble();
-		
-		double firstRandomDoubleRounded = roundDouble(firstRandomDouble);
-		double secondRandomDoubleRounded = roundDouble(firstRandomDouble);
-		
-		System.out.println("Random Double 1: " + firstRandomDouble + " and rounded: " + firstRandomDoubleRounded);
-		System.out.println("Random Double 2: " + secondRandomDouble + " and rounded: " + secondRandomDoubleRounded);
-	}// END OF.
-	
 	//Rounding them numbers to 3 decimal places
 	public double roundDouble(double randomDouble) 
 	{
@@ -91,6 +77,34 @@ public class CumulativeFrequency
 	{
 		return this.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
 	}
+	
+	//This method is used to find the position in the TreeMap of the two numbers, using the input of the two random numbers chosen in above method - (generateTheTwoContinuesRandomNumbersBetween0and1)
+	public Integer[] findThePositionOfTheTwoFitnessNumbersUsingTheTwoRandomNumbers(Double[] cumulativeFitnessArray)
+	{
+		Integer[] positionOfBothValues = new Integer[2];
+		
+		double correspondingCumulativeFitness = 0;
+		int atPositionX = 0;
+		Double[] bothContinuesRandonNumberBetweenZeroAndOne = new Double[]{this.getRandomDouble(), this.getRandomDouble()};
+		
+		//Looping threw the data set to find out when cumulative frequency is larger than the first random double between 1 & 0 
+		//Then selecting that particular cumulative number for manipulation
+		for(int atPositionY = 0; atPositionY < positionOfBothValues.length; atPositionY++)
+		{
+			for(atPositionX = 0; atPositionX < cumulativeFitnessArray.length; atPositionX++)
+			{
+				if(cumulativeFitnessArray[atPositionX] >= bothContinuesRandonNumberBetweenZeroAndOne[atPositionY]) 
+				{
+					correspondingCumulativeFitness = cumulativeFitnessArray[atPositionX];
+					positionOfBothValues[atPositionY] = atPositionX;
+					System.out.println("Fittest 1: " + correspondingCumulativeFitness + " PositionX= " + atPositionX);
+					//When found break, because no need to search anymore
+					break;
+				}
+			}
+		}
+		return positionOfBothValues;
+	}// END OF..
 	
 	// Method just for printing out the elements of the array.
 	private void displayArray(Object[] numbers)

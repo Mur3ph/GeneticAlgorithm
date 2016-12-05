@@ -106,14 +106,10 @@ public class GeneticAlgorithm
 		System.out.println(ConsoleMessage.CHOOSE_RANDOM_NUMBER_BETWEEN_ONE_AND_ZERO_PHASE_SIX);
 		
 		//Using random doubles to make sure they are between zero and one
-//		this.continuesRandonNumberBetweenZeroAndOne_1 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
-//		this.continuesRandonNumberBetweenZeroAndOne_2 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
 		this.continuesRandonNumberBetweenZeroAndOne_1 = this.cumulativeFrequency.getRandomDouble();
 		this.continuesRandonNumberBetweenZeroAndOne_2 = this.cumulativeFrequency.getRandomDouble();
 		
 		//Rounding them numbers to 3 decimal places
-//		double continuesRandomNumberToThreeDecimalPlaces_1 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_1 * 1000) / 1000;
-//		double continuesRandomNumberToThreeDecimalPlaces_2 = (double) Math.round(this.continuesRandonNumberBetweenZeroAndOne_2 * 1000) / 1000;
 		double continuesRandomNumberToThreeDecimalPlaces_1 = this.cumulativeFrequency.roundDouble(continuesRandonNumberBetweenZeroAndOne_1);
 		double continuesRandomNumberToThreeDecimalPlaces_2 = this.cumulativeFrequency.roundDouble(continuesRandonNumberBetweenZeroAndOne_2);
 		
@@ -131,7 +127,7 @@ public class GeneticAlgorithm
 		//When we come across a number larger than the random number, choose the corresponding number in [P] column (i.e. TreeMap Key)
 		//Gives back the position (i.e. location in the Map) of the values to choose
 		//TODO I should be using value [p] (i.e. The Tree Map Key, instead I am using fitness [P] Tree Map value )
-		this.thePositionOfTheTwoValuesChoosenUsingRandomValues = findThePositionOfTheTwoFitnessNumbersUsingTheTwoRandomNumbers(this.cumulativeFrequency.getCumulativeFrequencyArray());
+		this.thePositionOfTheTwoValuesChoosenUsingRandomValues = this.cumulativeFrequency.findThePositionOfTheTwoFitnessNumbersUsingTheTwoRandomNumbers(this.cumulativeFrequency.getCumulativeFrequencyArray());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
@@ -296,35 +292,6 @@ public class GeneticAlgorithm
 			individualPopulation++;
 		}
 		return Tmap2;
-	}// END OF..
-	
-	//This method is used to find the position in the TreeMap of the two numbers, using the input of the two random numbers chosen in above method - (generateTheTwoContinuesRandomNumbersBetween0and1)
-	public Integer[] findThePositionOfTheTwoFitnessNumbersUsingTheTwoRandomNumbers(Double[] cumulativeFitnessArray)
-	{
-		System.out.println("********************************************************** ");
-		Integer[] positionOfBothValues = new Integer[2];
-		
-		double correspondingCumulativeFitness = 0;
-		int atPositionX = 0;
-		Double[] bothContinuesRandonNumberBetweenZeroAndOne = new Double[]{this.continuesRandonNumberBetweenZeroAndOne_1, this.continuesRandonNumberBetweenZeroAndOne_2};
-		
-		//Looping threw the data set to find out when cumulative frequency is larger than the first random double between 1 & 0 
-		//Then selecting that particular cumulative number for manipulation
-		for(int atPositionY = 0; atPositionY < positionOfBothValues.length; atPositionY++)
-		{
-			for(atPositionX = 0; atPositionX < cumulativeFitnessArray.length; atPositionX++)
-			{
-				if(cumulativeFitnessArray[atPositionX] >= bothContinuesRandonNumberBetweenZeroAndOne[atPositionY]) 
-				{
-					correspondingCumulativeFitness = cumulativeFitnessArray[atPositionX];
-					positionOfBothValues[atPositionY] = atPositionX;
-					System.out.println("Fittest 1: " + correspondingCumulativeFitness + " PositionX= " + atPositionX);
-					//When found break, because no need to search anymore
-					break;
-				}
-			}
-		}
-		return positionOfBothValues;
 	}// END OF..
 	
 	// Altering one of the bits in the binary string using the StringBuilder Object
