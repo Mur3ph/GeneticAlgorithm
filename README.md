@@ -31,6 +31,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
   * **Interface segregation principle** - A client should never be forced to implement an interface that it doesn’t use or clients shouldn’t be forced to depend on methods they do not use.
   * **Dependency Inversion Principle** - Entities must depend on abstractions not on concretions. It states that the high level module must not depend on the low level module, but they should depend on abstractions.
 2. **Don't Repeat Yourself (DRY)** [go-to wiki] (https://en.wikipedia.org/wiki/Don't_repeat_yourself)
+  * ie. Similar principle to **Single-responsiblity principle** 
   
 ## TODO: Artificial Intelligence Algorithms
 
