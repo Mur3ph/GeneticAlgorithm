@@ -66,6 +66,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
   * [Clean code]	(Kindle book)
 7. [Neural Networks and Deep Learning] (http://neuralnetworksanddeeplearning.com/)
 8. [Deep Learning] (http://deeplearning.net/)
+9. [Safari] (http://techbus.safaribooksonline.com/home?uicode=oracle&sessionid=dd6e43f2-1896-49e2-8528-61b1399c1112)
 
 
 ## Video
@@ -76,6 +77,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 4. [MIT: Artificial Intelligence Course] (https://www.youtube.com/watch?v=TjZBTDzGeGg&list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi) 
 5. [MIT: Design and Analysis of Algorithms] (https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)
 6. [MIT: Java Programming] (https://www.youtube.com/watch?v=HMUkS0sJr70&list=PLYA1tuGWMbyrW0oqGaJesnrlxQSAclHf3)
+7. [Safari] (http://techbus.safaribooksonline.com/home?uicode=oracle&sessionid=dd6e43f2-1896-49e2-8528-61b1399c1112)
 
 
 
