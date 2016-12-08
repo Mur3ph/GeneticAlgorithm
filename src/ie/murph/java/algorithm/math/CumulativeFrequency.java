@@ -5,6 +5,7 @@ public class CumulativeFrequency
 {
 	private Normalization normalization;
 	private Double[] cumulativefrequencyArray;
+	private Integer[] fitnessPositionNumbers;
 	
 	public CumulativeFrequency(Normalization normalization)
 	{
@@ -79,36 +80,39 @@ public class CumulativeFrequency
 	}
 	
 	//This method is used to find the position in the TreeMap of the two numbers, using the input of the two random numbers chosen in above method - (generateTheTwoContinuesRandomNumbersBetween0and1)
-	public Integer[] findThePositionOfTheTwoFitnessNumbersUsingTheTwoRandomNumbers(Double[] cumulativeFitnessArray, double continuesRandonNumberBetweenZeroAndOne_1, double continuesRandonNumberBetweenZeroAndOne_2)
+	public void setPositionOfFitness(Double[] cumulativeFitnessArray, double continuesRandonNumberBetweenZeroAndOne_1, double continuesRandonNumberBetweenZeroAndOne_2)
 	{
-		Integer[] positionOfBothValues = new Integer[2];
+		fitnessPositionNumbers = new Integer[2];
 		
 		//Looping threw the data set to find out when cumulative frequency is larger than the first random double between 1 & 0 
 		//Then selecting that particular cumulative number for manipulation
-		for(int atPositionY = 0; atPositionY < positionOfBothValues.length; atPositionY++)
+		for(int fitnessNumber = 0; fitnessNumber < fitnessPositionNumbers.length; fitnessNumber++)
 		{
-			positionOfBothValues = doSomething(cumulativeFitnessArray, positionOfBothValues, atPositionY, continuesRandonNumberBetweenZeroAndOne_1, continuesRandonNumberBetweenZeroAndOne_2);
+			setPositionOfFitnessDeux(cumulativeFitnessArray, fitnessNumber, continuesRandonNumberBetweenZeroAndOne_1, continuesRandonNumberBetweenZeroAndOne_2);
 		}
-		return positionOfBothValues;
 	}
 	
-	public Integer[] doSomething(Double[] cumulativeFitnessArray, Integer[] positionOfBothValues, int atPositionY, double continuesRandonNumberBetweenZeroAndOne_1, double continuesRandonNumberBetweenZeroAndOne_2)
+	public void setPositionOfFitnessDeux(Double[] cumulativeFitnessArray, int fitnessNumber, double continuesRandonNumberBetweenZeroAndOne_1, double continuesRandonNumberBetweenZeroAndOne_2)
 	{
 		double correspondingCumulativeFitness = 0;
 		Double[] bothContinuesRandonNumberBetweenZeroAndOne = new Double[]{continuesRandonNumberBetweenZeroAndOne_1, continuesRandonNumberBetweenZeroAndOne_2};
 		
-		for(int atPositionX = 0; atPositionX < cumulativeFitnessArray.length; atPositionX++)
+		for(int frequencyNumber = 0; frequencyNumber < cumulativeFitnessArray.length; frequencyNumber++)
 		{
-			if(cumulativeFitnessArray[atPositionX] >= bothContinuesRandonNumberBetweenZeroAndOne[atPositionY]) 
+			if(cumulativeFitnessArray[frequencyNumber] >= bothContinuesRandonNumberBetweenZeroAndOne[fitnessNumber]) 
 			{
-				correspondingCumulativeFitness = cumulativeFitnessArray[atPositionX];
-				positionOfBothValues[atPositionY] = atPositionX;
-				System.out.println("Fittest 1: " + correspondingCumulativeFitness + " PositionX= " + atPositionX);
+				correspondingCumulativeFitness = cumulativeFitnessArray[frequencyNumber];
+				fitnessPositionNumbers[fitnessNumber] = frequencyNumber;
+				System.out.println("Fittest 1: " + correspondingCumulativeFitness + " PositionX= " + frequencyNumber);
 				//When found break, because no need to search anymore
 				break;
 			}
 		}
-		return positionOfBothValues;
+	}
+	
+	public Integer[] getPositionOfFitness()
+	{
+		return fitnessPositionNumbers;
 	}
 	
 	// Method just for printing out the elements of the array.
