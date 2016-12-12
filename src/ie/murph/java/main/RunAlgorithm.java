@@ -45,7 +45,6 @@ public class RunAlgorithm
 				geneticAlgorithm.calculatingTotalSumOfFitnessValuePhaseThree();
 				geneticAlgorithm.dividingSumOfFitnessAgainstEachIndividualFitnessToCalculateNormalizedData();
 				geneticAlgorithm.addingNormalizedDataToCalculateCumulaiveFreguency();
-				geneticAlgorithm.generateTheTwoContinuesRandomNumbersBetween0and1();
 				geneticAlgorithm.compareEachRandonDoubleAgainstCumulativeFrequency();
 				geneticAlgorithm.choosePopulationMemberFromCumulativeFrequenceyChosenInPhase8();
 				geneticAlgorithm.crossoverOfTwoBinaryStringAtRandomPositions();

@@ -14,8 +14,6 @@ public class GeneticAlgorithm
 	private CumulativeFrequency cumulativeFrequency;
 	
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
-	private double continuesRandonNumberBetweenZeroAndOne_1;
-	private double continuesRandonNumberBetweenZeroAndOne_2;
 	private String binaryValue_1;
 	private String binaryValue_2;
 	private String offspring_Child_1;
@@ -100,25 +98,6 @@ public class GeneticAlgorithm
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
-	// Choose a random double between zero and one to compare against the cumulative frequency - Generating two random numbers between 1 and 0
-	public void generateTheTwoContinuesRandomNumbersBetween0and1()
-	{
-		System.out.println(ConsoleMessage.CHOOSE_RANDOM_NUMBER_BETWEEN_ONE_AND_ZERO_PHASE_SIX);
-		
-		//Using random doubles to make sure they are between zero and one
-		this.continuesRandonNumberBetweenZeroAndOne_1 = this.cumulativeFrequency.getRandomDouble();
-		this.continuesRandonNumberBetweenZeroAndOne_2 = this.cumulativeFrequency.getRandomDouble();
-		
-		//Rounding them numbers to 3 decimal places
-		double continuesRandomNumberToThreeDecimalPlaces_1 = this.cumulativeFrequency.roundDouble(continuesRandonNumberBetweenZeroAndOne_1);
-		double continuesRandomNumberToThreeDecimalPlaces_2 = this.cumulativeFrequency.roundDouble(continuesRandonNumberBetweenZeroAndOne_2);
-		
-		System.out.println("Random Double 1: " + this.continuesRandonNumberBetweenZeroAndOne_1 + " and rounded: " + continuesRandomNumberToThreeDecimalPlaces_1);
-		System.out.println("Random Double 2: " + this.continuesRandonNumberBetweenZeroAndOne_2 + " and rounded: " + continuesRandomNumberToThreeDecimalPlaces_2);
-		
-		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
-	}// END OF..
-	
 	//Comparing the two random numbers generated, against the Cumulative frequency
 	public void compareEachRandonDoubleAgainstCumulativeFrequency() 
 	{
@@ -127,7 +106,7 @@ public class GeneticAlgorithm
 		//When we come across a number larger than the random number, choose the corresponding number in [P] column (i.e. TreeMap Key)
 		//Gives back the position (i.e. location in the Map) of the values to choose
 		//TODO I should be using value [p] (i.e. The Tree Map Key, instead I am using fitness [P] Tree Map value )
-		this.cumulativeFrequency.setPositionOfFitness(this.cumulativeFrequency.getCumulativeFrequencyArray(), this.continuesRandonNumberBetweenZeroAndOne_1, this.continuesRandonNumberBetweenZeroAndOne_2);
+		this.cumulativeFrequency.setPositionOfFitness(this.cumulativeFrequency.getCumulativeFrequencyArray());
 		this.thePositionOfTheTwoValuesChoosenUsingRandomValues = this.cumulativeFrequency.getPositionOfFitness();
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
