@@ -1,5 +1,6 @@
 package ie.murph.java.algorithm.math;
 
+import ie.murph.java.util.PrintUtil;
 
 public class CumulativeFrequency 
 {
@@ -58,7 +59,7 @@ public class CumulativeFrequency
 
 	private void printFrequency()
 	{
-		displayArray(this.cumulativefrequencyArray);
+		PrintUtil.displayArray(this.cumulativefrequencyArray);
 	}
 	
 	public Double[] getCumulativeFrequencyArray()
@@ -130,14 +131,4 @@ public class CumulativeFrequency
 	{
 		return fitnessPositionNumbers;
 	}
-	
-	// Method just for printing out the elements of the array.
-	private void displayArray(Object[] numbers)
-	{
-		for(int atPositionX = 0; atPositionX < numbers.length; atPositionX++)
-		{
-			System.out.println(numbers[atPositionX]);
-		}
-		System.out.println("");
-	}// END OF..
 }

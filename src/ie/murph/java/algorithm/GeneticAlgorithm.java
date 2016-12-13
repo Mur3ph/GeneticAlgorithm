@@ -2,6 +2,8 @@ package ie.murph.java.algorithm;
 
 import ie.murph.java.algorithm.math.CumulativeFrequency;
 import ie.murph.java.interfaces.ConsoleMessage;
+import ie.murph.java.util.PrintUtil;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -35,7 +37,7 @@ public class GeneticAlgorithm
 		this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 10);
 		this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().populateArrayWithRandomWholeNumbersOfLength(5);
 		
-		displayArray(this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers());
+		PrintUtil.displayArray(this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}// END OF.
 	
@@ -182,32 +184,11 @@ public class GeneticAlgorithm
 		System.out.println(ConsoleMessage.SEND_NEW_FITNESS_TO_RANDOM_GENERATOR_TO_CREATE_NEXT_GENERATION_PHASE_TWELVE);
 		Integer[] arrayOfFitterNextGenerationIntegers = new Integer[5];
 		arrayOfFitterNextGenerationIntegers = getNextGeneration(this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), this.newFitnessInt_1, this.newFitnessInt_2);
-		displayArray(arrayOfFitterNextGenerationIntegers);
+		PrintUtil.displayArray(arrayOfFitterNextGenerationIntegers);
 		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), 0, 5);
 //		TODO Clearing the fitness to begin again with new better population, I think I am adding the previous total with the new total were I should be clearing the previous total and starting with fresh data
 //		m_fitnessValuesFromOrderedTreemap.clear();
 	}
-	
-	// Method just for printing out the elements of the generic collections.
-	public static void displayGenericTypes(Collection<?> data)
-	{
-		Iterator<?> itr = data.iterator();
-		while(itr.hasNext())
-		{
-			Object str = itr.next();
- 			System.out.println(str + " ");
-		}
-	}// END OF..
-	
-	// Method just for printing out the elements of the array.
-	public static void displayArray(Object[] numbers)
-	{
-		for(int atPositionX = 0; atPositionX < numbers.length; atPositionX++)
-		{
-			System.out.println(numbers[atPositionX]);
-		}
-		System.out.println("");
-	}// END OF..
 	
 	// Method to find the (6 bit) binary equivalent of an integer - or change the length of loops to whatever size bit you need
 	private static String convertIntegerToBinaryString(int numValue, int lengthOfBinaryString) 
