@@ -1,6 +1,6 @@
 package ie.murph.java.algorithm.math;
 
-import ie.murph.java.util.PrintUtil;
+import ie.murph.java.util.*;
 
 public class CumulativeFrequency 
 {
@@ -41,9 +41,13 @@ public class CumulativeFrequency
 	private void isCumulaiveFreguencyOk() 
 	{
 		//Checking or catching any potential errors in the data, as the last cumulative fitness should always be one
-		if(this.cumulativefrequencyArray[frequencyLength()] != 1.0)
+		if(this.cumulativefrequencyArray[frequencyLength()] < 1.0)
 		{
-			this.cumulativefrequencyArray[frequencyLength()] = roundNumberUp() ;
+			this.cumulativefrequencyArray[frequencyLength()] = MathUtil.roundNumberUp(this.cumulativefrequencyArray[frequencyLength()]) ;
+		}
+		else
+		{
+			this.cumulativefrequencyArray[frequencyLength()] = MathUtil.roundNumberDown(this.cumulativefrequencyArray[frequencyLength()]) ;
 		}
 	}
 	
@@ -52,9 +56,14 @@ public class CumulativeFrequency
 		return cumulativefrequencyArray.length-1;
 	}
 	
-	private double roundNumberUp() 
+	private double roundNumberUp(double cumulativefrequency) 
 	{
-		return 1.0;
+		return Math.ceil(cumulativefrequency);
+	}
+	
+	private Double roundNumberDown(double cumulativefrequency) 
+	{
+		return Math.floor(cumulativefrequency);
 	}
 
 	private void printFrequency()
@@ -118,14 +127,8 @@ public class CumulativeFrequency
 	//TODO: Delete when no longer needed for visual test
 	public void printTwoRandomeNumbers()
 	{
-		System.out.println("Random Double 1: " + randomNumber1 + " and rounded: " + roundDouble(randomNumber1));
-		System.out.println("Random Double 2: " + randomNumber2 + " and rounded: " + roundDouble(randomNumber2));
-	}
-	
-	//Rounding them numbers to 3 decimal places
-	public double roundDouble(double randomDouble) 
-	{
-		return (double) Math.round(randomDouble * 1000) / 1000;
+		System.out.println("Random Double 1: " + randomNumber1 + " and rounded: " + MathUtil.roundToThreeDecimalPlaces(randomNumber1));
+		System.out.println("Random Double 2: " + randomNumber2 + " and rounded: " + MathUtil.roundToThreeDecimalPlaces(randomNumber2));
 	}
 	
 	public Integer[] getPositionOfFitness()
