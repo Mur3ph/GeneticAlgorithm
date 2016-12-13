@@ -86,9 +86,7 @@ public class CumulativeFrequency
 	// Phase 6: Choose a random double between zero and one to compare against the cumulative frequency - Generating two random numbers between 1 and 0
 	public void setPositionOfFitness(Double[] cumulativeFitnessArray)
 	{
-		randomNumber1 = this.getRandomDouble();
-		randomNumber2 = this.getRandomDouble();
-		bothContinuesRandonNumberBetweenZeroAndOne = new Double[]{randomNumber1, randomNumber2};
+		setStructuresForRandomNumbers();
 		fitnessPositionNumbers = new Integer[2];
 		
 		//Looping threw the data set to find out when cumulative frequency is larger than the first random double between 1 & 0 
@@ -100,12 +98,13 @@ public class CumulativeFrequency
 		printTwoRandomeNumbers();
 	}
 	
-	public void printTwoRandomeNumbers()
+	private void setStructuresForRandomNumbers() 
 	{
-		System.out.println("Random Double 1: " + randomNumber1 + " and rounded: " + roundDouble(randomNumber1));
-		System.out.println("Random Double 2: " + randomNumber2 + " and rounded: " + roundDouble(randomNumber2));
+		randomNumber1 = this.getRandomDouble();
+		randomNumber2 = this.getRandomDouble();
+		bothContinuesRandonNumberBetweenZeroAndOne = new Double[]{randomNumber1, randomNumber2};
 	}
-	
+
 	public void setPositionOfFitnessDeux(Double[] cumulativeFitnessArray, int fitnessNumber)
 	{
 		for(int frequencyNumber = 0; frequencyNumber < cumulativeFitnessArray.length; frequencyNumber++)
@@ -119,6 +118,12 @@ public class CumulativeFrequency
 				break;
 			}
 		}
+	}
+	
+	public void printTwoRandomeNumbers()
+	{
+		System.out.println("Random Double 1: " + randomNumber1 + " and rounded: " + roundDouble(randomNumber1));
+		System.out.println("Random Double 2: " + randomNumber2 + " and rounded: " + roundDouble(randomNumber2));
 	}
 	
 	public Integer[] getPositionOfFitness()
