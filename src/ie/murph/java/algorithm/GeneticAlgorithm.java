@@ -5,8 +5,6 @@ import ie.murph.java.interfaces.ConsoleMessage;
 import ie.murph.java.util.PrintUtil;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -108,7 +106,7 @@ public class GeneticAlgorithm
 		//When we come across a number larger than the random number, choose the corresponding number in [P] column (i.e. TreeMap Key)
 		//Gives back the position (i.e. location in the Map) of the values to choose
 		//TODO I should be using value [p] (i.e. The Tree Map Key, instead I am using fitness [P] Tree Map value )
-		this.cumulativeFrequency.setPositionOfFitness(this.cumulativeFrequency.getCumulativeFrequencyArray());
+		this.cumulativeFrequency.setFitness(this.cumulativeFrequency.getCumulativeFrequencyArray());
 		this.thePositionOfTheTwoValuesChoosenUsingRandomValues = this.cumulativeFrequency.getPositionOfFitness();
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
