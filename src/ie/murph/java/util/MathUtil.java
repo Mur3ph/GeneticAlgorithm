@@ -11,6 +11,7 @@ public class MathUtil
 	public static double roundNumberUp(double number) 
 	{
 		return Math.ceil(number);
+//		return 1.0; Use to just return 1.0
 	}
 	
 	public static Double roundNumberDown(double number) 

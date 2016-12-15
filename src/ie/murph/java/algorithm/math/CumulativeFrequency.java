@@ -56,16 +56,6 @@ public class CumulativeFrequency
 		return cumulativefrequencyArray.length-1;
 	}
 	
-	private double roundNumberUp(double cumulativefrequency) 
-	{
-		return Math.ceil(cumulativefrequency);
-	}
-	
-	private Double roundNumberDown(double cumulativefrequency) 
-	{
-		return Math.floor(cumulativefrequency);
-	}
-
 	private void printFrequency()
 	{
 		PrintUtil.displayArray(this.cumulativefrequencyArray);
@@ -104,28 +94,37 @@ public class CumulativeFrequency
 		bothContinuesRandonNumberBetweenZeroAndOne = new Double[]{randomNumber1, randomNumber2};
 	}
 	
-	public double getRandomDouble()
+	private double getRandomDouble()
 	{
 		return this.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomDecimalNumberBetweenZeroAndOne();
 	}
 
-	public void checkFrequecyAgainstFitness(Double[] cumulativeFitnessArray, int fitnessNumber)
+	private void checkFrequecyAgainstFitness(Double[] cumulativeFitnessArray, int fitnessNumber)
 	{
 		for(int frequencyNumber = 0; frequencyNumber < cumulativeFitnessArray.length; frequencyNumber++)
 		{
 			if(cumulativeFitnessArray[frequencyNumber] >= bothContinuesRandonNumberBetweenZeroAndOne[fitnessNumber]) 
 			{
-				double correspondingCumulativeFitness = cumulativeFitnessArray[frequencyNumber];
-				fitnessPositionNumbers[fitnessNumber] = frequencyNumber;
-				System.out.println("Fittest 1: " + correspondingCumulativeFitness + " PositionX= " + frequencyNumber);
+				setFitnessPosition(frequencyNumber, fitnessNumber);
+				System.out.println("Fittest 1: " + assignFrequencyNumberToCorrespondingCumulativeFitness(cumulativeFitnessArray, frequencyNumber) + " PositionX= " + frequencyNumber+1);
 				//When found break, because no need to search anymore
 				break;
 			}
 		}
 	}
 	
+	private Double assignFrequencyNumberToCorrespondingCumulativeFitness(Double[] cumulativeFitnessArray, int frequencyNumber)
+	{
+		return cumulativeFitnessArray[frequencyNumber];
+	}
+	
+	private void setFitnessPosition(int frequencyNumber, int fitnessNumber)
+	{
+		fitnessPositionNumbers[fitnessNumber] = frequencyNumber;
+	}
+	
 	//TODO: Delete when no longer needed for visual test
-	public void printTwoRandomeNumbers()
+	private void printTwoRandomeNumbers()
 	{
 		System.out.println("Random Double 1: " + randomNumber1 + " and rounded: " + MathUtil.roundToThreeDecimalPlaces(randomNumber1));
 		System.out.println("Random Double 2: " + randomNumber2 + " and rounded: " + MathUtil.roundToThreeDecimalPlaces(randomNumber2));
