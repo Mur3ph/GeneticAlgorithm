@@ -5,11 +5,11 @@ import ie.murph.java.util.*;
 public class CumulativeFrequency 
 {
 	private Normalization normalization;
-	private Double[] cumulativefrequencyArray;
+	private Double[] cumulativefrequencyArrayOfDoubles;
 	private Integer[] fitnessPositionNumbers;
-	private double randomNumber1;
-	private double randomNumber2;
-	private Double[] bothContinuesRandonNumberBetweenZeroAndOne;
+	private double randomDouble1;
+	private double randomDouble2;
+	private Double[] continuesRandonDoubles;
 	
 	public CumulativeFrequency(Normalization normalization)
 	{
@@ -21,7 +21,7 @@ public class CumulativeFrequency
 		// Cumulative frequency Data for each of the fitness is calculated by adding each of the normalized 
 		// data types one after the other finally adding to one. NB: Must be one
 		// (e.g. Normalized data: 0.267, 0.267, 0.233, 0.233 --> Cumulative data: 0.267, 0.534, 0.767, 1)
-		this.cumulativefrequencyArray = new Double[this.normalization.getOrganizedFitness().getSizeOfMap()];
+		this.cumulativefrequencyArrayOfDoubles = new Double[this.normalization.getOrganizedFitness().getSizeOfMap()];
 	}
 	
 	public void calculateFrequency()
@@ -30,8 +30,8 @@ public class CumulativeFrequency
 		for(int atPostionX = 0; atPostionX < this.normalization.getOrganizedFitness().getSizeOfMap(); atPostionX++)
 		{
 			//Rounding the data to 3 decimal places.
-			this.cumulativefrequencyArray[atPostionX] = (double) Math.round((previousCumulativeNumber + this.normalization.getNormalizedFitness()[atPostionX]) * 1000) / 1000;
-			previousCumulativeNumber = this.cumulativefrequencyArray[atPostionX];
+			this.cumulativefrequencyArrayOfDoubles[atPostionX] = (double) Math.round((previousCumulativeNumber + this.normalization.getNormalizedFitness()[atPostionX]) * 1000) / 1000;
+			previousCumulativeNumber = this.cumulativefrequencyArrayOfDoubles[atPostionX];
 		}
 		isCumulaiveFreguencyOk();
 		printFrequency();
@@ -41,29 +41,29 @@ public class CumulativeFrequency
 	private void isCumulaiveFreguencyOk() 
 	{
 		//Checking or catching any potential errors in the data, as the last cumulative fitness should always be one
-		if(this.cumulativefrequencyArray[frequencyLength()] < 1.0)
+		if(this.cumulativefrequencyArrayOfDoubles[frequencyLength()] < 1.0)
 		{
-			this.cumulativefrequencyArray[frequencyLength()] = MathUtil.roundNumberUp(this.cumulativefrequencyArray[frequencyLength()]) ;
+			this.cumulativefrequencyArrayOfDoubles[frequencyLength()] = MathUtil.roundNumberUp(this.cumulativefrequencyArrayOfDoubles[frequencyLength()]) ;
 		}
 		else
 		{
-			this.cumulativefrequencyArray[frequencyLength()] = MathUtil.roundNumberDown(this.cumulativefrequencyArray[frequencyLength()]) ;
+			this.cumulativefrequencyArrayOfDoubles[frequencyLength()] = MathUtil.roundNumberDown(this.cumulativefrequencyArrayOfDoubles[frequencyLength()]) ;
 		}
 	}
 	
 	private int frequencyLength()
 	{
-		return cumulativefrequencyArray.length-1;
+		return cumulativefrequencyArrayOfDoubles.length-1;
 	}
 	
 	private void printFrequency()
 	{
-		PrintUtil.displayArray(this.cumulativefrequencyArray);
+		PrintUtil.displayArray(this.cumulativefrequencyArrayOfDoubles);
 	}
 	
 	public Double[] getCumulativeFrequencyArray()
 	{
-		return this.cumulativefrequencyArray;
+		return this.cumulativefrequencyArrayOfDoubles;
 	}
 	
 	public Normalization getNormalization()
@@ -89,9 +89,9 @@ public class CumulativeFrequency
 	
 	private void setDataStructuresForRandomNumbers() 
 	{
-		randomNumber1 = this.getRandomDouble();
-		randomNumber2 = this.getRandomDouble();
-		bothContinuesRandonNumberBetweenZeroAndOne = new Double[]{randomNumber1, randomNumber2};
+		randomDouble1 = this.getRandomDouble();
+		randomDouble2 = this.getRandomDouble();
+		continuesRandonDoubles = new Double[]{randomDouble1, randomDouble2};
 	}
 	
 	private double getRandomDouble()
@@ -103,7 +103,7 @@ public class CumulativeFrequency
 	{
 		for(int frequencyNumber = 0; frequencyNumber < cumulativeFitnessArray.length; frequencyNumber++)
 		{
-			if(cumulativeFitnessArray[frequencyNumber] >= bothContinuesRandonNumberBetweenZeroAndOne[fitnessNumber]) 
+			if(cumulativeFitnessArray[frequencyNumber] >= continuesRandonDoubles[fitnessNumber]) 
 			{
 				setFitnessPosition(frequencyNumber, fitnessNumber);
 				System.out.println("Fittest 1: " + assignFrequencyNumberToCorrespondingCumulativeFitness(cumulativeFitnessArray, frequencyNumber) + " PositionX= " + frequencyNumber+1);
@@ -126,8 +126,8 @@ public class CumulativeFrequency
 	//TODO: Delete when no longer needed for visual test
 	private void printTwoRandomeNumbers()
 	{
-		System.out.println("Random Double 1: " + randomNumber1 + " and rounded: " + MathUtil.roundToThreeDecimalPlaces(randomNumber1));
-		System.out.println("Random Double 2: " + randomNumber2 + " and rounded: " + MathUtil.roundToThreeDecimalPlaces(randomNumber2));
+		System.out.println("Random Double 1: " + randomDouble1 + " and rounded: " + MathUtil.roundToThreeDecimalPlaces(randomDouble1));
+		System.out.println("Random Double 2: " + randomDouble2 + " and rounded: " + MathUtil.roundToThreeDecimalPlaces(randomDouble2));
 	}
 	
 	public Integer[] getPositionOfFitness()
