@@ -106,7 +106,8 @@ public class CumulativeFrequency
 			if(cumulativeFitnessArray[frequencyNumber] >= continuesRandonDoubles[fitnessNumber]) 
 			{
 				setFitnessPosition(frequencyNumber, fitnessNumber);
-				System.out.println("Fittest 1: " + assignFrequencyNumberToCorrespondingCumulativeFitness(cumulativeFitnessArray, frequencyNumber) + " PositionX= " + frequencyNumber+1);
+				int position = frequencyNumber+1;
+				System.out.println("Fittest 1: " + assignFrequencyNumberToCorrespondingCumulativeFitness(cumulativeFitnessArray, frequencyNumber) + " PositionX= " + position);
 				//When found break, because no need to search anymore
 				break;
 			}
