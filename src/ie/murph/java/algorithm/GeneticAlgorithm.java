@@ -2,7 +2,7 @@ package ie.murph.java.algorithm;
 
 import ie.murph.java.algorithm.math.CumulativeFrequency;
 import ie.murph.java.interfaces.ConsoleMessage;
-import ie.murph.java.util.PrintUtil;
+import ie.murph.java.util.*;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -124,8 +124,8 @@ public class GeneticAlgorithm
 		
 //		find the (6 bit) binary equivalent of an integer
 		int lengthOfBinaryString = 6;
-		this.binaryValue_1 = convertIntegerToBinaryString(eliteFitnessValueChosen_1, lengthOfBinaryString);
-		this.binaryValue_2 = convertIntegerToBinaryString(eliteFitnessValueChosen_2, lengthOfBinaryString);
+		this.binaryValue_1 = BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_1, lengthOfBinaryString);
+		this.binaryValue_2 = BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_2, lengthOfBinaryString);
 		System.out.println("The 2 binary values: BINARY of: " + eliteFitnessValueChosen_1 + " = " + this.binaryValue_1 + " BINARY of: " + eliteFitnessValueChosen_2 + " = " + this.binaryValue_2);
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
@@ -154,7 +154,7 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.MUTATION_OF_OFFSPRING_STRING_PHASE_TEN);
 		this.twoMutatedBinaryStringBuilderObj = new StringBuilder[2];
-		this.twoMutatedBinaryStringBuilderObj = mutateBinaryStrings(this.offspring_Child_1, this.offspring_Child_2);
+		this.twoMutatedBinaryStringBuilderObj = BinaryUtil.mutateBinaryStrings(this.offspring_Child_1, this.offspring_Child_2, this.cumulativeFrequency);
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
@@ -168,8 +168,8 @@ public class GeneticAlgorithm
 		mutatedOffspringBuilderObj_2 = this.twoMutatedBinaryStringBuilderObj[1];
 		String mutatedOffspringStr_1 = mutatedOffspringBuilderObj_1.toString();
 		String mutatedOffspringStr_2 = mutatedOffspringBuilderObj_2.toString();
-		this.newFitnessInt_1 = convertBinaryToInteger(mutatedOffspringStr_1);
-		this.newFitnessInt_2 = convertBinaryToInteger(mutatedOffspringStr_2);
+		this.newFitnessInt_1 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_1);
+		this.newFitnessInt_2 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_2);
 		System.out.println("The new offspring 1 in integer fitness form: " + mutatedOffspringStr_1 + " = " + this.newFitnessInt_1);
 		System.out.println("The new offspring 2 in integer fitness form: " + mutatedOffspringStr_2 + " = " + this.newFitnessInt_2);
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
@@ -188,57 +188,15 @@ public class GeneticAlgorithm
 //		m_fitnessValuesFromOrderedTreemap.clear();
 	}
 	
-	// Method to find the (6 bit) binary equivalent of an integer - or change the length of loops to whatever size bit you need
-	private static String convertIntegerToBinaryString(int numValue, int lengthOfBinaryString) 
-	{
-		String binary = "";
-		for(int x = 0; x < lengthOfBinaryString; x++)
-		{
-			//If the value has a remainder use the '1' binary bit
-			if(numValue % 2 == 1)
-			{
-				binary = "1" + binary;
-			}
-			if(numValue % 2 == 0)
-			{
-				binary = "0" + binary;
-			}
-			numValue = numValue/2;
-		}
-		return binary;
-	}// END OF..
-	
-	//Converting my binary bits back to Integer
-	public static int convertBinaryToInteger(String binary)
-	{
-//			int x = 128; // for 8 bit we use 128      (i.e. 7 bit = 128)
-		int bit32 = 32; // for 6 bit we use 32 etc.   (i.e. 5 bit = 32)
-//			int a = 16; // for 5 bit we use 32 etc.   (i.e. 4 bit = 32)
-		int result = 0;
-		for(int atPositionX = 0; atPositionX < 6; atPositionX++)
-		{
-			char character = binary.charAt(atPositionX);
-			// Single quotations needed when using 'char'
-			if(character == '1')
-			{
-				//Only if the binary bit is a one do we calculate sum below
-				result = result + (bit32*1);
-			}
-			//We are working from the left of the binary string to the right, so we start at 32, then half for 16, next 8, and so on
-			bit32=bit32/2;
-		}
-		return result;
-	}// END OF..
-	
 	// Method to get 3 random integers from the getRandomNumbers() and replace 2 with the new fitness
-		public static Integer[] getNextGeneration(Integer[] originalFitness, int firstNewFitness, int secondNewFitness)
-		{
-			Arrays.sort(originalFitness);
-			originalFitness[0] = firstNewFitness;
-			originalFitness[1] = secondNewFitness;
-			Arrays.sort(originalFitness);
-			return originalFitness;
-		}// END OF..
+	public static Integer[] getNextGeneration(Integer[] originalFitness, int firstNewFitness, int secondNewFitness)
+	{
+		Arrays.sort(originalFitness);
+		originalFitness[0] = firstNewFitness;
+		originalFitness[1] = secondNewFitness;
+		Arrays.sort(originalFitness);
+		return originalFitness;
+	}// END OF..
 	
 	// Put the random numbers in the array into a map tree
 	public static Map<String, Integer> putArrayDataToMap(Integer[] allFitnessFromArray)
@@ -253,48 +211,5 @@ public class GeneticAlgorithm
 		return Tmap2;
 	}// END OF..
 	
-	// Altering one of the bits in the binary string using the StringBuilder Object
-	public StringBuilder[] mutateBinaryStrings(String offspringBinaryStr_1, String offspringBinaryStr_2)
-	{
-		//Converting the string to string builder object because easy to alter or manipulate binary bits
-		StringBuilder offspringBinaryBuilder_1 = new StringBuilder(offspringBinaryStr_1);
-		StringBuilder offspringBinaryBuilder_2 = new StringBuilder(offspringBinaryStr_2);
-		StringBuilder[] bothOffspringBinaryBuilderStringsToBeAlteredArray = new StringBuilder[]{offspringBinaryBuilder_1, offspringBinaryBuilder_2};
-		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
-		
-		//Choosing the bit in each binary string to be altered at random each time
-		this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
-		int randomPositionOfBinaryBitToBeAltered_1 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
-		int randomPositionOfBinaryBitToBeAltered_2 = this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
-		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = new Integer[]{randomPositionOfBinaryBitToBeAltered_1, randomPositionOfBinaryBitToBeAltered_2};
-		
-		// Getting that bit in the random position
-		char binaryBitOfOffspring_1 = offspringBinaryStr_1.charAt(randomPositionOfBinaryBitToBeAltered_1);
-		char binaryBitOfOffspring_2 = offspringBinaryStr_2.charAt(randomPositionOfBinaryBitToBeAltered_2);
-		char[] bothbinaryBitsOfOffspringStringToBeAltered = new char[]{binaryBitOfOffspring_1, binaryBitOfOffspring_2};
-		char changeBinaryBitTo;
-		
-		//If it is a zero binary bit change to a one and so on..
-		for(int atPositionX = 0; atPositionX < bothOffspringBinaryBuilderStringsToBeAlteredArray.length; atPositionX++)
-		{
-			if(bothbinaryBitsOfOffspringStringToBeAltered[atPositionX] == '0')
-			{
-				changeBinaryBitTo = '1';
-//					newOffspring = offspring.substring(0, 5) + newbit + offspring.substring(position);
-				bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], changeBinaryBitTo);
-				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX];
-			}
-			else
-			{
-				changeBinaryBitTo = '0';
-				bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], changeBinaryBitTo);
-				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX];
-			}
-		}
-		
-		System.out.println("Mutated offspring 1: " + offspringBinaryBuilder_1 + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_1);
-		System.out.println("Mutated offspring 2: " + offspringBinaryBuilder_2 + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_2);
-		return strBuilderArrayWithBothAlteredBinaryCodes;
-	}// END OF..
 	
 }//END OF CLASS..
