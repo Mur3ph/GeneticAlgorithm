@@ -5,8 +5,6 @@ import ie.murph.java.interfaces.ConsoleMessage;
 import ie.murph.java.util.*;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class GeneticAlgorithm 
 {
@@ -189,7 +187,7 @@ public class GeneticAlgorithm
 	}
 	
 	// Method to get 3 random integers from the getRandomNumbers() and replace 2 with the new fitness
-	public static Integer[] getNextGeneration(Integer[] originalFitness, int firstNewFitness, int secondNewFitness)
+	private static Integer[] getNextGeneration(Integer[] originalFitness, int firstNewFitness, int secondNewFitness)
 	{
 		Arrays.sort(originalFitness);
 		originalFitness[0] = firstNewFitness;
@@ -198,18 +196,4 @@ public class GeneticAlgorithm
 		return originalFitness;
 	}// END OF..
 	
-	// Put the random numbers in the array into a map tree
-	public static Map<String, Integer> putArrayDataToMap(Integer[] allFitnessFromArray)
-	{
-		Map<String, Integer> Tmap2 = new TreeMap<String, Integer>();
-		int individualPopulation = 1;
-		for(int fitnessX : allFitnessFromArray)
-		{
-			Tmap2.put("Tree Key"+individualPopulation, fitnessX);
-			individualPopulation++;
-		}
-		return Tmap2;
-	}// END OF..
-	
-	
-}//END OF CLASS..
+}
