@@ -4,6 +4,9 @@ import ie.murph.java.algorithm.math.CumulativeFrequency;
 
 public class BinaryUtil 
 {
+	static char negativeBinaryBit = '0';
+	static char positiveBinaryBit = '1';
+	
 	// Method to find the (6 bit) binary equivalent of an integer - or change the length of loops to whatever size bit you need
 	public static String convertIntegerToBinaryString(int numValue, int lengthOfBinaryString) 
 	{
@@ -22,6 +25,15 @@ public class BinaryUtil
 			numValue = numValue/2;
 		}
 		return binary;
+	}
+	
+	private static string ifValueHasARemainderReturnPositiveBinaryBit(int numValue)
+	{
+		//If the value has a remainder use the '1' binary bit
+		if(numValue % 2 == 1)
+		{
+			binary = "1" + binary;
+		}
 	}
 	
 	//Converting my binary bits back to Integer
@@ -65,22 +77,18 @@ public class BinaryUtil
 		char binaryBitOfOffspring_1 = offspringBinaryStr_1.charAt(randomPositionOfBinaryBitToBeAltered_1);
 		char binaryBitOfOffspring_2 = offspringBinaryStr_2.charAt(randomPositionOfBinaryBitToBeAltered_2);
 		char[] bothbinaryBitsOfOffspringStringToBeAltered = new char[]{binaryBitOfOffspring_1, binaryBitOfOffspring_2};
-		char changeBinaryBitTo;
 		
 		//If it is a zero binary bit change to a one and so on..
 		for(int atPositionX = 0; atPositionX < bothOffspringBinaryBuilderStringsToBeAlteredArray.length; atPositionX++)
 		{
 			if(bothbinaryBitsOfOffspringStringToBeAltered[atPositionX] == '0')
 			{
-				changeBinaryBitTo = '1';
-//						newOffspring = offspring.substring(0, 5) + newbit + offspring.substring(position);
-				bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], changeBinaryBitTo);
+				bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], positiveBinaryBit);
 				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX];
 			}
 			else
 			{
-				changeBinaryBitTo = '0';
-				bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], changeBinaryBitTo);
+				bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], negativeBinaryBit);
 				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX];
 			}
 		}
@@ -89,4 +97,5 @@ public class BinaryUtil
 		System.out.println("Mutated offspring 2: " + offspringBinaryBuilder_2 + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_2);
 		return strBuilderArrayWithBothAlteredBinaryCodes;
 	}
+	
 }
