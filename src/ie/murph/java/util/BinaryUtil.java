@@ -14,15 +14,15 @@ public class BinaryUtil
 		for(int x = 0; x < lengthOfBinaryString; x++)
 		{
 			//If the value has a remainder use the '1' binary bit
-			if(numValue % 2 == 1) //(hasRemainder(numValue))
+			if(hasRemainder(numValue))
 			{
 				binary = appendPositiveBinaryBit(binary);
 			}
-			if(numValue % 2 == 0)
+			if(hasNoRemainder(numValue))
 			{
 				binary = appendNegativeBinaryBit(binary);
 			}
-			numValue = numValue/2;
+			numValue = half(numValue);
 		}
 		return binary;
 	}
@@ -37,9 +37,19 @@ public class BinaryUtil
 		return "1" + binary;
 	}
 	
+	private static boolean hasNoRemainder(int numberValue) 
+	{
+		return numberValue % 2 == 0;
+	}
+	
 	private static String appendNegativeBinaryBit(String binary)
 	{
 		return "0" + binary;
+	}
+	
+	private static int half(int value) 
+	{
+		return value/2;
 	}
 	
 	//Converting my binary bits back to Integer
