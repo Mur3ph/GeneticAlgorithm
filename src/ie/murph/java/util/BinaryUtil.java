@@ -81,9 +81,7 @@ public class BinaryUtil
 	public static StringBuilder[] mutateBinaryStrings(String offspringBinaryStr_1, String offspringBinaryStr_2, CumulativeFrequency cumulativeFrequency)
 	{
 		//Converting the string to string builder object because easy to alter or manipulate binary bits
-		StringBuilder offspringBinaryBuilder_1 = new StringBuilder(offspringBinaryStr_1);
-		StringBuilder offspringBinaryBuilder_2 = new StringBuilder(offspringBinaryStr_2);
-		StringBuilder[] bothOffspringBinaryBuilderStringsToBeAlteredArray = new StringBuilder[]{offspringBinaryBuilder_1, offspringBinaryBuilder_2};
+		StringBuilder[] bothOffspringBinaryBuilderStringsToBeAlteredArray = new StringBuilder[]{offspringBinaryBitBuilder(offspringBinaryStr_1), offspringBinaryBitBuilder(offspringBinaryStr_2)};
 		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
 		//Choosing the bit in each binary string to be altered at random each time
@@ -112,8 +110,8 @@ public class BinaryUtil
 			}
 		}
 		
-		System.out.println("Mutated offspring 1: " + offspringBinaryBuilder_1 + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_1);
-		System.out.println("Mutated offspring 2: " + offspringBinaryBuilder_2 + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_2);
+		System.out.println("Mutated offspring 1: " + offspringBinaryBitBuilder(offspringBinaryStr_1) + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_1);
+		System.out.println("Mutated offspring 2: " + offspringBinaryBitBuilder(offspringBinaryStr_2) + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_2);
 		return strBuilderArrayWithBothAlteredBinaryCodes;
 	}
 	
