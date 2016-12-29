@@ -60,6 +60,8 @@ public class BinaryUtil
 	public static int convertBinaryToInteger(String binary)
 	{
 		int integer = 0;
+		int bit32 = 32;
+		
 		for(int atPositionX = 0; atPositionX < 6; atPositionX++)
 		{
 			char character = binary.charAt(atPositionX);
@@ -113,6 +115,11 @@ public class BinaryUtil
 		System.out.println("Mutated offspring 1: " + offspringBinaryBuilder_1 + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_1);
 		System.out.println("Mutated offspring 2: " + offspringBinaryBuilder_2 + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_2);
 		return strBuilderArrayWithBothAlteredBinaryCodes;
+	}
+	
+	private static StringBuilder offspringBinaryBitBuilder(String offspringBinary)
+	{
+		return new StringBuilder(offspringBinary);
 	}
 	
 }
