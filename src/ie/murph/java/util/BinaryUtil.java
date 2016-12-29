@@ -11,6 +11,8 @@ public class BinaryUtil
 	static char negativeBinaryBit = '0';
 	static char positiveBinaryBit = '1';
 	
+	static StringBuilder[] arrayOfOffspringBinary;
+	
 	// Method to find the (6 bit) binary equivalent of an integer - or change the length of loops to whatever size bit you need
 	public static String convertIntegerToBinaryString(int integerValue, int lengthOfBinaryString) 
 	{
@@ -81,7 +83,9 @@ public class BinaryUtil
 	public static StringBuilder[] mutateBinaryStrings(String offspringBinaryStr_1, String offspringBinaryStr_2, CumulativeFrequency cumulativeFrequency)
 	{
 		//Converting the string to string builder object because easy to alter or manipulate binary bits
-		StringBuilder[] bothOffspringBinaryBuilderStringsToBeAlteredArray = new StringBuilder[]{offspringBinaryBitBuilder(offspringBinaryStr_1), offspringBinaryBitBuilder(offspringBinaryStr_2)};
+		//StringBuilder[] bothOffspringBinaryBuilderStringsToBeAlteredArray = new StringBuilder[]{offspringBinaryBit(offspringBinaryStr_1), offspringBinaryBit(offspringBinaryStr_2)};
+		setArrayOfOffspringBinary(offspringBinaryStr_1, offspringBinaryStr_2);
+		
 		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
 		//Choosing the bit in each binary string to be altered at random each time
@@ -96,28 +100,43 @@ public class BinaryUtil
 		char[] bothbinaryBitsOfOffspringStringToBeAltered = new char[]{binaryBitOfOffspring_1, binaryBitOfOffspring_2};
 		
 		//If it is a zero binary bit change to a one and so on..
-		for(int atPositionX = 0; atPositionX < bothOffspringBinaryBuilderStringsToBeAlteredArray.length; atPositionX++)
+		for(int atPositionX = 0; atPositionX < lengthOfArrayBinaryOffspring(); atPositionX++)
 		{
 			if(bothbinaryBitsOfOffspringStringToBeAltered[atPositionX] == negativeBinaryBit)
 			{
-				bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], positiveBinaryBit);
-				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX];
+				getArrayOfOffspringBinary()[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], positiveBinaryBit);
+				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = getArrayOfOffspringBinary()[atPositionX];
 			}
 			else
 			{
-				bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], negativeBinaryBit);
-				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = bothOffspringBinaryBuilderStringsToBeAlteredArray[atPositionX];
+				getArrayOfOffspringBinary()[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], negativeBinaryBit);
+				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = getArrayOfOffspringBinary()[atPositionX];
 			}
 		}
 		
-		System.out.println("Mutated offspring 1: " + offspringBinaryBitBuilder(offspringBinaryStr_1) + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_1);
-		System.out.println("Mutated offspring 2: " + offspringBinaryBitBuilder(offspringBinaryStr_2) + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_2);
+		System.out.println("Mutated offspring 1: " + offspringBinaryBit(offspringBinaryStr_1) + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_1);
+		System.out.println("Mutated offspring 2: " + offspringBinaryBit(offspringBinaryStr_2) + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_2);
 		return strBuilderArrayWithBothAlteredBinaryCodes;
 	}
 	
-	private static StringBuilder offspringBinaryBitBuilder(String offspringBinary)
+	private static void setArrayOfOffspringBinary(String offspringBinaryStr_1, String offspringBinaryStr_2)
+	{
+		arrayOfOffspringBinary = new StringBuilder[]{offspringBinaryBit(offspringBinaryStr_1), offspringBinaryBit(offspringBinaryStr_2)};
+	}
+	
+	private static StringBuilder offspringBinaryBit(String offspringBinary)
 	{
 		return new StringBuilder(offspringBinary);
+	}
+	
+	private static int lengthOfArrayBinaryOffspring()
+	{
+		return arrayOfOffspringBinary.length;
+	}
+	
+	private static StringBuilder[] getArrayOfOffspringBinary()
+	{
+		return arrayOfOffspringBinary;
 	}
 	
 }
