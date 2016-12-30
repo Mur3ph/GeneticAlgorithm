@@ -88,15 +88,8 @@ public class BinaryUtil
 		
 		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
-		//Choosing the bit in each binary string to be altered at random each time
-		int randomPositionOfBinaryBitToBeAltered_1 = getRandomNumber(cumulativeFrequency);
-		int randomPositionOfBinaryBitToBeAltered_2 = getRandomNumber(cumulativeFrequency);
-		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = new Integer[]{randomPositionOfBinaryBitToBeAltered_1, randomPositionOfBinaryBitToBeAltered_2};
-		
-		// Getting that bit in the random position
-		char binaryBitOfOffspring_1 = offspringBinaryStr_1.charAt(randomPositionOfBinaryBitToBeAltered_1);
-		char binaryBitOfOffspring_2 = offspringBinaryStr_2.charAt(randomPositionOfBinaryBitToBeAltered_2);
-		char[] bothbinaryBitsOfOffspringStringToBeAltered = new char[]{binaryBitOfOffspring_1, binaryBitOfOffspring_2};
+		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = getSomething(cumulativeFrequency);
+		char[] bothbinaryBitsOfOffspringStringToBeAltered = getSomethingElse(offspringBinaryStr_1, offspringBinaryStr_2, bothrandomNumbersOfPositionsOfBinaryBitToBeAltered);
 		
 		//If it is a zero binary bit change to a one and so on..
 		for(int atPositionX = 0; atPositionX < lengthOfArrayBinaryOffspring(); atPositionX++)
@@ -113,8 +106,8 @@ public class BinaryUtil
 			}
 		}
 		
-		System.out.println("Mutated offspring 1: " + offspringBinaryBit(offspringBinaryStr_1) + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_1);
-		System.out.println("Mutated offspring 2: " + offspringBinaryBit(offspringBinaryStr_2) + " Bit at positon " + randomPositionOfBinaryBitToBeAltered_2);
+		System.out.println("Mutated offspring 1: " + offspringBinaryBit(offspringBinaryStr_1) + " Bit at positon " + bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[0]);
+		System.out.println("Mutated offspring 2: " + offspringBinaryBit(offspringBinaryStr_2) + " Bit at positon " + bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[1]);
 		return strBuilderArrayWithBothAlteredBinaryCodes;
 	}
 	
@@ -131,6 +124,18 @@ public class BinaryUtil
 	private static int lengthOfArrayBinaryOffspring()
 	{
 		return arrayOfOffspringBinary.length;
+	}
+	
+	private static Integer[] getSomething(CumulativeFrequency cumulativeFrequency)
+	{
+		//Choosing the bit in each binary string to be altered at random each time
+		return new Integer[]{getRandomNumber(cumulativeFrequency), getRandomNumber(cumulativeFrequency)};
+	}
+	
+	private static char[] getSomethingElse(String offspringBinaryStr_1, String offspringBinaryStr_2, Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered)
+	{
+		// Getting that bit in the random position
+		return new char[]{offspringBinaryStr_1.charAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[0]), offspringBinaryStr_1.charAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[1])};
 	}
 	
 	//Choosing the bit in each binary string to be altered at random each time
