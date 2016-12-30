@@ -89,9 +89,8 @@ public class BinaryUtil
 		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
 		//Choosing the bit in each binary string to be altered at random each time
-		cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
-		int randomPositionOfBinaryBitToBeAltered_1 = cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
-		int randomPositionOfBinaryBitToBeAltered_2 = cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
+		int randomPositionOfBinaryBitToBeAltered_1 = getRandomNumber(cumulativeFrequency);
+		int randomPositionOfBinaryBitToBeAltered_2 = getRandomNumber(cumulativeFrequency);
 		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = new Integer[]{randomPositionOfBinaryBitToBeAltered_1, randomPositionOfBinaryBitToBeAltered_2};
 		
 		// Getting that bit in the random position
@@ -132,6 +131,13 @@ public class BinaryUtil
 	private static int lengthOfArrayBinaryOffspring()
 	{
 		return arrayOfOffspringBinary.length;
+	}
+	
+	//Choosing the bit in each binary string to be altered at random each time
+	private static int getRandomNumber(CumulativeFrequency cumulativeFrequency)
+	{
+		cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
+		return cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
 	}
 	
 	private static StringBuilder[] getArrayOfOffspringBinary()
