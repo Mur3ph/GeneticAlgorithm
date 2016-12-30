@@ -106,8 +106,7 @@ public class BinaryUtil
 			}
 		}
 		
-		System.out.println("Mutated offspring 1: " + offspringBinaryBit(offspringBinaryStr_1) + " Bit at positon " + bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[0]);
-		System.out.println("Mutated offspring 2: " + offspringBinaryBit(offspringBinaryStr_2) + " Bit at positon " + bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[1]);
+		printSomething(offspringBinaryStr_2, offspringBinaryStr_2, bothrandomNumbersOfPositionsOfBinaryBitToBeAltered);
 		return strBuilderArrayWithBothAlteredBinaryCodes;
 	}
 	
@@ -149,5 +148,12 @@ public class BinaryUtil
 	{
 		return arrayOfOffspringBinary;
 	}
+	
+	private static void printSomething(String offspringBinaryStr_1, String offspringBinaryStr_2, Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered) 
+	{
+		System.out.println("Mutated offspring 1: " + offspringBinaryBit(offspringBinaryStr_1) + " Bit at positon " + bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[0]);
+		System.out.println("Mutated offspring 2: " + offspringBinaryBit(offspringBinaryStr_2) + " Bit at positon " + bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[1]);
+	}
+
 	
 }
