@@ -85,27 +85,12 @@ public class BinaryUtil
 		//Converting the string to string builder object because easy to alter or manipulate binary bits
 		setArrayOfOffspringBinary(offspringBinaryStr_1, offspringBinaryStr_2);
 		
-		StringBuilder[] arrayWithBothAlteredBinaryCodes = new StringBuilder[2];
+		Integer[] randomNumbersToGetBinaryBitPositionsToBeAltered = getPositionsOfBothBinaryBitsToBeMutated(cumulativeFrequency);
+		char[] offspringBinaryBitsToBeAltered = getBothBinaryBits(offspringBinaryStr_1, offspringBinaryStr_2, randomNumbersToGetBinaryBitPositionsToBeAltered);
 		
-		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = getPositionsOfBothBinaryBitsToBeMutated(cumulativeFrequency);
-		char[] bothbinaryBitsOfOffspringStringToBeAltered = getBothBinaryBits(offspringBinaryStr_1, offspringBinaryStr_2, bothrandomNumbersOfPositionsOfBinaryBitToBeAltered);
+		StringBuilder[] arrayWithBothAlteredBinaryCodes = getAlteredBinaryStrings(offspringBinaryBitsToBeAltered, randomNumbersToGetBinaryBitPositionsToBeAltered);
 		
-		//If it is a zero binary bit change to a one and so on..
-		for(int binaryIndex = 0; binaryIndex < lengthOfArrayBinaryOffspring(); binaryIndex++)
-		{
-			if(bothbinaryBitsOfOffspringStringToBeAltered[binaryIndex] == negativeBinaryBit)
-			{
-				getArrayOfOffspringBinary()[binaryIndex].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[binaryIndex], positiveBinaryBit);
-				arrayWithBothAlteredBinaryCodes[binaryIndex] = getArrayOfOffspringBinary()[binaryIndex];
-			}
-			else
-			{
-				getArrayOfOffspringBinary()[binaryIndex].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[binaryIndex], negativeBinaryBit);
-				arrayWithBothAlteredBinaryCodes[binaryIndex] = getArrayOfOffspringBinary()[binaryIndex];
-			}
-		}
-		
-		printBinaryAndPositionToBeMutated(offspringBinaryStr_1, offspringBinaryStr_2, bothrandomNumbersOfPositionsOfBinaryBitToBeAltered);
+		printBinaryAndPositionToBeMutated(offspringBinaryStr_1, offspringBinaryStr_2, randomNumbersToGetBinaryBitPositionsToBeAltered);
 		return arrayWithBothAlteredBinaryCodes;
 	}
 	
@@ -130,17 +115,37 @@ public class BinaryUtil
 		return new Integer[]{getRandomNumber(cumulativeFrequency), getRandomNumber(cumulativeFrequency)};
 	}
 	
+	//Choosing the bit in each binary string to be altered at random each time
+	private static int getRandomNumber(CumulativeFrequency cumulativeFrequency)
+	{
+		cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
+		return cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
+	}
+	
 	private static char[] getBothBinaryBits(String offspringBinaryStr_1, String offspringBinaryStr_2, Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered)
 	{
 		// Getting that bit in the random position
 		return new char[]{offspringBinaryStr_1.charAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[0]), offspringBinaryStr_1.charAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[1])};
 	}
 	
-	//Choosing the bit in each binary string to be altered at random each time
-	private static int getRandomNumber(CumulativeFrequency cumulativeFrequency)
+	private static StringBuilder[] getAlteredBinaryStrings(char[] offspringBinaryBitsToBeAltered, Integer[] randomNumbersToGetBinaryBitPositionsToBeAltered) 
 	{
-		cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
-		return cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
+		StringBuilder[] arrayWithBothAlteredBinaryCodes = new StringBuilder[2];
+		//If it is a zero binary bit change to a one and so on..
+		for(int binaryIndex = 0; binaryIndex < lengthOfArrayBinaryOffspring(); binaryIndex++)
+		{
+			if(offspringBinaryBitsToBeAltered[binaryIndex] == negativeBinaryBit)
+			{
+				getArrayOfOffspringBinary()[binaryIndex].setCharAt(randomNumbersToGetBinaryBitPositionsToBeAltered[binaryIndex], positiveBinaryBit);
+				arrayWithBothAlteredBinaryCodes[binaryIndex] = getArrayOfOffspringBinary()[binaryIndex];
+			}
+			else
+			{
+				getArrayOfOffspringBinary()[binaryIndex].setCharAt(randomNumbersToGetBinaryBitPositionsToBeAltered[binaryIndex], negativeBinaryBit);
+				arrayWithBothAlteredBinaryCodes[binaryIndex] = getArrayOfOffspringBinary()[binaryIndex];
+			}
+		}
+		return arrayWithBothAlteredBinaryCodes;
 	}
 	
 	private static StringBuilder[] getArrayOfOffspringBinary()
