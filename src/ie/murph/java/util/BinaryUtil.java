@@ -86,28 +86,28 @@ public class BinaryUtil
 		//StringBuilder[] bothOffspringBinaryBuilderStringsToBeAlteredArray = new StringBuilder[]{offspringBinaryBit(offspringBinaryStr_1), offspringBinaryBit(offspringBinaryStr_2)};
 		setArrayOfOffspringBinary(offspringBinaryStr_1, offspringBinaryStr_2);
 		
-		StringBuilder[] strBuilderArrayWithBothAlteredBinaryCodes = new StringBuilder[2];
+		StringBuilder[] arrayWithBothAlteredBinaryCodes = new StringBuilder[2];
 		
-		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = getSomething(cumulativeFrequency);
-		char[] bothbinaryBitsOfOffspringStringToBeAltered = getSomethingElse(offspringBinaryStr_1, offspringBinaryStr_2, bothrandomNumbersOfPositionsOfBinaryBitToBeAltered);
+		Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered = getPositionsOfBothBinaryBitsToBeMutated(cumulativeFrequency);
+		char[] bothbinaryBitsOfOffspringStringToBeAltered = getBothBinaryBits(offspringBinaryStr_1, offspringBinaryStr_2, bothrandomNumbersOfPositionsOfBinaryBitToBeAltered);
 		
 		//If it is a zero binary bit change to a one and so on..
-		for(int atPositionX = 0; atPositionX < lengthOfArrayBinaryOffspring(); atPositionX++)
+		for(int binaryIndex = 0; binaryIndex < lengthOfArrayBinaryOffspring(); binaryIndex++)
 		{
-			if(bothbinaryBitsOfOffspringStringToBeAltered[atPositionX] == negativeBinaryBit)
+			if(bothbinaryBitsOfOffspringStringToBeAltered[binaryIndex] == negativeBinaryBit)
 			{
-				getArrayOfOffspringBinary()[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], positiveBinaryBit);
-				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = getArrayOfOffspringBinary()[atPositionX];
+				getArrayOfOffspringBinary()[binaryIndex].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[binaryIndex], positiveBinaryBit);
+				arrayWithBothAlteredBinaryCodes[binaryIndex] = getArrayOfOffspringBinary()[binaryIndex];
 			}
 			else
 			{
-				getArrayOfOffspringBinary()[atPositionX].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[atPositionX], negativeBinaryBit);
-				strBuilderArrayWithBothAlteredBinaryCodes[atPositionX] = getArrayOfOffspringBinary()[atPositionX];
+				getArrayOfOffspringBinary()[binaryIndex].setCharAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[binaryIndex], negativeBinaryBit);
+				arrayWithBothAlteredBinaryCodes[binaryIndex] = getArrayOfOffspringBinary()[binaryIndex];
 			}
 		}
 		
-		printSomething(offspringBinaryStr_2, offspringBinaryStr_2, bothrandomNumbersOfPositionsOfBinaryBitToBeAltered);
-		return strBuilderArrayWithBothAlteredBinaryCodes;
+		printBinaryAndPositionToBeMutated(offspringBinaryStr_1, offspringBinaryStr_2, bothrandomNumbersOfPositionsOfBinaryBitToBeAltered);
+		return arrayWithBothAlteredBinaryCodes;
 	}
 	
 	private static void setArrayOfOffspringBinary(String offspringBinaryStr_1, String offspringBinaryStr_2)
@@ -125,13 +125,13 @@ public class BinaryUtil
 		return arrayOfOffspringBinary.length;
 	}
 	
-	private static Integer[] getSomething(CumulativeFrequency cumulativeFrequency)
+	private static Integer[] getPositionsOfBothBinaryBitsToBeMutated(CumulativeFrequency cumulativeFrequency)
 	{
 		//Choosing the bit in each binary string to be altered at random each time
 		return new Integer[]{getRandomNumber(cumulativeFrequency), getRandomNumber(cumulativeFrequency)};
 	}
 	
-	private static char[] getSomethingElse(String offspringBinaryStr_1, String offspringBinaryStr_2, Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered)
+	private static char[] getBothBinaryBits(String offspringBinaryStr_1, String offspringBinaryStr_2, Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered)
 	{
 		// Getting that bit in the random position
 		return new char[]{offspringBinaryStr_1.charAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[0]), offspringBinaryStr_1.charAt(bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[1])};
@@ -149,7 +149,7 @@ public class BinaryUtil
 		return arrayOfOffspringBinary;
 	}
 	
-	private static void printSomething(String offspringBinaryStr_1, String offspringBinaryStr_2, Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered) 
+	private static void printBinaryAndPositionToBeMutated(String offspringBinaryStr_1, String offspringBinaryStr_2, Integer[] bothrandomNumbersOfPositionsOfBinaryBitToBeAltered) 
 	{
 		System.out.println("Mutated offspring 1: " + offspringBinaryBit(offspringBinaryStr_1) + " Bit at positon " + bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[0]);
 		System.out.println("Mutated offspring 2: " + offspringBinaryBit(offspringBinaryStr_2) + " Bit at positon " + bothrandomNumbersOfPositionsOfBinaryBitToBeAltered[1]);
