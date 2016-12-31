@@ -152,7 +152,7 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.MUTATION_OF_OFFSPRING_STRING_PHASE_TEN);
 		this.twoMutatedBinaryStringBuilderObj = new StringBuilder[2];
-		this.twoMutatedBinaryStringBuilderObj = BinaryUtil.mutateBinaryStrings(this.offspring_Child_1, this.offspring_Child_2, this.cumulativeFrequency);
+		this.twoMutatedBinaryStringBuilderObj = BinaryUtil.getMutatedBinaryStrings(this.offspring_Child_1, this.offspring_Child_2, this.cumulativeFrequency);
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	

@@ -79,11 +79,10 @@ public class BinaryUtil
 		return integer;
 	}
 	
-	// Altering one of the bits in the binary string using the StringBuilder Object
-	public static StringBuilder[] mutateBinaryStrings(String offspringBinaryStr_1, String offspringBinaryStr_2, CumulativeFrequency cumulativeFrequency)
+	// Altering one of the bits in both binary strings, using the StringBuilder Object
+	public static StringBuilder[] getMutatedBinaryStrings(String offspringBinaryStr_1, String offspringBinaryStr_2, CumulativeFrequency cumulativeFrequency)
 	{
 		//Converting the string to string builder object because easy to alter or manipulate binary bits
-		//StringBuilder[] bothOffspringBinaryBuilderStringsToBeAlteredArray = new StringBuilder[]{offspringBinaryBit(offspringBinaryStr_1), offspringBinaryBit(offspringBinaryStr_2)};
 		setArrayOfOffspringBinary(offspringBinaryStr_1, offspringBinaryStr_2);
 		
 		StringBuilder[] arrayWithBothAlteredBinaryCodes = new StringBuilder[2];
