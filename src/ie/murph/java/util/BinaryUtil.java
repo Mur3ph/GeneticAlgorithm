@@ -6,7 +6,11 @@ public class BinaryUtil
 {
 //	final static int bit128 = 128; 		// for 8 bit we use 128      (i.e. 7 bit = 128)
 	final static int bit32 = 32; 		// for 6 bit we use 32 etc.  (i.e. 5 bit = 32)
-//	final static int bit16 = 16; 		// for 5 bit we use 32 etc.  (i.e. 4 bit = 32)
+//	final static int bit16 = 16; 		// for 5 bit we use 16 etc.  (i.e. 4 bit = 16)
+	
+	final static int lengthOf128BitBinary = 8;
+	final static int lengthOf32BitBinary = 6;
+	final static int lengthOf16BitBinary = 5;
 	
 	final static char negativeBinaryBit = '0';
 	final static char positiveBinaryBit = '1';
@@ -64,19 +68,19 @@ public class BinaryUtil
 	public static int convertBinaryToInteger(String binary)
 	{
 		int integer = 0;
-		int bit32 = 32;
+		int binaryBitIntegerValue = bit32;
 		
-		for(int atPositionX = 0; atPositionX < 6; atPositionX++)
+		for(int atPositionX = 0; atPositionX < binary.length(); atPositionX++)
 		{
 			char character = binary.charAt(atPositionX);
 			// Single quotations needed when using 'char'
 			if(character == positiveBinaryBit)
 			{
 				//Only if the binary bit is a one do we calculate sum below
-				integer = integer + (bit32*1);
+				integer = integer + (binaryBitIntegerValue*1);
 			}
 			//We are working from the left of the binary string to the right, so we start at 32, then half for 16, next 8, and so on
-			bit32=bit32/2;
+			binaryBitIntegerValue=binaryBitIntegerValue/2;
 		}
 		return integer;
 	}
