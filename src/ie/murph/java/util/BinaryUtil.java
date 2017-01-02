@@ -70,11 +70,11 @@ public class BinaryUtil
 		int integer = 0;
 		int binaryBitIntegerValue = bit32;
 		
-		for(int atPositionX = 0; atPositionX < binary.length(); atPositionX++)
+		for(int indexPosition = 0; indexPosition < binary.length(); indexPosition++)
 		{
-			char character = binary.charAt(atPositionX);
+			char binaryBit = binary.charAt(indexPosition);
 			// Single quotations needed when using 'char'
-			if(character == positiveBinaryBit)
+			if(binaryBit == positiveBinaryBit)
 			{
 				//Only if the binary bit is a one do we calculate sum below
 				integer = integer + (binaryBitIntegerValue*1);
