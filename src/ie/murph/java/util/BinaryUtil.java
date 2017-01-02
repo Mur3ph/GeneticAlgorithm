@@ -86,14 +86,7 @@ public class BinaryUtil
 	{
 		//Converting the string to string builder object because easy to alter or manipulate binary bits
 		setArrayOfOffspringBinary(offspringBinaryStr_1, offspringBinaryStr_2);
-		
-//		Integer[] randomNumbersToGetBinaryBitPositionsToBeAltered = getPositionsOfBothBinaryBitsToBeMutated(cumulativeFrequency);
-//		char[] offspringBinaryBitsToBeAltered = getBothBinaryBits(offspringBinaryStr_1, offspringBinaryStr_2, randomNumbersToGetBinaryBitPositionsToBeAltered);
-		
-//		StringBuilder[] arrayWithBothAlteredBinaryCodes = getAlteredBinaryStrings(offspringBinaryBitsToBeAltered, randomNumbersToGetBinaryBitPositionsToBeAltered);
-		
-//		printBinaryAndPositionToBeMutated(offspringBinaryStr_1, offspringBinaryStr_2, randomNumbersToGetBinaryBitPositionsToBeAltered);
-		
+			
 		randomNumbersToGetBinaryBitPositionsToBeAltered = getPositionsOfBothBinaryBitsToBeMutated(cumulativeFrequency);
 		offspringBinaryBitsToBeAltered = getBothBinaryBits(offspringBinaryStr_1, offspringBinaryStr_2);
 		
