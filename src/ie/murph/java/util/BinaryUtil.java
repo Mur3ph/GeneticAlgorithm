@@ -4,12 +4,12 @@ import ie.murph.java.algorithm.math.CumulativeFrequency;
 
 public class BinaryUtil 
 {
-//	static int bit128 = 128; 	// for 8 bit we use 128      (i.e. 7 bit = 128)
-	static int bit32 = 32; 		// for 6 bit we use 32 etc.  (i.e. 5 bit = 32)
-//	static int bit16 = 16; 		// for 5 bit we use 32 etc.  (i.e. 4 bit = 32)
+//	final static int bit128 = 128; 		// for 8 bit we use 128      (i.e. 7 bit = 128)
+	final static int bit32 = 32; 		// for 6 bit we use 32 etc.  (i.e. 5 bit = 32)
+//	final static int bit16 = 16; 		// for 5 bit we use 32 etc.  (i.e. 4 bit = 32)
 	
-	static char negativeBinaryBit = '0';
-	static char positiveBinaryBit = '1';
+	final static char negativeBinaryBit = '0';
+	final static char positiveBinaryBit = '1';
 	
 	static StringBuilder[] arrayOfOffspringBinary;
 	static Integer[] randomNumbersToGetBinaryBitPositionsToBeAltered;
