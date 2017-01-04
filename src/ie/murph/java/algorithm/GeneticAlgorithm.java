@@ -123,11 +123,8 @@ public class GeneticAlgorithm
 		int eliteFitnessValueChosen_1 = this.cumulativeFrequency.getNormalization().getSumFitness().getFitnessValuesList().get(randomPositionValueX);
 		int eliteFitnessValueChosen_2 = this.cumulativeFrequency.getNormalization().getSumFitness().getFitnessValuesList().get(randomPositionValueY);
 		
-//		find the (6 bit) binary equivalent of an integer
-		int lengthOfBinaryString = 6;
-		
-		crossover.setBinaryValue_1(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_1, lengthOfBinaryString));
-		crossover.setBinaryValue_2(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_2, lengthOfBinaryString));
+		crossover.setBinaryValue_1(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_1));
+		crossover.setBinaryValue_2(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_2));
 		
 		System.out.println("The 2 binary values: BINARY of: " + eliteFitnessValueChosen_1 + " = " + crossover.getBinaryValue_1() + " BINARY of: " + eliteFitnessValueChosen_2 + " = " + crossover.getBinaryValue_2());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);

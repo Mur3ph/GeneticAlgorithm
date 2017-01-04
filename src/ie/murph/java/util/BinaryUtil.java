@@ -20,10 +20,10 @@ public class BinaryUtil
 	static char[] offspringBinaryBitsToBeAltered;
 	
 	// Method to find the (6 bit) binary equivalent of an integer - or change the length of loops to whatever size bit you need
-	public static String convertIntegerToBinaryString(int integerValue, int lengthOfBinaryString) 
+	public static String convertIntegerToBinaryString(int integerValue) 
 	{
 		String binary = "";
-		for(int x = 0; x < lengthOfBinaryString; x++)
+		for(int x = 0; x < lengthOf32BitBinary; x++)
 		{
 			//If the value has a remainder use the '1' binary bit
 			if(hasRemainder(integerValue))
