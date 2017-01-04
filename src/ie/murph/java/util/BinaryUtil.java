@@ -111,11 +111,6 @@ public class BinaryUtil
 		return new StringBuilder(offspringBinary);
 	}
 	
-	private static int lengthOfArrayBinaryOffspring()
-	{
-		return arrayOfOffspringBinary.length;
-	}
-	
 	private static Integer[] getPositionsOfBothBinaryBitsToBeMutated(CumulativeFrequency cumulativeFrequency)
 	{
 		//Choosing the bit in each binary string to be altered at random each time
@@ -153,6 +148,11 @@ public class BinaryUtil
 			}
 		}
 		return arrayWithBothAlteredBinaryCodes;
+	}
+	
+	private static int lengthOfArrayBinaryOffspring()
+	{
+		return arrayOfOffspringBinary.length;
 	}
 	
 	private static StringBuilder[] getArrayOfOffspringBinary()
