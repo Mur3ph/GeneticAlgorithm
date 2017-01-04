@@ -1,5 +1,6 @@
 package ie.murph.java.algorithm;
 
+import ie.murph.java.algorithm.math.Crossover;
 import ie.murph.java.algorithm.math.CumulativeFrequency;
 import ie.murph.java.interfaces.ConsoleMessage;
 import ie.murph.java.util.*;
@@ -10,6 +11,7 @@ public class GeneticAlgorithm
 {
 	//Constant variables and data interface structures used throughout the algorithm
 	private CumulativeFrequency cumulativeFrequency;
+	private Crossover crossover;
 	
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
 	private String binaryValue_1;
@@ -20,9 +22,10 @@ public class GeneticAlgorithm
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
-	public GeneticAlgorithm(CumulativeFrequency cumulativeFrequency)
+	public GeneticAlgorithm(CumulativeFrequency cumulativeFrequency, Crossover crossover)
 	{
 		this.cumulativeFrequency = cumulativeFrequency;
+		this.crossover = crossover;
 	}
 		
 	//Generating the five random fitness to begin with..
@@ -122,9 +125,11 @@ public class GeneticAlgorithm
 		
 //		find the (6 bit) binary equivalent of an integer
 		int lengthOfBinaryString = 6;
-		this.binaryValue_1 = BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_1, lengthOfBinaryString);
-		this.binaryValue_2 = BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_2, lengthOfBinaryString);
-		System.out.println("The 2 binary values: BINARY of: " + eliteFitnessValueChosen_1 + " = " + this.binaryValue_1 + " BINARY of: " + eliteFitnessValueChosen_2 + " = " + this.binaryValue_2);
+		
+		crossover.setBinaryValue_1(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_1, lengthOfBinaryString));
+		crossover.setBinaryValue_2(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_2, lengthOfBinaryString));
+		
+		System.out.println("The 2 binary values: BINARY of: " + eliteFitnessValueChosen_1 + " = " + crossover.getBinaryValue_1() + " BINARY of: " + eliteFitnessValueChosen_2 + " = " + crossover.getBinaryValue_2());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
@@ -134,11 +139,12 @@ public class GeneticAlgorithm
 	{
 		//TODO Can only chose one offspring per pair of elite candidates AND generate more random parents
 		System.out.println(ConsoleMessage.CROSSOVER_OF_TWO_BINARY_STRINGS_PHASE_NINE);
-		String firstHalfOfBinaryGene_1 = this.binaryValue_1.substring(0, 3);
-		String secondHalfOfBinaryGene_1 = this.binaryValue_2.substring(3, 6);
 		
-		String firstHalfOfBinaryGene_2 = this.binaryValue_2.substring(0, 3);
-		String secondHalfOfBinaryGene_2 = this.binaryValue_1.substring(3, 6);
+		String firstHalfOfBinaryGene_1 = this.crossover.getBinaryValue_1().substring(0, 3);
+		String secondHalfOfBinaryGene_1 = this.crossover.getBinaryValue_2().substring(3, 6);
+		
+		String firstHalfOfBinaryGene_2 = this.crossover.getBinaryValue_2().substring(0, 3);
+		String secondHalfOfBinaryGene_2 = this.crossover.getBinaryValue_1().substring(3, 6);
 		
 		this.offspring_Child_1 = firstHalfOfBinaryGene_1 + secondHalfOfBinaryGene_1;
 		this.offspring_Child_2 = firstHalfOfBinaryGene_2 + secondHalfOfBinaryGene_2;
