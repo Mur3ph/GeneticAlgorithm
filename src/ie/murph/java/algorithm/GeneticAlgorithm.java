@@ -14,8 +14,6 @@ public class GeneticAlgorithm
 	private Crossover crossover;
 	
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
-	private String binaryValue_1;
-	private String binaryValue_2;
 	private String offspring_Child_1;
 	private String offspring_Child_2;
 	private StringBuilder[] twoMutatedBinaryStringBuilderObj;
@@ -123,8 +121,8 @@ public class GeneticAlgorithm
 		int eliteFitnessValueChosen_1 = this.cumulativeFrequency.getNormalization().getSumFitness().getFitnessValuesList().get(randomPositionValueX);
 		int eliteFitnessValueChosen_2 = this.cumulativeFrequency.getNormalization().getSumFitness().getFitnessValuesList().get(randomPositionValueY);
 		
-		crossover.setBinaryValue_1(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_1));
-		crossover.setBinaryValue_2(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_2));
+		this.crossover.setBinaryValue_1(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_1));
+		this.crossover.setBinaryValue_2(BinaryUtil.convertIntegerToBinaryString(eliteFitnessValueChosen_2));
 		
 		System.out.println("The 2 binary values: BINARY of: " + eliteFitnessValueChosen_1 + " = " + crossover.getBinaryValue_1() + " BINARY of: " + eliteFitnessValueChosen_2 + " = " + crossover.getBinaryValue_2());
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
@@ -137,17 +135,39 @@ public class GeneticAlgorithm
 		//TODO Can only chose one offspring per pair of elite candidates AND generate more random parents
 		System.out.println(ConsoleMessage.CROSSOVER_OF_TWO_BINARY_STRINGS_PHASE_NINE);
 		
-		String firstHalfOfBinaryGene_1 = this.crossover.getBinaryValue_1().substring(0, 3);
-		String secondHalfOfBinaryGene_1 = this.crossover.getBinaryValue_2().substring(3, 6);
+		int startOfBinary = 0, centerOfBinary=3, endOfBinary=6;
+		for(int i = 1; i <= 2; i++)
+		{
+			if(i == 1)
+			{
+				this.crossover.setFirstHalfOfBinaryGene(this.crossover.getBinaryValue_1().substring(startOfBinary, centerOfBinary));
+				this.crossover.setSecondHalfOfBinaryGene(this.crossover.getBinaryValue_2().substring(centerOfBinary, endOfBinary));
+				
+				this.crossover.setOffspringChild(this.crossover.getFirstHalfOfBinaryGene() + this.crossover.getSecondHalfOfBinaryGene());
+				this.offspring_Child_1 = this.crossover.getOffspringChild();
+			}
+			else
+			{
+				this.crossover.setFirstHalfOfBinaryGene(this.crossover.getBinaryValue_2().substring(startOfBinary, centerOfBinary));
+				this.crossover.setSecondHalfOfBinaryGene(this.crossover.getBinaryValue_1().substring(centerOfBinary, endOfBinary));
+				
+				this.crossover.setOffspringChild(this.crossover.getFirstHalfOfBinaryGene() + this.crossover.getSecondHalfOfBinaryGene());
+				this.offspring_Child_2 = this.crossover.getOffspringChild();
+			}
+			System.out.println("Offspring crossover : " + i + this.crossover.printCrossover());
+		}
 		
-		String firstHalfOfBinaryGene_2 = this.crossover.getBinaryValue_2().substring(0, 3);
-		String secondHalfOfBinaryGene_2 = this.crossover.getBinaryValue_1().substring(3, 6);
-		
-		this.offspring_Child_1 = firstHalfOfBinaryGene_1 + secondHalfOfBinaryGene_1;
-		this.offspring_Child_2 = firstHalfOfBinaryGene_2 + secondHalfOfBinaryGene_2;
-		System.out.println("Offspring1: " + firstHalfOfBinaryGene_1 + secondHalfOfBinaryGene_1);
-		System.out.println("Offspring2: " + firstHalfOfBinaryGene_2 + secondHalfOfBinaryGene_2);
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
+	}
+	
+	public void setOffspringChild()
+	{
+		int start = 0, center=3, end=6;
+		this.crossover.setFirstHalfOfBinaryGene(this.crossover.getBinaryValue_1().substring(start, center));
+		this.crossover.setSecondHalfOfBinaryGene(this.crossover.getBinaryValue_2().substring(center, end));
+		
+		this.crossover.setOffspringChild(this.crossover.getFirstHalfOfBinaryGene() + this.crossover.getSecondHalfOfBinaryGene());
+		this.offspring_Child_1 = this.crossover.getOffspringChild();
 	}
 	
 	//Here I are changing bit(s) (e.g. If bit is 0, then change it to 1 and vice-versa)

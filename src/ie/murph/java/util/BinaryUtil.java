@@ -120,6 +120,7 @@ public class BinaryUtil
 	//Choosing the bit in each binary string to be altered at random each time
 	private static int getRandomNumber(CumulativeFrequency cumulativeFrequency)
 	{
+		//TODO: Change setRandomNumberbetween(0, 5) as First bit never gets mutated
 		cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().setRandomNumberbetween(1, 5);
 		return cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getARandomWholeNumber();
 	}
