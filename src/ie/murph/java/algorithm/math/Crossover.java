@@ -10,6 +10,10 @@ public class Crossover
 	private String secondHalfOfBinaryGene;
 	
 	private String offspringChild;
+	private String firstNewOffspringChild;
+	private String secondNewOffspringChild;
+	
+	private final int startOfBinary = 0, centerOfBinary=3, endOfBinary=6;
 	
 	public void setBinaryValue_1(String binaryValue_1)
 	{
@@ -61,19 +65,48 @@ public class Crossover
 		return this.offspringChild;
 	}
 	
-	//The crossover is a merging of both binary strings (i.e. genes in genetics) to create one better fitter child/offspring
-	//Example: Binary 1 - 00000 and Binary 2 - 11111 --> Would produce an off-spring of: 00011 using single point crossover at position 3
-	public void crossoverOfTwoBinaryStringAtRandomPositions() 
+	public void setFirstNewOffspring() 
 	{
-		//TODO Can only chose one offspring per pair of elite candidates AND generate more random parents
-		setFirstHalfOfBinaryGene(this.getBinaryValue_1().substring(0, 3));
-		setSecondHalfOfBinaryGene(this.getBinaryValue_2().substring(3, 6));
+		setFirstHalfOfBinaryGene(getSubstringOfFirstBinaryValue(startOfBinary, centerOfBinary));
+		setSecondHalfOfBinaryGene(getSubstringOfSecondBinaryValue(centerOfBinary, endOfBinary));
 		
 		setOffspringChild(getFirstHalfOfBinaryGene() + getSecondHalfOfBinaryGene());
+		this.firstNewOffspringChild = getFirstHalfOfBinaryGene() + getSecondHalfOfBinaryGene();
+	}
+
+	public void setSecondNewOffspring() 
+	{
+		setFirstHalfOfBinaryGene(getSubstringOfSecondBinaryValue(startOfBinary, centerOfBinary));
+		setSecondHalfOfBinaryGene(getSubstringOfFirstBinaryValue(centerOfBinary, endOfBinary));
+		
+		setOffspringChild(getFirstHalfOfBinaryGene() + getSecondHalfOfBinaryGene());
+		this.secondNewOffspringChild = getFirstHalfOfBinaryGene() + getSecondHalfOfBinaryGene();
 	}
 	
+	private String getSubstringOfFirstBinaryValue(int startPosition, int endPosition) 
+	{
+		return getBinaryValue_1().substring(startPosition, endPosition);
+	}
+	
+	private String getSubstringOfSecondBinaryValue(int startPosition, int endPosition) 
+	{
+		return getBinaryValue_2().substring(startPosition, endPosition);
+	}
+	
+	public String getFirstNewOffspring()
+	{
+		return this.firstNewOffspringChild;
+	}
+	
+	public String getSecondNewOffspring()
+	{
+		return this.secondNewOffspringChild;
+	}
+
 	public String printCrossover()
 	{
-		return "Offspring crossover: " + getFirstHalfOfBinaryGene() + getSecondHalfOfBinaryGene();
+		return 	"\n" + 
+				"New Offspring crossover 1: " + getFirstNewOffspring() + "\n" +
+				"New Offspring crossover 2: " + getSecondNewOffspring() + "\n";
 	}
 }

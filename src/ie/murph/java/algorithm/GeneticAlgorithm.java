@@ -135,39 +135,15 @@ public class GeneticAlgorithm
 		//TODO Can only chose one offspring per pair of elite candidates AND generate more random parents
 		System.out.println(ConsoleMessage.CROSSOVER_OF_TWO_BINARY_STRINGS_PHASE_NINE);
 		
-		int startOfBinary = 0, centerOfBinary=3, endOfBinary=6;
-		for(int i = 1; i <= 2; i++)
-		{
-			if(i == 1)
-			{
-				this.crossover.setFirstHalfOfBinaryGene(this.crossover.getBinaryValue_1().substring(startOfBinary, centerOfBinary));
-				this.crossover.setSecondHalfOfBinaryGene(this.crossover.getBinaryValue_2().substring(centerOfBinary, endOfBinary));
-				
-				this.crossover.setOffspringChild(this.crossover.getFirstHalfOfBinaryGene() + this.crossover.getSecondHalfOfBinaryGene());
-				this.offspring_Child_1 = this.crossover.getOffspringChild();
-			}
-			else
-			{
-				this.crossover.setFirstHalfOfBinaryGene(this.crossover.getBinaryValue_2().substring(startOfBinary, centerOfBinary));
-				this.crossover.setSecondHalfOfBinaryGene(this.crossover.getBinaryValue_1().substring(centerOfBinary, endOfBinary));
-				
-				this.crossover.setOffspringChild(this.crossover.getFirstHalfOfBinaryGene() + this.crossover.getSecondHalfOfBinaryGene());
-				this.offspring_Child_2 = this.crossover.getOffspringChild();
-			}
-			System.out.println("Offspring crossover : " + i + this.crossover.printCrossover());
-		}
+			this.crossover.setFirstNewOffspring();
+			this.crossover.setSecondNewOffspring();
+			
+			this.offspring_Child_1 = this.crossover.getFirstNewOffspring();
+			this.offspring_Child_2 = this.crossover.getSecondNewOffspring();
+			
+			System.out.println("Offspring crossover : " + this.crossover.printCrossover());
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
-	}
-	
-	public void setOffspringChild()
-	{
-		int start = 0, center=3, end=6;
-		this.crossover.setFirstHalfOfBinaryGene(this.crossover.getBinaryValue_1().substring(start, center));
-		this.crossover.setSecondHalfOfBinaryGene(this.crossover.getBinaryValue_2().substring(center, end));
-		
-		this.crossover.setOffspringChild(this.crossover.getFirstHalfOfBinaryGene() + this.crossover.getSecondHalfOfBinaryGene());
-		this.offspring_Child_1 = this.crossover.getOffspringChild();
 	}
 	
 	//Here I are changing bit(s) (e.g. If bit is 0, then change it to 1 and vice-versa)
