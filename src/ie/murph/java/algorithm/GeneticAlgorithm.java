@@ -14,8 +14,8 @@ public class GeneticAlgorithm
 	private Crossover crossover;
 	
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
-	private String offspring_Child_1;
-	private String offspring_Child_2;
+//	private String offspring_Child_1;
+//	private String offspring_Child_2;
 	private StringBuilder[] twoMutatedBinaryStringBuilderObj;
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
@@ -138,8 +138,8 @@ public class GeneticAlgorithm
 			this.crossover.setFirstNewOffspring();
 			this.crossover.setSecondNewOffspring();
 			
-			this.offspring_Child_1 = this.crossover.getFirstNewOffspring();
-			this.offspring_Child_2 = this.crossover.getSecondNewOffspring();
+//			this.offspring_Child_1 = this.crossover.getFirstNewOffspring();
+//			this.offspring_Child_2 = this.crossover.getSecondNewOffspring();
 			
 			System.out.println("Offspring crossover : " + this.crossover.printCrossover());
 		
@@ -151,7 +151,7 @@ public class GeneticAlgorithm
 	{
 		System.out.println(ConsoleMessage.MUTATION_OF_OFFSPRING_STRING_PHASE_TEN);
 		this.twoMutatedBinaryStringBuilderObj = new StringBuilder[2];
-		this.twoMutatedBinaryStringBuilderObj = BinaryUtil.getMutatedBinaryStrings(this.offspring_Child_1, this.offspring_Child_2, this.cumulativeFrequency);
+		this.twoMutatedBinaryStringBuilderObj = BinaryUtil.getMutatedBinaryStrings(this.crossover.getFirstNewOffspring(), this.crossover.getSecondNewOffspring(), this.cumulativeFrequency);
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
