@@ -14,8 +14,6 @@ public class GeneticAlgorithm
 	private Crossover crossover;
 	
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
-//	private String offspring_Child_1;
-//	private String offspring_Child_2;
 	private StringBuilder[] twoMutatedBinaryStringBuilderObj;
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
@@ -137,9 +135,6 @@ public class GeneticAlgorithm
 		
 			this.crossover.setFirstNewOffspring();
 			this.crossover.setSecondNewOffspring();
-			
-//			this.offspring_Child_1 = this.crossover.getFirstNewOffspring();
-//			this.offspring_Child_2 = this.crossover.getSecondNewOffspring();
 			
 			System.out.println("Offspring crossover : " + this.crossover.printCrossover());
 		
