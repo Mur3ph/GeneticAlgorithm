@@ -145,8 +145,9 @@ public class GeneticAlgorithm
 	public void changeOneOfTheBitsInTheBinaryString() 
 	{
 		System.out.println(ConsoleMessage.MUTATION_OF_OFFSPRING_STRING_PHASE_TEN);
-		this.twoMutatedBinaryStringBuilderObj = new StringBuilder[2];
-		this.twoMutatedBinaryStringBuilderObj = BinaryUtil.getMutatedBinaryStrings(this.crossover.getFirstNewOffspring(), this.crossover.getSecondNewOffspring(), this.cumulativeFrequency);
+		
+		System.out.println("\n Removed this step in with next step, in one line of code, clean code \n");
+		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
 	
@@ -154,17 +155,22 @@ public class GeneticAlgorithm
 	public void convertBinaryStringToInteger() 
 	{
 		System.out.println(ConsoleMessage.CONVERT_OFFSPRING_BACK_TO_INTEGER_PHASE_ELEVEN);
-		StringBuilder mutatedOffspringBuilderObj_1;
-		StringBuilder mutatedOffspringBuilderObj_2;
-		mutatedOffspringBuilderObj_1 = this.twoMutatedBinaryStringBuilderObj[0];
-		mutatedOffspringBuilderObj_2 = this.twoMutatedBinaryStringBuilderObj[1];
-		String mutatedOffspringStr_1 = mutatedOffspringBuilderObj_1.toString();
-		String mutatedOffspringStr_2 = mutatedOffspringBuilderObj_2.toString();
+		
+		String mutatedOffspringStr_1 = getMutatedOffspring(0);
+		String mutatedOffspringStr_2 = getMutatedOffspring(1);
+		
 		this.newFitnessInt_1 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_1);
 		this.newFitnessInt_2 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_2);
+		
 		System.out.println("The new offspring 1 in integer fitness form: " + mutatedOffspringStr_1 + " = " + this.newFitnessInt_1);
 		System.out.println("The new offspring 2 in integer fitness form: " + mutatedOffspringStr_2 + " = " + this.newFitnessInt_2);
+		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
+	}
+	
+	private String getMutatedOffspring(int indexPosition)
+	{
+		return BinaryUtil.getMutatedBinaryStrings(this.crossover.getFirstNewOffspring(), this.crossover.getSecondNewOffspring(), this.cumulativeFrequency)[indexPosition].toString();
 	}
 	
 	//Choose the two best/fittest/highest numbers along with more random numbers to fill the group to five and begin the process again..
