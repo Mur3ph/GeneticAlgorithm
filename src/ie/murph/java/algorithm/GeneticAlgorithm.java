@@ -162,8 +162,8 @@ public class GeneticAlgorithm
 		this.newFitnessInt_1 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_1);
 		this.newFitnessInt_2 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_2);
 		
-		System.out.println("The new offspring 1 in integer fitness form: " + mutatedOffspringStr_1 + " = " + this.newFitnessInt_1);
-		System.out.println("The new offspring 2 in integer fitness form: " + mutatedOffspringStr_2 + " = " + this.newFitnessInt_2);
+		System.out.println("The 1st new offspring (i.e. Mutated binary string) conveted to integer fitness form: " + mutatedOffspringStr_1 + " = " + this.newFitnessInt_1);
+		System.out.println("The 2nd new offspring (i.e. Mutated binary string) conveted to integer fitness form: " + mutatedOffspringStr_2 + " = " + this.newFitnessInt_2);
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
