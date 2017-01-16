@@ -96,7 +96,7 @@ public class BinaryUtil
 		
 		StringBuilder[] arrayWithBothAlteredBinaryCodes = getAlteredBinaryStrings();
 		
-//		printBinaryAndPositionToBeMutated(offspringBinary_1, offspringBinary_2);
+		printBinaryAndPositionToBeMutated(offspringBinary_1, offspringBinary_2);
 		
 		return arrayWithBothAlteredBinaryCodes;
 	}
@@ -161,7 +161,7 @@ public class BinaryUtil
 		return arrayOfOffspringBinary;
 	}
 	
-	public static void printBinaryAndPositionToBeMutated(String offspringBinaryStr_1, String offspringBinaryStr_2) 
+	private static void printBinaryAndPositionToBeMutated(String offspringBinaryStr_1, String offspringBinaryStr_2) 
 	{
 		System.out.println("Mutated offspring 1: " + offspringBinaryByte(offspringBinaryStr_1) + " Bit at positon " + randomNumbersToGetBinaryBitPositionsToBeAltered[0]);
 		System.out.println("Mutated offspring 2: " + offspringBinaryByte(offspringBinaryStr_2) + " Bit at positon " + randomNumbersToGetBinaryBitPositionsToBeAltered[1]);

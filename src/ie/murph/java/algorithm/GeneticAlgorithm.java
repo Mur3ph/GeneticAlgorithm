@@ -14,7 +14,6 @@ public class GeneticAlgorithm
 	private Crossover crossover;
 	
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
-	private StringBuilder[] twoMutatedBinaryStringBuilderObj;
 	private int newFitnessInt_1;
 	private int newFitnessInt_2;
 	
@@ -161,6 +160,9 @@ public class GeneticAlgorithm
 		
 		this.newFitnessInt_1 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_1);
 		this.newFitnessInt_2 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_2);
+		
+//		BinaryUtil.printFirstPositionThatWasMutated();
+//		BinaryUtil.printSecondPositionThatWasMutated();
 		
 		System.out.println("The 1st new offspring (i.e. Mutated binary string) conveted to integer fitness form: " + mutatedOffspringStr_1 + " = " + this.newFitnessInt_1);
 		System.out.println("The 2nd new offspring (i.e. Mutated binary string) conveted to integer fitness form: " + mutatedOffspringStr_2 + " = " + this.newFitnessInt_2);
