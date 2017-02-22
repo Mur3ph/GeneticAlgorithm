@@ -66,7 +66,7 @@ public class RunAlgorithm
 			String s_continue = READ_IN_USER_INPUT.nextLine();
 			if(s_continue.equalsIgnoreCase("y") || s_continue.equalsIgnoreCase("yes"))
 			{
-				resetThreadToRunGeneticAlgorithmAgain();
+				resetMainThreadToRunGeneticAlgorithmAgain();
 			}
 			else if (s_continue.equalsIgnoreCase("n") || s_continue.equalsIgnoreCase("no"))
 			{
@@ -76,7 +76,7 @@ public class RunAlgorithm
 				askUserToContinueWithGeneticAlgorithm();
 		}
 		
-		private static void resetThreadToRunGeneticAlgorithmAgain()
+		private static void resetMainThreadToRunGeneticAlgorithmAgain()
 		{
 			main(new String[0]);
 		}
@@ -84,7 +84,15 @@ public class RunAlgorithm
 		private static void exitGeneticAlgorithmApp()
 		{
 			System.out.println("Good bye!");
+			printToDoList();
 			System.exit(0);
 		}
 		
+		private static void printToDoList()
+		{
+			for(String todoMessage : ConsoleMessage.TODO_LIST)
+			{
+				System.out.println("\n" + todoMessage);
+			}
+		}
 }

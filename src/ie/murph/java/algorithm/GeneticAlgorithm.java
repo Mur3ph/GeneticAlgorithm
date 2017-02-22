@@ -14,8 +14,9 @@ public class GeneticAlgorithm
 	private Crossover crossover;
 	
 	private Integer[] thePositionOfTheTwoValuesChoosenUsingRandomValues;
-	private int newFitnessInt_1;
-	private int newFitnessInt_2;
+	private int firstNewFitness;
+	private int secondNewFitness;
+	private static Integer[] nextGenerationFitness;
 	
 	public GeneticAlgorithm(CumulativeFrequency cumulativeFrequency, Crossover crossover)
 	{
@@ -158,11 +159,11 @@ public class GeneticAlgorithm
 		String mutatedOffspringStr_1 = getMutatedOffspring(0);
 		String mutatedOffspringStr_2 = getMutatedOffspring(1);
 		
-		this.newFitnessInt_1 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_1);
-		this.newFitnessInt_2 = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_2);
+		this.firstNewFitness = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_1);
+		this.secondNewFitness = BinaryUtil.convertBinaryToInteger(mutatedOffspringStr_2);
 		
-		System.out.println("The 1st new offspring (i.e. Mutated binary string) conveted to integer fitness form: " + mutatedOffspringStr_1 + " = " + this.newFitnessInt_1);
-		System.out.println("The 2nd new offspring (i.e. Mutated binary string) conveted to integer fitness form: " + mutatedOffspringStr_2 + " = " + this.newFitnessInt_2);
+		System.out.println("The 1st new offspring (i.e. Mutated binary string) conveted to integer fitness form: " + mutatedOffspringStr_1 + " = " + this.firstNewFitness);
+		System.out.println("The 2nd new offspring (i.e. Mutated binary string) conveted to integer fitness form: " + mutatedOffspringStr_2 + " = " + this.secondNewFitness);
 		
 		System.out.println(ConsoleMessage.BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE);
 	}
@@ -177,22 +178,59 @@ public class GeneticAlgorithm
 	public void createANewPopulationWithTheTwoFittestAndThreeMoreRandomFromThePopulation() 
 	{
 		System.out.println(ConsoleMessage.SEND_NEW_FITNESS_TO_RANDOM_GENERATOR_TO_CREATE_NEXT_GENERATION_PHASE_TWELVE);
+		
 		Integer[] arrayOfFitterNextGenerationIntegers = new Integer[5];
-		arrayOfFitterNextGenerationIntegers = getNextGeneration(this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), this.newFitnessInt_1, this.newFitnessInt_2);
+		
+		putNewFitnessNextGenerationFitness();
+		arrayOfFitterNextGenerationIntegers = getNextGenerationFitness();
+		
 		PrintUtil.displayArray(arrayOfFitterNextGenerationIntegers);
-		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), 0, 5);
+		
+		copyArrayToAnotherArrayForNextGenerationToBegin(arrayOfFitterNextGenerationIntegers);
+
 //		TODO Clearing the fitness to begin again with new better population, I think I am adding the previous total with the new total were I should be clearing the previous total and starting with fresh data
-//		m_fitnessValuesFromOrderedTreemap.clear();
 	}
 	
-	// Method to get 3 random integers from the getRandomNumbers() and replace 2 with the new fitness
-	private static Integer[] getNextGeneration(Integer[] originalFitness, int firstNewFitness, int secondNewFitness)
+	private Integer[] fitness() 
 	{
-		Arrays.sort(originalFitness);
-		originalFitness[0] = firstNewFitness;
-		originalFitness[1] = secondNewFitness;
-		Arrays.sort(originalFitness);
-		return originalFitness;
-	}// END OF..
+		return this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers();
+	}
+
+	// Method to get 3 random integers from the getRandomNumbers() and replace 2 with the new fitness
+	private void putNewFitnessNextGenerationFitness()
+	{
+		int toFirstPositionInArrary = 0, toSecondPositionInArrary = 1;
+		
+		setNextGenerationFitness();
+		replaceLowestNextGenerationFitness(this.firstNewFitness, toFirstPositionInArrary);
+		replaceLowestNextGenerationFitness(this.secondNewFitness, toSecondPositionInArrary);
+	}
+	
+	private void setNextGenerationFitness()
+	{
+		nextGenerationFitness = fitness();
+	}
+	
+	private void replaceLowestNextGenerationFitness(int newFitness, int positionInArrary) 
+	{	
+		sortNextGenerationFitness();
+		nextGenerationFitness[positionInArrary] = newFitness;
+		sortNextGenerationFitness();
+	}
+
+	private void sortNextGenerationFitness() 
+	{
+		Arrays.sort(nextGenerationFitness);
+	}
+	
+	private Integer[] getNextGenerationFitness()
+	{
+		return nextGenerationFitness;
+	}
+	
+	private void copyArrayToAnotherArrayForNextGenerationToBegin(Integer[] arrayOfFitterNextGenerationIntegers) 
+	{
+		System.arraycopy(arrayOfFitterNextGenerationIntegers, 0, this.cumulativeFrequency.getNormalization().getOrganizedFitness().getUnorganizedFitness().getRandomNumberGenerator().getRandomWholeNumbers(), 0, 5);
+	}
 	
 }
