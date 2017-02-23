@@ -67,6 +67,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 7. [Neural Networks and Deep Learning] (http://neuralnetworksanddeeplearning.com/)
 8. [Deep Learning] (http://deeplearning.net/)
 9. [Safari] (http://techbus.safaribooksonline.com/home?uicode=oracle&sessionid=dd6e43f2-1896-49e2-8528-61b1399c1112)
+10. [TCD: Statistics] (https://www.scss.tcd.ie/postgraduate/pgcertstats/)
 
 
 ## Video
@@ -76,8 +77,11 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 3. [Deep Learning Summer School video lectures, Montreal 2016] (http://videolectures.net/deeplearning2016_montreal/)
 4. [MIT: Artificial Intelligence Course] (https://www.youtube.com/watch?v=TjZBTDzGeGg&list=PLUl4u3cNGP63gFHB6xb-kVBiQHYe_4hSi) 
 5. [MIT: Design and Analysis of Algorithms] (https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)
-6. [MIT: Java Programming] (https://www.youtube.com/watch?v=HMUkS0sJr70&list=PLYA1tuGWMbyrW0oqGaJesnrlxQSAclHf3)
-7. [Safari] (http://techbus.safaribooksonline.com/home?uicode=oracle&sessionid=dd6e43f2-1896-49e2-8528-61b1399c1112)
+6. [MIT: Introduction to Computer Science and Programming] (https://www.youtube.com/watch?v=k6U-i4gXkLM&list=PL0065A2C3177ACC8A)
+7. [MIT: Java] (https://www.youtube.com/watch?v=0M_kIqhwbFo&list=PLqMwoI9duOl34Nuhgw7vVPceXo1PQVnFA)
+8. [Sofia University: Java Programming] (https://www.youtube.com/watch?v=HMUkS0sJr70&list=PLYA1tuGWMbyrW0oqGaJesnrlxQSAclHf3)
+	* [Related lecture Playlists: Android, Linux, AI, Oracle databases etc.] (https://www.youtube.com/user/bjhecker/playlists)
+9. [Safari] (http://techbus.safaribooksonline.com/home?uicode=oracle&sessionid=dd6e43f2-1896-49e2-8528-61b1399c1112)
 
 
 
