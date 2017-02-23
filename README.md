@@ -68,6 +68,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 8. [Deep Learning] (http://deeplearning.net/)
 9. [Safari] (http://techbus.safaribooksonline.com/home?uicode=oracle&sessionid=dd6e43f2-1896-49e2-8528-61b1399c1112)
 10. [TCD: Statistics] (https://www.scss.tcd.ie/postgraduate/pgcertstats/)
+11. [How I Write Tests] (https://blog.nelhage.com/2016/12/how-i-test/)
 
 
 ## Video
