@@ -29,6 +29,8 @@ public interface ConsoleMessage
 												"-- 04). Phase unknown (Genetic Algorithm class): Can only chose one offspring per pair of elite candidates AND generate more random parents",
 												"-- 05). Phase unknown (BinaryUtil class): Change setRandomNumberbetween(0, 5) as First bit never gets mutated",
 												"-- 06). Phase unknow (Cumulative frequency class): Delete when no longer needed for visual test",
-												"-- 07). Phase unknown (ConsoleMessage class): See could I remove public, static and final"
+												"-- 07). Phase unknown (ConsoleMessage class): See could I remove public, static and final",
+												"-- 08). Entire Application: Replace console message with logging",
+												"-- 09). Tidy up Genetic Algorithm class"
 											 };
 }
