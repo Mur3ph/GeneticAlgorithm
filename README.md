@@ -84,7 +84,9 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 7. [MIT: Java](https://www.youtube.com/watch?v=0M_kIqhwbFo&list=PLqMwoI9duOl34Nuhgw7vVPceXo1PQVnFA)
 8. [Sofia University: Java Programming](https://www.youtube.com/watch?v=HMUkS0sJr70&list=PLYA1tuGWMbyrW0oqGaJesnrlxQSAclHf3)
 	* [Related lecture Playlists: Android, Linux, AI, Oracle databases etc.](https://www.youtube.com/user/bjhecker/playlists)
-9. [Safari](http://techbus.safaribooksonline.com/home?uicode=oracle&sessionid=dd6e43f2-1896-49e2-8528-61b1399c1112)
+9. [Safari books & videos](http://techbus.safaribooksonline.com/home?uicode=oracle&sessionid=dd6e43f2-1896-49e2-8528-61b1399c1112)
+10. [Java 8: Lambda Expressions](https://t.co/Ne480awiZ3)
+11. [Java 8: Intorduction to the Streams API](https://t.co/vQnHpCrM9e)
 
 
 
