@@ -2,16 +2,16 @@ package ie.murph.java.main;
 
 import java.util.Scanner;
 
-import ie.murph.java.algorithm.GeneticAlgorithm;
-import ie.murph.java.algorithm.fitness.OrganizedFitness;
-import ie.murph.java.algorithm.fitness.SumFitness;
-import ie.murph.java.algorithm.fitness.UnorganizedFitness;
-import ie.murph.java.algorithm.math.Crossover;
-import ie.murph.java.algorithm.math.CumulativeFrequency;
-import ie.murph.java.algorithm.math.Normalization;
-import ie.murph.java.algorithm.randomnumber.RandomNumber;
-import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
-import ie.murph.java.interfaces.ConsoleMessage;
+import ie.murph.java.main.algorithm.GeneticAlgorithm;
+import ie.murph.java.main.algorithm.fitness.OrganizedFitness;
+import ie.murph.java.main.algorithm.fitness.SumFitness;
+import ie.murph.java.main.algorithm.fitness.UnorganizedFitness;
+import ie.murph.java.main.algorithm.math.Crossover;
+import ie.murph.java.main.algorithm.math.CumulativeFrequency;
+import ie.murph.java.main.algorithm.math.Normalization;
+import ie.murph.java.main.algorithm.randomnumber.RandomNumber;
+import ie.murph.java.main.algorithm.randomnumber.RandomNumberGenerator;
+import ie.murph.java.main.interfaces.ConsoleMessage;
 
 public class RunAlgorithm 
 {

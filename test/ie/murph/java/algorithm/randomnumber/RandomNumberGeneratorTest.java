@@ -11,6 +11,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import ie.murph.java.main.algorithm.randomnumber.RandomNumber;
+import ie.murph.java.main.algorithm.randomnumber.RandomNumberGenerator;
+
 public class RandomNumberGeneratorTest 
 {
 	private RandomNumber randomNumber;

@@ -7,8 +7,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import ie.murph.java.algorithm.randomnumber.RandomNumber;
-import ie.murph.java.algorithm.randomnumber.RandomNumberGenerator;
+import ie.murph.java.main.algorithm.fitness.UnorganizedFitness;
+import ie.murph.java.main.algorithm.randomnumber.RandomNumber;
+import ie.murph.java.main.algorithm.randomnumber.RandomNumberGenerator;
 
 public class UnorganizedFitnessTest 
 {
