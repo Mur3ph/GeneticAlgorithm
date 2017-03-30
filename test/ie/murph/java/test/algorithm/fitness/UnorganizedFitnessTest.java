@@ -1,4 +1,4 @@
-package ie.murph.java.algorithm.fitness;
+package ie.murph.java.test.algorithm.fitness;
 
 import static org.junit.Assert.*;
 

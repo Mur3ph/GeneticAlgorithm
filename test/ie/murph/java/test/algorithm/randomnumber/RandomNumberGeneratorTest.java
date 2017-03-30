@@ -1,4 +1,4 @@
-package ie.murph.java.algorithm.randomnumber;
+package ie.murph.java.test.algorithm.randomnumber;
 
 import static org.junit.Assert.*;
 
