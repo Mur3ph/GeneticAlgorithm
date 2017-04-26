@@ -11,6 +11,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 - [x] Dependancy Injection
 - [x] Better naming convension
 - [ ] Seperation
+- [ ] Logging (Log4j)
 
 ## Architecture
 
