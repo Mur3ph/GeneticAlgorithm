@@ -18,6 +18,7 @@ public interface ConsoleMessage
 	public final static String SEND_NEW_FITNESS_TO_RANDOM_GENERATOR_TO_CREATE_NEXT_GENERATION_PHASE_TWELVE = "12). Send the two new fitness to the random generator method and receive them back here for next generation: ";
 	public final static String BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE = "\n ################################################################### \n";
 	public final static String ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE = "How many generations do you want to calculate.!";
+	public final static String GENERATION = " Generation: ";
 	public final static String[] TODO_LIST = {
 												"***************************\n******** TODO LIST ********\n***************************",
 												"Shortcuts to find 'todo' list: ",

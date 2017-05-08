@@ -41,7 +41,7 @@ public class RunAlgorithm
 			
 			for(int generationX = 1; generationX < userInputChoosePopulationSize; generationX++)
 			{
-				System.out.println("\nGENERATION: " + generationX + "\n");
+				System.out.println("\n" + ConsoleMessage.GENERATION + generationX + "\n");
 				geneticAlgorithm.generateUnOrganizedFitnessValuesPhaseOne();
 				geneticAlgorithm.generateOrganizedFitnessValuesPhaseTwo();
 				geneticAlgorithm.calculatingTotalSumOfFitnessValuePhaseThree();
