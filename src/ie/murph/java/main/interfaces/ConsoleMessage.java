@@ -19,6 +19,9 @@ public interface ConsoleMessage
 	public final static String BREAK_DIVIDER_TO_SEPERATE_EACH_PHASE = "\n ################################################################### \n";
 	public final static String ASK_HOW_MANY_HUMAN_GENERATIONS_USER_WANTS_TO_CLACULATE = "How many generations do you want to calculate.!";
 	public final static String GENERATION = " Generation: ";
+	public final static String GOOD_BYE = "Good bye!";
+	public final static String NEXT_LINE = "\n";
+	public final static String QUESTION_DO_YOU_WANT_TO_RUN_ALGORITHM_AGAIN = "Do you want to run it again: (y/n)";
 	public final static String[] TODO_LIST = {
 												"***************************\n******** TODO LIST ********\n***************************",
 												"Shortcuts to find 'todo' list: ",

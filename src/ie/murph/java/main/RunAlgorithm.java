@@ -41,7 +41,7 @@ public class RunAlgorithm
 			
 			for(int generationX = 1; generationX < userInputChoosePopulationSize; generationX++)
 			{
-				System.out.println("\n" + ConsoleMessage.GENERATION + generationX + "\n");
+				System.out.println(ConsoleMessage.NEXT_LINE + ConsoleMessage.GENERATION + generationX + ConsoleMessage.NEXT_LINE);
 				geneticAlgorithm.generateUnOrganizedFitnessValuesPhaseOne();
 				geneticAlgorithm.generateOrganizedFitnessValuesPhaseTwo();
 				geneticAlgorithm.calculatingTotalSumOfFitnessValuePhaseThree();
@@ -61,7 +61,7 @@ public class RunAlgorithm
 			
 		private static void askUserToContinueWithGeneticAlgorithm()
 		{
-			System.out.println("Do you want to run it again: (y/n)");
+			System.out.println(ConsoleMessage.QUESTION_DO_YOU_WANT_TO_RUN_ALGORITHM_AGAIN);
 			
 			String s_continue = READ_IN_USER_INPUT.nextLine();
 			if(s_continue.equalsIgnoreCase("y") || s_continue.equalsIgnoreCase("yes"))
@@ -83,7 +83,7 @@ public class RunAlgorithm
 		
 		private static void exitGeneticAlgorithmApp()
 		{
-			System.out.println("Good bye!");
+			System.out.println(ConsoleMessage.GOOD_BYE);
 			printToDoList();
 			System.exit(0);
 		}
@@ -92,7 +92,7 @@ public class RunAlgorithm
 		{
 			for(String todoMessage : ConsoleMessage.TODO_LIST)
 			{
-				System.out.println("\n" + todoMessage);
+				System.out.println(ConsoleMessage.NEXT_LINE + todoMessage);
 			}
 		}
 }
