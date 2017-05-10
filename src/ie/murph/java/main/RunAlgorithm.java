@@ -18,7 +18,7 @@ public class RunAlgorithm
 	private static final Scanner READ_IN_USER_INPUT = new Scanner(System.in);
 	public static void main(String[] args)
 	{
-		runGeneticAlgorithm();
+	    runGeneticAlgorithm();
 	}
 	
 		// Method used to start the fitness generations flow...

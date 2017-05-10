@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 
 public class MyLogger
 {
-    private final static Logger logger = Logger.getLogger(MyLogger.class);
+    private final static Logger LOGGER = Logger.getLogger(MyLogger.class);
     
     public static void main(String[] args)
     {
@@ -19,17 +19,17 @@ public class MyLogger
 
     private void runMe(String parameter)
     {
-	if(logger.isDebugEnabled()){
-		logger.debug("This is debug : " + parameter);
+	if(LOGGER.isDebugEnabled()){
+		LOGGER.debug("This is debug : " + parameter);
 	}
 
-	if(logger.isInfoEnabled()){
-		logger.info("This is info : " + parameter);
+	if(LOGGER.isInfoEnabled()){
+		LOGGER.info("This is info : " + parameter);
 	}
 
-	logger.warn("This is warn : " + parameter);
-	logger.error("This is error : " + parameter);
-	logger.fatal("This is fatal : " + parameter);
+	LOGGER.warn("This is warn : " + parameter);
+	LOGGER.error("This is error : " + parameter);
+	LOGGER.fatal("This is fatal : " + parameter);
 
     }
 }
