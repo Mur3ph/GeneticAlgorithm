@@ -20,16 +20,16 @@ public class MyLogger
     private void runMe(String parameter)
     {
 	if(LOGGER.isDebugEnabled()){
-		LOGGER.debug("This is debug : " + parameter);
+		LOGGER.debug("This is debug log: " + parameter);
 	}
 
 	if(LOGGER.isInfoEnabled()){
-		LOGGER.info("This is info : " + parameter);
+		LOGGER.info("This is info log: " + parameter);
 	}
 
-	LOGGER.warn("This is warn : " + parameter);
-	LOGGER.error("This is error : " + parameter);
-	LOGGER.fatal("This is fatal : " + parameter);
+	LOGGER.warn("This is warn log: " + parameter);
+	LOGGER.error("This is error log: " + parameter);
+	LOGGER.fatal("This is fatal log: " + parameter);
 
     }
 }
