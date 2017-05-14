@@ -13,7 +13,7 @@ public class MyLogger
 	BasicConfigurator.configure();
 	
 	MyLogger obj = new MyLogger();
-	obj.runMe("pauly");
+	obj.runMe("pauly o muiricú");
 
     }
 
