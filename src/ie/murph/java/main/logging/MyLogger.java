@@ -26,6 +26,10 @@ public class MyLogger
 	if(LOGGER.isInfoEnabled()){
 		LOGGER.info("This is info log: " + parameter);
 	}
+	
+	if(LOGGER.isTraceEnabled()){
+		LOGGER.trace("This is trace log: " + parameter);
+	}
 
 	LOGGER.warn("This is warn log: " + parameter);
 	LOGGER.error("This is error log: " + parameter);
