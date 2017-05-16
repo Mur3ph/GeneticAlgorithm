@@ -19,15 +19,18 @@ public class MyLogger
 
     private void runMe(String parameter)
     {
-	if(LOGGER.isDebugEnabled()){
+	if(LOGGER.isDebugEnabled())
+	{
 		LOGGER.debug("This is debug log: " + parameter);
 	}
 
-	if(LOGGER.isInfoEnabled()){
+	if(LOGGER.isInfoEnabled())
+	{
 		LOGGER.info("This is info log: " + parameter);
 	}
 	
-	if(LOGGER.isTraceEnabled()){
+	if(LOGGER.isTraceEnabled())
+	{
 		LOGGER.trace("This is trace log: " + parameter);
 	}
 
