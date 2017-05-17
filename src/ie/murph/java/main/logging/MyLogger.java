@@ -12,12 +12,12 @@ public class MyLogger
 //	Use BasicConfigurator to help run configure Log4j properly - will give error without it. //http://stackoverflow.com/questions/12532339/no-appenders-could-be-found-for-loggerlog4j
 	BasicConfigurator.configure();
 	
-	MyLogger obj = new MyLogger();
-	obj.runMe("pauly o muiricú");
+	MyLogger myLogger = new MyLogger();
+	myLogger.runLogging("pauly o muiricú");
 
     }
 
-    private void runMe(String parameter)
+    private void runLogging(String parameter)
     {
 	if(LOGGER.isDebugEnabled())
 	{
