@@ -9,12 +9,15 @@ public class MyLogger
     
     public static void main(String[] args)
     {
-//	Use BasicConfigurator to help run configure Log4j properly - will give error without it. //http://stackoverflow.com/questions/12532339/no-appenders-could-be-found-for-loggerlog4j
-	BasicConfigurator.configure();
-	
+	configureLoggingToRun();
 	MyLogger myLogger = new MyLogger();
 	myLogger.runLogging("pauly o muiricú");
+    }
 
+    private static void configureLoggingToRun()
+    {
+//	Use BasicConfigurator to help run configure Log4j properly - will give error without it. //http://stackoverflow.com/questions/12532339/no-appenders-could-be-found-for-loggerlog4j
+	BasicConfigurator.configure();
     }
 
     private void runLogging(String parameter)
