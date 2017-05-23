@@ -1,8 +1,6 @@
 package ie.murph.java.main.algorithm;
 
-import ie.murph.java.main.RunAlgorithm;
-import ie.murph.java.main.algorithm.math.Crossover;
-import ie.murph.java.main.algorithm.math.CumulativeFrequency;
+import ie.murph.java.main.algorithm.math.*;
 import ie.murph.java.main.interfaces.ConsoleMessage;
 import ie.murph.java.main.util.*;
 
@@ -14,7 +12,7 @@ public class GeneticAlgorithm
 {
     // Constant variables and data interface structures used throughout the
     // algorithm
-    private static final Logger LOGGER = Logger.getLogger(RunAlgorithm.class);
+    private static final Logger LOGGER = Logger.getLogger(GeneticAlgorithm.class);
     private CumulativeFrequency cumulativeFrequency;
     private Crossover crossover;
 
