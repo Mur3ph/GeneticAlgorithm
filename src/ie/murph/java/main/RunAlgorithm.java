@@ -34,7 +34,7 @@ public class RunAlgorithm
     // Method used to start the fitness generations flow...
     private void runGeneticAlgorithm()
     {
-	LOGGER.debug("++runGeneticAlgorithm()");
+	LOGGER.debug("++runGeneticAlgorithm()\n");
 	RandomNumber randomNumber = new RandomNumber();
 	RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator(randomNumber);
 	UnorganizedFitness unorganizedMapFitness = new UnorganizedFitness(randomNumberGenerator);
@@ -70,12 +70,12 @@ public class RunAlgorithm
 	}
 
 	askUserToContinueWithGeneticAlgorithm();
-	LOGGER.debug("--runGeneticAlgorithm()");
+	LOGGER.debug("--runGeneticAlgorithm()\n");
     }
 
     private static void askUserToContinueWithGeneticAlgorithm()
     {
-	LOGGER.debug("++askUserToContinueWithGeneticAlgorithm()");
+	LOGGER.debug("++askUserToContinueWithGeneticAlgorithm()\n");
 	System.out.println(ConsoleMessage.QUESTION_DO_YOU_WANT_TO_RUN_ALGORITHM_AGAIN);
 
 	String s_continue = READ_IN_USER_INPUT.nextLine();
@@ -87,32 +87,32 @@ public class RunAlgorithm
 	    exitGeneticAlgorithmApp();
 	} else
 	    askUserToContinueWithGeneticAlgorithm();
-	LOGGER.debug("--askUserToContinueWithGeneticAlgorithm()");
+	LOGGER.debug("--askUserToContinueWithGeneticAlgorithm()\n");
     }
 
     private static void resetMainThreadToRunGeneticAlgorithmAgain()
     {
-	LOGGER.debug("++resetMainThreadToRunGeneticAlgorithmAgain()");
+	LOGGER.debug("++resetMainThreadToRunGeneticAlgorithmAgain()\n");
 	main(new String[0]);
-	LOGGER.debug("--resetMainThreadToRunGeneticAlgorithmAgain()");
+	LOGGER.debug("--resetMainThreadToRunGeneticAlgorithmAgain()\n");
     }
 
     private static void exitGeneticAlgorithmApp()
     {
-	LOGGER.debug("++exitGeneticAlgorithmApp()");
+	LOGGER.debug("++exitGeneticAlgorithmApp()\n");
 	System.out.println(ConsoleMessage.GOOD_BYE);
 	printToDoList();
 	System.exit(0);
-	LOGGER.debug("--exitGeneticAlgorithmApp()");
+	LOGGER.debug("--exitGeneticAlgorithmApp()\n");
     }
 
     private static void printToDoList()
     {
-	LOGGER.debug("++printToDoList()");
+	LOGGER.debug("++printToDoList()\n");
 	for (String todoMessage : ConsoleMessage.TODO_LIST)
 	{
 	    System.out.println(ConsoleMessage.NEXT_LINE + todoMessage);
 	}
-	LOGGER.debug("--printToDoList()");
+	LOGGER.debug("--printToDoList()\n");
     }
 }
