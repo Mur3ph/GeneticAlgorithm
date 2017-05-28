@@ -7,7 +7,7 @@ import ie.murph.java.main.algorithm.fitness.SumFitness;
 
 public class Normalization
 {
-    private static final Logger LOGGER = Logger.getLogger(CumulativeFrequency.class);
+    private static final Logger LOGGER = Logger.getLogger(Normalization.class);
     private OrganizedFitness organizedFitness;
     private SumFitness sumFitness;
     private Double[] normalisedFitness;
