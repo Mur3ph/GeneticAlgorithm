@@ -36,7 +36,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 2. **Don't Repeat Yourself (DRY)** [go-to wiki](https://en.wikipedia.org/wiki/Don't_repeat_yourself)
    * ie. Similar principle to **Single-responsiblity principle** 
   
-## TODO: Artificial Intelligence Algorithms
+## Other Artificial Intelligence Algorithms
 
 1. Neural Networks
 2. Swarm Intelligence
