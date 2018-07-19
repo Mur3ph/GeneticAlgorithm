@@ -9,6 +9,8 @@ public class SumFitness
 {
 	private static final Logger LOGGER = Logger.getLogger(SumFitness.class);
 	private List<Integer> fitnessValuesFromOrderedTreemap;
+	
+//	@Mock
 	private OrganizedFitness organizedFitness;
 	private double totalSumOfFitness = 0;
 
