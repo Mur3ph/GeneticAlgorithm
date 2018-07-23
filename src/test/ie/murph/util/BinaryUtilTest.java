@@ -7,6 +7,15 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.both;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.sameInstance;
+import static org.hamcrest.CoreMatchers.startsWith;
+
 import main.ie.murph.util.BinaryUtil;
 
 public class BinaryUtilTest
@@ -32,11 +41,20 @@ public class BinaryUtilTest
 		
 		System.out.println("BinaryUtilTest: " + BinaryUtil.convertIntegerToBinaryString(digitFive));
 		
-		assertEquals("Both are true, this will succeed", BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFive);
-		assertNotEquals("Both are true, this will succeed", BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFour);
+		assertEquals("Failure, both should be equal", BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFive);
+		assertNotEquals("Failure, both should not be equal", BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFour);
 		
 //		Asserts that two objects do not refer to the same object.
-		assertNotSame(BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFive);	
+		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFive);	
+		assertSame("should be same", binaryEquivilentOfDigitFive, binaryEquivilentOfDigitFive);
+		
+		assertThat("Failure, should contain both '0' and '1'", BinaryUtil.convertIntegerToBinaryString(digitFive), both(containsString("0")).and(containsString("1")));
+		
+//		Matchers
+	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), allOf(equalTo("000101"), startsWith("0")));
+	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), not(allOf(equalTo("000100"), equalTo("000101"))));
+	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), anyOf(equalTo("000100"), equalTo("000101")));
+	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), not(sameInstance(BinaryUtil.convertIntegerToBinaryString(digitFive))));
 	}
 
 	@Test
@@ -45,7 +63,7 @@ public class BinaryUtilTest
 		int digitFive = 5;
 		String binaryEquivilentOfDigitFive = "000101";
 		
-		assertEquals("Both are true, this will succeed", BinaryUtil.convertBinaryToInteger(binaryEquivilentOfDigitFive), digitFive);
+		assertEquals("Failure, both should be equal", BinaryUtil.convertBinaryToInteger(binaryEquivilentOfDigitFive), digitFive);
 	}
 
 	@Ignore
