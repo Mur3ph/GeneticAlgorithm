@@ -50,6 +50,10 @@ public class BinaryUtilTest
 		
 		assertThat("Failure, should contain both '0' and '1'", BinaryUtil.convertIntegerToBinaryString(digitFive), both(containsString("0")).and(containsString("1")));
 		
+	    byte[] expected = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
+	    byte[] actual = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
+	    assertArrayEquals("failure - byte arrays not same", expected, actual);
+		
 //		Matchers
 	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), allOf(equalTo("000101"), startsWith("0")));
 	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), not(allOf(equalTo("000100"), equalTo("000101"))));
