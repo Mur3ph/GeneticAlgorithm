@@ -39,10 +39,13 @@ public class BinaryUtilTest
 		assertNotSame(BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFive);	
 	}
 
-	@Ignore
+	@Test
 	public void testConvertBinaryToInteger()
 	{
-		fail("Not yet implemented");
+		int digitFive = 5;
+		String binaryEquivilentOfDigitFive = "000101";
+		
+		assertEquals("Both are true, this will succeed", BinaryUtil.convertBinaryToInteger(binaryEquivilentOfDigitFive), digitFive);
 	}
 
 	@Ignore
