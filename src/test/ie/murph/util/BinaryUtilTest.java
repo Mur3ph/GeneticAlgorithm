@@ -26,57 +26,82 @@ import main.ie.murph.util.BinaryUtil;
 import test.ie.murph.marker.interfaces.PerformanceTests;
 import test.ie.murph.marker.interfaces.RegressionTests;
 
-@Category({PerformanceTests.class, RegressionTests.class})
+@Category({ PerformanceTests.class, RegressionTests.class })
 public class BinaryUtilTest
 {
+	private String binaryEquivilentOfDigitFive = "000101";
+	private String binaryEquivilentOfDigitFour = "000100";
+	private int digitFive = 5;
+	private int digitFour = 4;
+
 	@Before
 	public void setUp() throws Exception
 	{
-		
+
 	}
 
 	@After
 	public void tearDown() throws Exception
 	{
-		
+
 	}
 
 	@Test
 	public void testConvertIntegerToBinaryString()
 	{
-		int digitFive = 5;
-		String binaryEquivilentOfDigitFive = "000101";
-		String binaryEquivilentOfDigitFour = "000100";
-		
+
 		System.out.println("BinaryUtilTest: " + BinaryUtil.convertIntegerToBinaryString(digitFive));
-		
-		assertEquals("Failure, both should be equal", BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFive);
-		assertNotEquals("Failure, both should not be equal", BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFour);
-		
-//		Asserts that two objects do not refer to the same object.
-		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFive), binaryEquivilentOfDigitFive);	
+
+		testAssertEquals();
+		testAssertSame();
+		testByteSize();
+		testUsingMatchers();
+
+	}
+
+	private void testAssertEquals()
+	{
+		assertEquals("Failure, both should be equal", BinaryUtil.convertIntegerToBinaryString(digitFive),
+				binaryEquivilentOfDigitFive);
+		assertNotEquals("Failure, both should not be equal", BinaryUtil.convertIntegerToBinaryString(digitFive),
+				binaryEquivilentOfDigitFour);
+	}
+
+	private void testAssertSame()
+	{
+		// Asserts that two objects do not refer to the same object.
+		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFive),
+				binaryEquivilentOfDigitFive);
 		assertSame("should be same", binaryEquivilentOfDigitFive, binaryEquivilentOfDigitFive);
-		
-		assertThat("Failure, should contain both '0' and '1'", BinaryUtil.convertIntegerToBinaryString(digitFive), both(containsString("0")).and(containsString("1")));
-		
-	    byte[] expected = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
-	    byte[] actual = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
-	    assertArrayEquals("failure - byte arrays not same", expected, actual);
-		
-//		Matchers
-	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), allOf(equalTo("000101"), startsWith("0")));
-	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), not(allOf(equalTo("000100"), equalTo("000101"))));
-	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), anyOf(equalTo("000100"), equalTo("000101")));
-	    assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), not(sameInstance(BinaryUtil.convertIntegerToBinaryString(digitFive))));
+	}
+
+	private void testByteSize()
+	{
+		byte[] expected = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
+		byte[] actual = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
+		assertArrayEquals("failure - byte arrays not same", expected, actual);
+	}
+
+	private void testUsingMatchers()
+	{
+		// Matchers
+		assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), allOf(equalTo("000101"), startsWith("0")));
+		assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive),
+				not(allOf(equalTo("000100"), equalTo("000101"))));
+		assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), anyOf(equalTo("000100"), equalTo("000101")));
+		assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive),
+				not(sameInstance(BinaryUtil.convertIntegerToBinaryString(digitFive))));
 	}
 
 	@Test
 	public void testConvertBinaryToInteger()
 	{
-		int digitFive = 5;
-		String binaryEquivilentOfDigitFive = "000101";
-		
-		assertEquals("Failure, both should be equal", BinaryUtil.convertBinaryToInteger(binaryEquivilentOfDigitFive), digitFive);
+
+		assertEquals("Failure, both should be equal", BinaryUtil.convertBinaryToInteger(binaryEquivilentOfDigitFive),
+				digitFive);
+		assertNotEquals("Failure, both should not be equal",
+				BinaryUtil.convertBinaryToInteger(binaryEquivilentOfDigitFive), digitFour);
+
 	}
 
 	@Ignore
