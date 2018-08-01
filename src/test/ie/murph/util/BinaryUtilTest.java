@@ -34,18 +34,6 @@ public class BinaryUtilTest
 	private int digitFive = 5;
 	private int digitFour = 4;
 
-	@Before
-	public void setUp() throws Exception
-	{
-
-	}
-
-	@After
-	public void tearDown() throws Exception
-	{
-
-	}
-
 	@Test
 	public void testConvertIntegerToBinaryString()
 	{
