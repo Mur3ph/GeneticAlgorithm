@@ -37,13 +37,13 @@ public class BinaryUtilTest
 	@Before
 	public void setUp() throws Exception
 	{
-
+		
 	}
 
 	@After
 	public void tearDown() throws Exception
 	{
-
+		
 	}
 
 	@Test
@@ -52,14 +52,14 @@ public class BinaryUtilTest
 
 		System.out.println("BinaryUtilTest: " + BinaryUtil.convertIntegerToBinaryString(digitFive));
 
-		testAssertEquals();
-		testAssertSame();
-		testByteSize();
-		testUsingMatchers();
+		assertEqualsTest();
+		assertSameTest();
+		checkByteSizeTest();
+		usingMatchersAPITest();
 
 	}
 
-	private void testAssertEquals()
+	private void assertEqualsTest()
 	{
 		assertEquals("Failure, both should be equal", BinaryUtil.convertIntegerToBinaryString(digitFive),
 				binaryEquivilentOfDigitFive);
@@ -67,7 +67,7 @@ public class BinaryUtilTest
 				binaryEquivilentOfDigitFour);
 	}
 
-	private void testAssertSame()
+	private void assertSameTest()
 	{
 		// Asserts that two objects do not refer to the same object.
 		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFive),
@@ -75,14 +75,14 @@ public class BinaryUtilTest
 		assertSame("should be same", binaryEquivilentOfDigitFive, binaryEquivilentOfDigitFive);
 	}
 
-	private void testByteSize()
+	private void checkByteSizeTest()
 	{
 		byte[] expected = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
 		byte[] actual = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
 		assertArrayEquals("failure - byte arrays not same", expected, actual);
 	}
 
-	private void testUsingMatchers()
+	private void usingMatchersAPITest()
 	{
 		// Matchers
 		assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), allOf(equalTo("000101"), startsWith("0")));
