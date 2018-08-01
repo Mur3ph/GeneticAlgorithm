@@ -52,14 +52,14 @@ public class BinaryUtilTest
 
 		System.out.println("BinaryUtilTest: " + BinaryUtil.convertIntegerToBinaryString(digitFive));
 
-		assertEqualsTest();
-		assertSameTest();
-		checkByteSizeTest();
-		usingMatchersAPITest();
+		assertEqualsIntegerToBinaryStringTest();
+		assertSameIntegerToBinaryStringTest();
+		checkByteSizeIntegerToBinaryStringTest();
+		usingMatchersIntegerToBinaryStringTest();
 
 	}
 
-	private void assertEqualsTest()
+	private void assertEqualsIntegerToBinaryStringTest()
 	{
 		assertEquals("Failure, both should be equal", BinaryUtil.convertIntegerToBinaryString(digitFive),
 				binaryEquivilentOfDigitFive);
@@ -67,7 +67,7 @@ public class BinaryUtilTest
 				binaryEquivilentOfDigitFour);
 	}
 
-	private void assertSameTest()
+	private void assertSameIntegerToBinaryStringTest()
 	{
 		// Asserts that two objects do not refer to the same object.
 		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFive),
@@ -75,14 +75,14 @@ public class BinaryUtilTest
 		assertSame("should be same", binaryEquivilentOfDigitFive, binaryEquivilentOfDigitFive);
 	}
 
-	private void checkByteSizeTest()
+	private void checkByteSizeIntegerToBinaryStringTest()
 	{
 		byte[] expectedByteSize = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
 		byte[] actualByteSize = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
 		assertArrayEquals("failure - byte arrays not same", expectedByteSize, actualByteSize);
 	}
 
-	private void usingMatchersAPITest()
+	private void usingMatchersIntegerToBinaryStringTest()
 	{
 		// Matchers
 		assertThat(BinaryUtil.convertIntegerToBinaryString(digitFive), allOf(equalTo("000101"), startsWith("0")));
@@ -96,12 +96,15 @@ public class BinaryUtilTest
 	@Test
 	public void testConvertBinaryToInteger()
 	{
+		assertEqualsBinaryToIntegerTest();
+	}
 
+	private void assertEqualsBinaryToIntegerTest()
+	{
 		assertEquals("Failure, both should be equal", BinaryUtil.convertBinaryToInteger(binaryEquivilentOfDigitFive),
 				digitFive);
 		assertNotEquals("Failure, both should not be equal",
 				BinaryUtil.convertBinaryToInteger(binaryEquivilentOfDigitFive), digitFour);
-
 	}
 
 	@Ignore
