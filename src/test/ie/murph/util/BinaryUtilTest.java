@@ -77,9 +77,9 @@ public class BinaryUtilTest
 
 	private void checkByteSizeTest()
 	{
-		byte[] expected = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
-		byte[] actual = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
-		assertArrayEquals("failure - byte arrays not same", expected, actual);
+		byte[] expectedByteSize = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
+		byte[] actualByteSize = BinaryUtil.convertIntegerToBinaryString(digitFive).getBytes();
+		assertArrayEquals("failure - byte arrays not same", expectedByteSize, actualByteSize);
 	}
 
 	private void usingMatchersAPITest()
