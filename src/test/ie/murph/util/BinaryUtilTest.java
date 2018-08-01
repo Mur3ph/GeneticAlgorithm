@@ -37,13 +37,13 @@ public class BinaryUtilTest
 	@Before
 	public void setUp() throws Exception
 	{
-		
+
 	}
 
 	@After
 	public void tearDown() throws Exception
 	{
-		
+
 	}
 
 	@Test
@@ -73,6 +73,12 @@ public class BinaryUtilTest
 		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFive),
 				binaryEquivilentOfDigitFive);
 		assertSame("should be same", binaryEquivilentOfDigitFive, binaryEquivilentOfDigitFive);
+		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFive),
+				BinaryUtil.convertIntegerToBinaryString(digitFive));
+		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFour),
+				BinaryUtil.convertIntegerToBinaryString(digitFour));
+		assertNotSame("Failure, both shouldn't be the same", BinaryUtil.convertIntegerToBinaryString(digitFive),
+				BinaryUtil.convertIntegerToBinaryString(digitFour));
 	}
 
 	private void checkByteSizeIntegerToBinaryStringTest()
