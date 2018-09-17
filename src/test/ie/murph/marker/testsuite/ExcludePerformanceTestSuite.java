@@ -8,7 +8,7 @@ import test.ie.murph.marker.interfaces.PerformanceTests;
 import test.ie.murph.util.BinaryUtilTest;
 
 @RunWith(Categories.class)
-@Categories.ExcludeCategory(PerformanceTests.class)
+//@Categories.ExcludeCategory(PerformanceTests.class)
 @Suite.SuiteClasses({BinaryUtilTest.class})
 public class ExcludePerformanceTestSuite
 {

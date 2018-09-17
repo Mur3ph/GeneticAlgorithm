@@ -13,5 +13,5 @@ import test.ie.murph.util.BinaryUtilTest;
 @Suite.SuiteClasses({BinaryUtilTest.class})
 public class RegressionTestSuite
 {
-
+	
 }
