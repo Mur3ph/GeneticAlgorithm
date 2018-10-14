@@ -13,7 +13,7 @@ Genetic algorithms are a part of evolutionary computing, written in Java, area o
 7. [Estimation of distribution algorithms](https://en.wikipedia.org/wiki/Estimation_of_distribution_algorithm)
 8. [Learning classifier systems](https://en.wikipedia.org/wiki/Learning_classifier_system)
 9. [Particle swarm optimization](https://en.wikipedia.org/wiki/Particle_swarm_optimization)
-10. [Self-organization](https://en.wikipedia.org/wiki/Self-organization) such as [self-organizing maps](https://en.wikipedia.org/wiki/Self-organizing_map), and[competitive learning]()https://en.wikipedia.org/wiki/Competitive_learning
+10. [Self-organization](https://en.wikipedia.org/wiki/Self-organization) such as [self-organizing maps](https://en.wikipedia.org/wiki/Self-organizing_map), and [competitive learning](https://en.wikipedia.org/wiki/Competitive_learning)
 11. [Swarm intelligence](https://en.wikipedia.org/wiki/Swarm_intelligence)
 
 
