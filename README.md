@@ -2,6 +2,21 @@
 
 Genetic algorithms are a part of evolutionary computing, written in Java, area of Artificial Intelligence
 
+## [Evolutionary Computation](https://en.wikipedia.org/wiki/Evolutionary_computation)
+
+1. [Genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm)
+2. [Genetic programming](https://en.wikipedia.org/wiki/Genetic_programming)
+3. [Ant colony optimization](https://en.wikipedia.org/wiki/Ant_colony_optimization)
+4. [Artificial immune systems](https://en.wikipedia.org/wiki/Artificial_immune_system)
+5. [Artificial life](https://en.wikipedia.org/wiki/Artificial_life)
+6. [Differential evolution](https://en.wikipedia.org/wiki/Differential_evolution)
+7. [Estimation of distribution algorithms](https://en.wikipedia.org/wiki/Estimation_of_distribution_algorithm)
+8. [Learning classifier systems](https://en.wikipedia.org/wiki/Learning_classifier_system)
+9. [Particle swarm optimization](https://en.wikipedia.org/wiki/Particle_swarm_optimization)
+10. [Self-organization](https://en.wikipedia.org/wiki/Self-organization) such as [self-organizing maps](https://en.wikipedia.org/wiki/Self-organizing_map), and[competitive learning]()https://en.wikipedia.org/wiki/Competitive_learning
+11. [Swarm intelligence](https://en.wikipedia.org/wiki/Swarm_intelligence)
+
+
 
 ## TODO: Currently Refactoring algorithm - Clean Code
 
